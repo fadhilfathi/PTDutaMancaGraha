@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "392901205011",
+    "firebase_url": "https://ptdutamancagraha.firebaseio.com",
+    "project_id": "ptdutamancagraha",
+    "storage_bucket": "ptdutamancagraha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392901205011:android:854e607c73805501",
+        "android_client_info": {
+          "package_name": "com.example.marbeelz.ptdutamancagraha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392901205011-2nhs0mbhlt17gjtpcikoveu5j62eep03.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKuM6XDKkv19VduaqV9-1a5NPlf1U1xXg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392901205011-2nhs0mbhlt17gjtpcikoveu5j62eep03.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
