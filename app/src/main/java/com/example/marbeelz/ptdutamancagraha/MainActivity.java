@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
                         User login = dataSnapshot.child(username).getValue(User.class);
                         if (login.getPassword().equals(password)){
                             Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
-                            Intent x = new Intent(getApplicationContext(), HomeActivity.class);
-                            startActivity(x);
+//                            Intent x = new Intent(getApplicationContext(), HomeActivity.class);
+//                            startActivity(x);
                         }else {
                             Toast.makeText(MainActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
                         }
