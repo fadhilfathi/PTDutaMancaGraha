@@ -3,4 +3,7 @@
     <string name="password">password</string>
     <string name="username">username</string>
     <string name="pt_duta_manca_graha">PT Duta Manca Graha</string>
+    <string name="navigation_drawer_open">Navigation drawer open</string>
+    <string name="navigation_drawer_close">Navigation drawer close</string>
+    <string name="login">Login</string>
 </resources>
