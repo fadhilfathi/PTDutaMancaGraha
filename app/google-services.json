@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "392901205011-81ongu3t398hqv0i81nrc6kr786sdom1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.marbeelz.ptdutamancagraha",
+            "certificate_hash": "285039afaf94b7700913d07a47c6e1e0f12befea"
+          }
+        },
+        {
           "client_id": "392901205011-2nhs0mbhlt17gjtpcikoveu5j62eep03.apps.googleusercontent.com",
           "client_type": 3
         }
