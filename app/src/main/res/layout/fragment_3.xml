@@ -2,10 +2,55 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
+
     <TextView
+        android:id="@+id/title_regist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Menu   3"
-        android:textSize="40sp"
+        android:layout_below="@+id/imageView5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:text="@string/pt_duta_manca_graha"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/username_regist"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_regist"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:contentDescription="@string/username"
+        android:drawableStart="@drawable/ic_action_name"
+        android:fontFamily="@font/open_sans_light"
+        android:hint="@string/username"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/password_regist"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/username_regist"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:drawableStart="@drawable/ic_password"
+        android:fontFamily="@font/open_sans_light"
+        android:hint="@string/password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/button_regist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="24dp"
+        android:padding="4dp"
+        android:text="Daftar"
         android:layout_centerInParent="true"/>
 </RelativeLayout>
