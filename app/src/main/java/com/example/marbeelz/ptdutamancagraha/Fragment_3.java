@@ -26,6 +26,7 @@ public class Fragment_3 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("Tambah Akun");
         final View view = inflater.inflate(R.layout.fragment_3, container, false);
 
         Users = database.getReference("Users");

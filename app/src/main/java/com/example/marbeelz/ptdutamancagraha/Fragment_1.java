@@ -44,6 +44,7 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
     private StorageReference mStorageRef;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getActivity().setTitle("Daftar Rumah");
         final View view = inflater.inflate(R.layout.fragment_1, container, false);
         mRecyclerView = view.findViewById(R.id.recyclerview);
         mRecyclerView.setHasFixedSize(true);

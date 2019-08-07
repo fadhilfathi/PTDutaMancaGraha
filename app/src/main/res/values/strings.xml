@@ -6,4 +6,35 @@
     <string name="navigation_drawer_open">Navigation drawer open</string>
     <string name="navigation_drawer_close">Navigation drawer close</string>
     <string name="login">Login</string>
+
+    <string-array name="listrik">
+        <item>Daya Listrik</item>
+        <item>900</item>
+        <item>1300</item>
+        <item>2200</item>
+    </string-array>
+
+    <string-array name="kamarTidur">
+        <item>Kamar Tidur</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+    </string-array>
+    
+    <string-array name="kamarMandi">
+        <item>Kamar Mandi</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="tingkat">
+        <item>Tingkat Rumah</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
 </resources>

@@ -43,10 +43,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         if(savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.framgment_container,
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new Fragment_1()).commit();
             navigationView.setCheckedItem(R.id.nav_1);
         }
+
     }
 
 
@@ -55,16 +56,16 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()){
             case R.id.nav_1:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framgment_container,
-                        new Fragment_1()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_1()).addToBackStack(null).commit();
                 break;
             case R.id.nav_2:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framgment_container,
-                        new Fragment_2()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_2()).addToBackStack(null).commit();
                 break;
             case R.id.nav_3:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framgment_container,
-                        new Fragment_3()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new Fragment_3()).addToBackStack(null).commit();
                 break;
             case R.id.nav_2_1:
                 Toast.makeText(this, "Item 2_1 Selected", Toast.LENGTH_SHORT).show();
