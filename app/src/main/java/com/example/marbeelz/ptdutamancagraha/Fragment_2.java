@@ -3,6 +3,7 @@ package com.example.marbeelz.ptdutamancagraha;
 import android.Manifest;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import android.content.ContentResolver;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,6 +48,8 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+
+import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 
@@ -169,6 +173,38 @@ public class Fragment_2 extends Fragment {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                if (textNama.getText().toString().trim().equals("")){
+                    textNama.setError("Silahkan Masukkan Tipe Rumah");
+                }
+                if (textAlamat.getText().toString().trim().equals("")){
+                    textAlamat.setError("Silahkan Masukkan Alamat");
+                }
+                if (textLuasTanah.getText().toString().trim().equals("")){
+                    textLuasTanah.setError("Silahkan Masukkan Alamat");
+                }
+                if (textLuasBangunan.getText().toString().trim().equals("")){
+                    textLuasBangunan.setError("Silahkan Masukkan Alamat");
+                }
+                if (textSumberAir.getText().toString().trim().equals("")){
+                    textSumberAir.setError("Silahkan Masukkan Alamat");
+                }
+                if (spinnerListrik.getSelectedItem().toString().trim() == "Listrik"){
+                    TextView errorListrik = (TextView)spinnerListrik.getSelectedView();
+                    errorListrik.setError("");
+                    errorListrik.setTextColor(Color.RED);
+                }
+                if (spinnerKamarTidur.getSelectedItem().toString().trim() == "Kamar Tidur"){
+                    TextView errorKamarTidur = (TextView)spinnerKamarTidur.getSelectedView();
+                    errorKamarTidur.setError("");
+                    errorKamarTidur.setTextColor(Color.RED);
+                }
+                if (spinnerKamarMandi.getSelectedItem().toString().trim() == "Kamar Mandi"){
+                    TextView errorKamarMandi = (TextView)spinnerKamarMandi.getSelectedView();
+                    errorKamarMandi.setError("");
+                    errorKamarMandi.setTextColor(Color.RED);
+                }
+
                 if (mUploadTask != null && mUploadTask.isInProgress()){
                     Toast.makeText(getActivity(),"Sedang Dalam Proses Upload",Toast.LENGTH_SHORT).show();
                 }else {
