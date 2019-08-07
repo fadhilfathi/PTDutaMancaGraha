@@ -32,15 +32,14 @@
     <EditText
         android:id="@+id/alamat"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/edit_text2"
         android:layout_centerHorizontal="false"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/open_sans_bold"
         android:hint="alamat"
-        android:singleLine="true"
-        />
+        android:singleLine="true" />
 
     <EditText
 
