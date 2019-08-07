@@ -52,7 +52,7 @@
     <TextView
         android:id="@+id/_kamarmandi"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/open_sans_light"
@@ -64,7 +64,7 @@
     <TextView
         android:id="@+id/_listrik"
         android:layout_width="40dp"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/open_sans_light"
@@ -76,26 +76,26 @@
     <TextView
         android:id="@+id/_kamartidur"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="10dp"
-        android:text="kamar tidur"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/open_sans_light"
-        android:textColor="#ffffff"/>
+        android:text="kamar tidur"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView7" />
 
     <TextView
         android:id="@+id/_air"
         android:layout_width="40dp"
-        android:layout_height="wrap_content"
+        android:layout_height="24dp"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="10dp"
-        android:text="air"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/open_sans_light"
-        android:textColor="#ffffff"/>
+        android:text="air"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView3" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -111,7 +111,7 @@
         android:id="@+id/imageView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintStart_toEndOf="@+id/_listrik"
@@ -121,7 +121,7 @@
         android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/_air"
