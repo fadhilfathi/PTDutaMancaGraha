@@ -12,8 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -52,10 +54,13 @@ import static android.app.Activity.RESULT_OK;
 public class Fragment_2 extends Fragment {
     @Nullable
     public static final int PICK_IMAGE_REQUEST = 1;
-    EditText editText;
+    EditText textNama, textAlamat, textLuasTanah, textLuasBangunan, textSumberAir;
     Button upload;
     ImageButton choose;
     ImageView imageView;
+    Spinner spinnerListrik, spinnerKamarTidur, spinnerKamarMandi;
+    String garasss = "asd";
+    SwitchCompat garasi, carport;
     private ProgressBar mProgressBar;
     private Uri mImageUri;
     private StorageReference mStorageRef;
@@ -76,21 +81,57 @@ public class Fragment_2 extends Fragment {
         String [] kamarMandi =
                 {"Kamar Mandi","1","2","3"};
 
-        Spinner spinner = (Spinner) view.findViewById(R.id.spinner_listrik);
+        spinnerListrik = view.findViewById(R.id.spinner_listrik);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, listrik);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner.setAdapter(adapter);
+        spinnerListrik.setAdapter(adapter);
 
-        Spinner spinner2 = (Spinner) view.findViewById(R.id.spinner_KamarTidur);
+        spinnerKamarTidur = (Spinner) view.findViewById(R.id.spinner_KamarTidur);
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, kamarTidur);
         adapter2.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner2.setAdapter(adapter2);
+        spinnerKamarTidur.setAdapter(adapter2);
 
-        Spinner spinner3 = (Spinner) view.findViewById(R.id.spinner_KamarMandi);
+        spinnerKamarMandi = (Spinner) view.findViewById(R.id.spinner_KamarMandi);
         ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, kamarMandi);
         adapter3.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner3.setAdapter(adapter3);
+        spinnerKamarMandi.setAdapter(adapter3);
 
+//        final String textListirk = spinnerlistrik.getSelectedItem().toString();
+//        final String textKamarTidur = spinnerkamartidur.getSelectedItem().toString();
+//        final String textKamarMandi = spinnerkamarmandi.getSelectedItem().toString();
+
+        garasi = (SwitchCompat) view.findViewById(R.id.switch_garasi);
+        carport = (SwitchCompat) view.findViewById(R.id.switch_carport);
+
+        String textGarasi = "Tidak ada";
+        String textCarport = "Tidak ada";
+
+        if (garasi.isChecked()){
+            textGarasi = "Ada";
+        }
+        if (carport.isChecked()){
+            textCarport = "Tidak Ada";
+        }
+
+//        garasi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if (b){
+//                    textGarasi = "Ada";
+//                }else {
+//
+//                }
+//            }
+//        });
+//
+//        carport.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                if (b){
+//                    textCarport = "Ada";
+//                }
+//            }
+//        });
 //        switchCompat = view.findViewById(R.id.switch_garasi);
 //        switchCompat.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -103,7 +144,11 @@ public class Fragment_2 extends Fragment {
 //            }
 //        });
 
-        editText = view.findViewById(R.id.edit_text2);
+        textNama = view.findViewById(R.id.edit_text2);
+        textAlamat = view.findViewById(R.id.alamat);
+        textLuasTanah = view.findViewById(R.id.luas_tanah);
+        textLuasBangunan = view.findViewById(R.id.luas_bangunan);
+        textSumberAir = view.findViewById(R.id.air);
         choose = view.findViewById(R.id.image2);
         upload = view.findViewById(R.id.upload);
         imageView = view.findViewById(R.id.image2);
@@ -151,7 +196,26 @@ public class Fragment_2 extends Fragment {
                     fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            Upload upload = new Upload(editText.getText().toString().trim(), uri.toString());
+                            Upload upload;
+                            String textGarasi = "Tidak Ada";
+                            String textCarport = "Tidak Ada";
+                            if (garasi.isChecked()){
+                                textGarasi = "Ada";
+                            }
+                            if (carport.isChecked()){
+                                textCarport = "Ada";
+                            }
+                            upload = new Upload(textNama.getText().toString().trim(),
+                                    textAlamat.getText().toString().trim(),
+                                    textLuasTanah.getText().toString().trim(),
+                                    textLuasBangunan.getText().toString().trim(),
+                                    textSumberAir.getText().toString().trim(),
+                                    spinnerListrik.getSelectedItem().toString().trim(),
+                                    spinnerKamarTidur.getSelectedItem().toString().trim(),
+                                    spinnerKamarMandi.getSelectedItem().toString().trim(),
+                                    textGarasi,
+                                    textCarport,
+                                    uri.toString());
                             String UploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(UploadId).setValue(upload);
                         }

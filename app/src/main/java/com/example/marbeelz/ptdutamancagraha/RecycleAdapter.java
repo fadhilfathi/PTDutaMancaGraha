@@ -78,7 +78,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
             contextMenu.setHeaderTitle("Select Action");
-            MenuItem Detail = contextMenu.add(Menu.NONE,1,1,"Detail");
+            MenuItem Detail = contextMenu.add(Menu.NONE,1,1,"Edit");
             MenuItem Hapus = contextMenu.add(Menu.NONE,2,2,"Hapus");
 
             Detail.setOnMenuItemClickListener(this);
