@@ -40,6 +40,10 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
     public void onBindViewHolder(@NonNull RecycleViewHolder holder, int position) {
         Upload uploadcurrent = mUpload.get(position);
         holder.textViewName.setText(uploadcurrent.getmName());
+        holder.textViewListrik.setText(uploadcurrent.getmListrik());
+        holder.textViewAir.setText(uploadcurrent.getmSumber_Air());
+        holder.textViewKamarMandi.setText(uploadcurrent.getmKamarMandi());
+        holder.textViewKamarTidur.setText(uploadcurrent.getmKamarTidur());
         //Glide.with(mContext).load(uploadcurrent.getmImageUrl());
         Picasso.get().load(uploadcurrent.getmImageUrl()).fit().placeholder(R.mipmap.ic_launcher).centerCrop().into(holder.imageView);
     }
@@ -52,14 +56,20 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
     public class RecycleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
             View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
 
-        public TextView textViewName;
+        public TextView textViewName, textViewListrik, textViewAir, textViewKamarMandi, textViewKamarTidur;
         public ImageView imageView;
+
 
         public RecycleViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textViewName = itemView.findViewById(R.id.text_view_name);
+            textViewListrik = itemView.findViewById(R.id._listrik);
+            textViewAir = itemView.findViewById(R.id._air);
+            textViewKamarMandi = itemView.findViewById(R.id._kamarmandi);
+            textViewKamarTidur = itemView.findViewById(R.id._kamartidur);
             imageView = itemView.findViewById(R.id.image_view_rumah);
+
 
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
