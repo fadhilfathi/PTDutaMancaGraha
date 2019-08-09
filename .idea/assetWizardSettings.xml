@@ -155,8 +155,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_kamar_tidur" />
-                            <entry key="sourceFile" value="C:\Users\marbeelz\Documents\PKL\Project\icon\kamar tidur.svg" />
+                            <entry key="outputName" value="ic_phone_book" />
+                            <entry key="sourceFile" value="C:\Users\marbe\Downloads\phone-book.svg" />
                           </map>
                         </option>
                       </PersistentState>
