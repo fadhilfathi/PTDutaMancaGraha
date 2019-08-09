@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:id="@+id/detailFragment">
 
 
     <TextView
-        android:id="@+id/title_regist"
+        android:id="@+id/titleDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView5"
@@ -18,5 +20,69 @@
         android:textSize="30sp"
         android:textStyle="bold" />
 
+    <ImageView
+        android:id="@+id/imageViewDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_regist"
+        android:layout_marginTop="44dp"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/textViewDetailAlamat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewDetail"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewDetailTanah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDetailAlamat"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textViewDetailBangunan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDetailTanah"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/textViewDetailAir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDetailBangunan"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/textViewDetailListrik"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDetailAir"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/textViewDetailTidur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDetailListrik"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/textViewDetailMandi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDetailTidur"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/textViewDetailGarasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDetailMandi"
+        android:text="TextView" />
+    <TextView
+        android:id="@+id/textViewDetailCarport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDetailGarasi"
+        android:text="TextView" />
 
 </RelativeLayout>

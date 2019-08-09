@@ -1,8 +1,10 @@
 package com.example.marbeelz.ptdutamancagraha;
 
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.Context;
 import android.media.Image;
+import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -11,8 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentContainer;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -28,17 +35,18 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
         mContext = context;
         mUpload = uploads;
     }
-
     @NonNull
     @Override
     public RecycleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(mContext).inflate(R.layout.recycle_item,parent,false);
-        return new RecycleViewHolder(v);
+        final RecycleViewHolder viewHolder = new RecycleViewHolder(v);
+
+        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecycleViewHolder holder, int position) {
-        Upload uploadcurrent = mUpload.get(position);
+    public void onBindViewHolder(@NonNull RecycleViewHolder holder, final int position) {
+        final Upload uploadcurrent = mUpload.get(position);
         holder.textViewName.setText(uploadcurrent.getmName());
         holder.textViewListrik.setText(uploadcurrent.getmListrik());
         holder.textViewAir.setText(uploadcurrent.getmSumber_Air());
@@ -46,6 +54,21 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
         holder.textViewKamarTidur.setText(uploadcurrent.getmKamarTidur());
         //Glide.with(mContext).load(uploadcurrent.getmImageUrl());
         Picasso.get().load(uploadcurrent.getmImageUrl()).fit().placeholder(R.mipmap.ic_launcher).centerCrop().into(holder.imageView);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //fragmentjump(uploadcurrent);
+                DetailFragment detail = new DetailFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("key",uploadcurrent.getmKey());
+                detail.setArguments(bundle);
+                HomeActivity homeActivity = (HomeActivity) mContext;
+                MainActivity mainActivity = (MainActivity) mContext;
+                homeActivity.switchContent(R.id.fragment_container,detail);
+                //fragment_1.getFragmentManager().beginTransaction().replace(R.id.fragment_container,detail).commit();
+            }
+        });
     }
 
     @Override
@@ -117,6 +140,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
     }
     public interface OnItemClickListener{
         void onItemClick(int Position);
+
 
         void whatEverClick(int Position);
 

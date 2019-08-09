@@ -1,5 +1,6 @@
 package com.example.marbeelz.ptdutamancagraha;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.renderscript.Sampler;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -91,7 +94,11 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
 
     @Override
     public void onItemClick(int Position) {
-        Toast.makeText(getActivity(),"Preview : "+Position, Toast.LENGTH_SHORT).show();
+//        DetailFragment detail = new DetailFragment();
+//        FragmentManager manager = getFragmentManager();
+//        manager.beginTransaction().replace(R.id.fragment_container,detail).commit();
+//        Toast.makeText(getActivity(),"asd",Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
@@ -118,6 +125,12 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
     public void onDestroy() {
         super.onDestroy();
         mDatabaseRef.removeEventListener(mDBListener);
+    }
+
+    public void switchContent(int id, Fragment fragment){
+        DetailFragment detailFragment = new DetailFragment();
+        FragmentManager fragmentTransaction = getFragmentManager();
+        fragmentTransaction.beginTransaction().replace(R.id.fragment_container,detailFragment).commit();
     }
 }
 

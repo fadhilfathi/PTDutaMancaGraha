@@ -19,6 +19,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentContainer;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
@@ -85,5 +87,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void switchContent(int fragment_container, DetailFragment detail) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(fragment_container,detail);
+        ft.addToBackStack(null);
+        ft.commit();
     }
 }
