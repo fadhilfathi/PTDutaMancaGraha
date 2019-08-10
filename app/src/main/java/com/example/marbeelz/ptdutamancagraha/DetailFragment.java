@@ -85,7 +85,8 @@ public class DetailFragment extends Fragment {
                     textCarport.setText(dataSnapshot.child("mCarport").getValue().toString().trim());
                 }
                 if (dataSnapshot.child("mImageUrl").exists()) {
-                    Picasso.get().load(dataSnapshot.child("mImageUrl").getValue().toString().trim()).fit().into(imageView);
+                    Picasso.get().load(dataSnapshot.child("mImageUrl").getValue().toString().trim()).fit().centerCrop()
+                            .into(imageView);
                 }
             }
 
