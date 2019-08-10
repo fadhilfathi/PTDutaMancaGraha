@@ -94,5 +94,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ft.replace(fragment_container,detail);
         ft.addToBackStack(null);
         ft.commit();
+
     }
 }
