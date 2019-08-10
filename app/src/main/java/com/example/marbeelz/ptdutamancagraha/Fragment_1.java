@@ -66,7 +66,6 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
 
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
-
         mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
