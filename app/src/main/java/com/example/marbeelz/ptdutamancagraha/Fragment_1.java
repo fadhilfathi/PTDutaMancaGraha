@@ -1,5 +1,6 @@
 package com.example.marbeelz.ptdutamancagraha;
 
+import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ import java.util.List;
 public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickListener {
     @Nullable
     private ProgressBar mProgressBar;
+    private Context mContext;
 
     private RecyclerView mRecyclerView;
     private RecycleAdapter mAdapter;
@@ -45,6 +47,7 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
     private DatabaseReference mDatabaseRef;
     private List<Upload> mUploads;
     private StorageReference mStorageRef;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle("Daftar Rumah");
@@ -92,12 +95,11 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
         return view;
     }
 
+
+
+
     @Override
     public void onItemClick(int Position) {
-//        DetailFragment detail = new DetailFragment();
-//        FragmentManager manager = getFragmentManager();
-//        manager.beginTransaction().replace(R.id.fragment_container,detail).commit();
-//        Toast.makeText(getActivity(),"asd",Toast.LENGTH_SHORT).show();
 
     }
 
