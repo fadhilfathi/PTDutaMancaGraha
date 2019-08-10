@@ -53,7 +53,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
         holder.textViewKamarMandi.setText(uploadcurrent.getmKamarMandi());
         holder.textViewKamarTidur.setText(uploadcurrent.getmKamarTidur());
         //Glide.with(mContext).load(uploadcurrent.getmImageUrl());
-        Picasso.get().load(uploadcurrent.getmImageUrl()).fit().placeholder(R.mipmap.ic_launcher).centerCrop().into(holder.imageView);
+        Picasso.get().load(uploadcurrent.getmImageUrl()).fit().placeholder(R.drawable.picture).centerCrop().into(holder.imageView);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -75,6 +75,7 @@ public class Fragment_2 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_2, container, false);
+        getActivity().setTitle("Tambah Rumah");
 
         String [] listrik =
                 {"Listrik","900","1300","2200"};

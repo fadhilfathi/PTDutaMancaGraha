@@ -16,11 +16,35 @@
         <!--android:text="Pilih Gambar"-->
         <!--android:textColor="#ffffff" />-->
 
+    <ImageButton
+        android:id="@+id/image2"
+        android:layout_width="250dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/picture"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:paddingTop="5dp"
+        android:contentDescription="foto rumah"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/image2"
+        android:id="@+id/note"
+        android:text="*upload gambar dengan aspect ratio 16:9 untuk kualitas lebih baik"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        android:fontFamily="@font/open_sans_light"
+        android:layout_marginBottom="16dp"/>
+
     <EditText
         android:id="@+id/edit_text2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/image2"
+        android:layout_below="@id/note"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="5dp"
         android:fontFamily="@font/open_sans_bold"
@@ -37,7 +61,7 @@
         android:layout_centerHorizontal="false"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/open_sans_bold"
+        android:fontFamily="@font/open_sans"
         android:hint="alamat"
         android:singleLine="true" />
 
@@ -50,7 +74,7 @@
         android:layout_centerHorizontal="false"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/open_sans_bold"
+        android:fontFamily="@font/open_sans"
         android:hint="luas_tanah(m2)"
         android:singleLine="true"
         android:paddingStart="5dp" />
@@ -64,7 +88,7 @@
         android:layout_centerHorizontal="false"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/open_sans_bold"
+        android:fontFamily="@font/open_sans"
         android:hint="luas_bangunan(m2)"
         android:paddingStart="5dp"
         android:singleLine="true"/>
@@ -78,7 +102,7 @@
         android:layout_centerHorizontal="false"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:fontFamily="@font/open_sans_bold"
+        android:fontFamily="@font/open_sans"
         android:hint="sumber air"
         android:paddingStart="5dp"
         android:singleLine="true"
@@ -148,17 +172,6 @@
     </Spinner>
 
 
-    <ImageButton
-        android:id="@+id/image2"
-        android:layout_width="250dp"
-        android:layout_height="120dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/add"
-        android:adjustViewBounds="true"
-        android:paddingTop="5dp"
-        android:contentDescription="foto rumah"
-        />
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -171,7 +184,7 @@
 
     <Button
         android:id="@+id/upload"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
@@ -180,5 +193,7 @@
         android:textColor="#ffffff"
         android:text="Upload"
         android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         />
 </RelativeLayout>
