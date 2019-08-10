@@ -45,6 +45,7 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
     private DatabaseReference mDatabaseRef;
     private List<Upload> mUploads;
     private StorageReference mStorageRef;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle("Daftar Rumah");
@@ -71,7 +72,7 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
                 //Clear Model biar tidak dobel
                 mUploads.clear();
 
-                for (DataSnapshot postSnapShot : dataSnapshot.getChildren()){
+                for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
                     Upload upload = postSnapShot.getValue(Upload.class);
                     //mengambil key dari database untuk disimpan ke model upload
                     upload.setmKey(postSnapShot.getKey());
@@ -103,7 +104,7 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
 
     @Override
     public void whatEverClick(int Position) {
-        Toast.makeText(getActivity(),"Detail : "+Position, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Detail : " + Position, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -116,7 +117,7 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
             @Override
             public void onSuccess(Void aVoid) {
                 mDatabaseRef.child(selectedKey).removeValue();
-                Toast.makeText(getActivity(),"Delete Sukses", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Delete Sukses", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -127,10 +128,9 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
         mDatabaseRef.removeEventListener(mDBListener);
     }
 
-    public void switchContent(int id, Fragment fragment){
+    public void switchContent(int id, Fragment fragment) {
         DetailFragment detailFragment = new DetailFragment();
         FragmentManager fragmentTransaction = getFragmentManager();
-        fragmentTransaction.beginTransaction().replace(R.id.fragment_container,detailFragment).commit();
+        fragmentTransaction.beginTransaction().replace(R.id.fragment_container, detailFragment).commit();
     }
 }
-

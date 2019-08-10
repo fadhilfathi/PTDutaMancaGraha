@@ -14,14 +14,11 @@
             android:id="@+id/nav_2"
             android:icon="@drawable/home"
             android:title="Tambah Rumah" />
+
         <item
             android:id="@+id/nav_3"
-            android:icon="@drawable/add_user"
-            android:title="Tambah User" />
-        <item
-            android:id="@+id/nav_4"
             android:icon="@drawable/ic_phone_book"
-            android:title="List User" />
+            android:title="User" />
     </group>
     <item android:title="Menu change later">
         <menu>

@@ -64,7 +64,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
                 bundle.putString("key",uploadcurrent.getmKey());
                 detail.setArguments(bundle);
                 HomeActivity homeActivity = (HomeActivity) mContext;
-                MainActivity mainActivity = (MainActivity) mContext;
+                //MainActivity mainActivity = (MainActivity) mContext;
                 homeActivity.switchContent(R.id.fragment_container,detail);
                 //fragment_1.getFragmentManager().beginTransaction().replace(R.id.fragment_container,detail).commit();
             }
