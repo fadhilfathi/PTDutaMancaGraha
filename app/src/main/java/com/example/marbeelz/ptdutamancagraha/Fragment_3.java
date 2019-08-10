@@ -85,7 +85,7 @@ public class Fragment_3 extends Fragment {
             public void onClick(View view) {
                 FragmentManager fragment = getFragmentManager();
                 Fragment_4 fragment_4 = new Fragment_4();
-                fragment.beginTransaction().replace(R.id.fragment_container,fragment_4).commit();
+                fragment.beginTransaction().replace(R.id.fragment_container,fragment_4).addToBackStack(null).commit();
             }
         });
 
