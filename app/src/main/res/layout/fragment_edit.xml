@@ -41,7 +41,8 @@
         android:fontFamily="@font/open_sans_bold"
         android:layout_below="@id/imageViewDetail"
         android:id="@+id/alamat"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:paddingTop="8dp"/>
     <EditText
         android:id="@+id/EditDetailAlamat"
         android:layout_width="wrap_content"
@@ -54,6 +55,7 @@
         android:textSize="12sp"/>
 
     <TextView
+        android:paddingTop="8dp"
         android:layout_width="95dp"
         android:layout_height="33dp"
         android:layout_marginBottom="8dp"
@@ -74,6 +76,7 @@
         android:textSize="12sp"/>
 
     <TextView
+        android:paddingTop="8dp"
         android:layout_width="95dp"
         android:layout_height="33dp"
         android:layout_marginBottom="8dp"
@@ -94,6 +97,7 @@
         android:textSize="12sp"/>
 
     <TextView
+        android:paddingTop="8dp"
         android:layout_width="95dp"
         android:layout_height="33dp"
         android:layout_marginBottom="8dp"
@@ -114,6 +118,7 @@
         android:textSize="12sp"/>
 
     <TextView
+        android:paddingTop="8dp"
         android:layout_width="95dp"
         android:layout_height="33dp"
         android:layout_marginBottom="8dp"
@@ -134,6 +139,7 @@
         android:textSize="12sp"/>
 
     <TextView
+        android:paddingTop="8dp"
         android:layout_width="95dp"
         android:layout_height="33dp"
         android:layout_marginBottom="8dp"
@@ -154,6 +160,7 @@
         android:textSize="12sp"/>
 
     <TextView
+        android:paddingTop="8dp"
         android:layout_width="95dp"
         android:layout_height="33dp"
         android:layout_marginBottom="8dp"
@@ -174,6 +181,7 @@
         android:textSize="12sp"/>
 
     <TextView
+        android:paddingTop="8dp"
         android:layout_width="95dp"
         android:layout_height="33dp"
         android:layout_marginBottom="8dp"
@@ -195,6 +203,7 @@
         android:textSize="12sp"/>
 
     <TextView
+        android:paddingTop="8dp"
         android:layout_width="95dp"
         android:layout_height="33dp"
         android:layout_marginBottom="8dp"
