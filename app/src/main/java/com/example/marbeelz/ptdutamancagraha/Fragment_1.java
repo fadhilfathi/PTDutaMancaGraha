@@ -104,7 +104,7 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
 
     @Override
     public void whatEverClick(int Position) {
-        Toast.makeText(getActivity(), "Detail : " + Position, Toast.LENGTH_SHORT).show();
+
     }
 
     @Override

@@ -18,11 +18,17 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:id="@+id/textViewEdit"/>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewEdit"
+                android:text="TextView"
+                android:id="@+id/EditDetailTitle"/>
             <ImageButton
-                android:id="@+id/imageViewDetail"
+                android:id="@+id/imageViewEdit"
                 android:layout_width="288pt"
                 android:layout_height="90pt"
-                android:layout_below="@+id/textViewEdit"
+                android:layout_below="@+id/EditDetailTitle"
                 android:layout_marginTop="16dp"
                 app:srcCompat="@drawable/ic_launcher_background"
                 android:layout_centerHorizontal="true"
@@ -35,7 +41,7 @@
                 android:layout_marginBottom="8dp"
                 android:text="Alamat"
                 android:fontFamily="@font/open_sans_bold"
-                android:layout_below="@id/imageViewDetail"
+                android:layout_below="@id/imageViewEdit"
                 android:id="@+id/alamat"
                 android:layout_marginLeft="16dp"
                 android:paddingTop="8dp"/>
@@ -43,7 +49,7 @@
                 android:id="@+id/EditDetailAlamat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imageViewDetail"
+                android:layout_below="@id/imageViewEdit"
                 android:layout_toEndOf="@id/alamat"
                 android:text="TextView"
                 android:fontFamily="@font/open_sans_light"
@@ -219,22 +225,23 @@
                 android:layout_marginStart="4dp"
                 android:textSize="12sp"/>
 
-
+            <Button
+                android:id="@+id/button_edit"
+                android:layout_below="@+id/carport"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="Simpan"
+                android:fontFamily="@font/open_sans"
+                android:background="@drawable/rounded_button"
+                android:textColor="#ffffff"
+                android:layout_marginBottom="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"/>
 
         </RelativeLayout>
     </ScrollView>
-    <Button
-        android:id="@+id/button_edit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Simpan"
-        android:fontFamily="@font/open_sans"
-        android:background="@drawable/rounded_button"
-        android:textColor="#ffffff"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"/>
+
 
 </RelativeLayout>

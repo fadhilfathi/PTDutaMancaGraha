@@ -118,37 +118,6 @@ public class Fragment_2 extends Fragment {
             textCarport = "Tidak Ada";
         }
 
-//        garasi.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-//                if (b){
-//                    textGarasi = "Ada";
-//                }else {
-//
-//                }
-//            }
-//        });
-//
-//        carport.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-//                if (b){
-//                    textCarport = "Ada";
-//                }
-//            }
-//        });
-//        switchCompat = view.findViewById(R.id.switch_garasi);
-//        switchCompat.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (switchCompat.isChecked()){
-//
-//                } else{
-//
-//                }
-//            }
-//        });
-
         textNama = view.findViewById(R.id.edit_text2);
         textAlamat = view.findViewById(R.id.alamat);
         textLuasTanah = view.findViewById(R.id.luas_tanah);

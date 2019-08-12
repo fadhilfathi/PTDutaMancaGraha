@@ -111,10 +111,10 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
             contextMenu.setHeaderTitle("Select Action");
-            MenuItem Detail = contextMenu.add(Menu.NONE,1,1,"Edit");
-            MenuItem Hapus = contextMenu.add(Menu.NONE,2,2,"Hapus");
+//            MenuItem Detail = contextMenu.add(Menu.NONE,1,1,"Edit");
+            MenuItem Hapus = contextMenu.add(Menu.NONE,1,1,"Hapus");
 
-            Detail.setOnMenuItemClickListener(this);
+            //Detail.setOnMenuItemClickListener(this);
             Hapus.setOnMenuItemClickListener(this);
         }
 
@@ -125,14 +125,16 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
                 if (position != RecyclerView.NO_POSITION){
                     switch (menuItem.getItemId()){
                         case 1:
-                            mListener.whatEverClick(position);
-                            return true;
-                        case 2:
                             mListener.onDelete(position);
                             return true;
-                        case 3:
-                            mListener.onItemClick(position);
-                            return true;
+//                            mListener.whatEverClick(position);
+//                            return true;
+//                        case 2:
+//                            mListener.onDelete(position);
+//                            return true;
+//                        case 3:
+//                            mListener.onItemClick(position);
+//                            return true;
                     }
                 }
             }return false;

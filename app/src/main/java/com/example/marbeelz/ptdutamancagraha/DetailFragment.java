@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,11 +30,12 @@ public class DetailFragment extends Fragment {
     private ImageView imageView;
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
+    private Button editBtn;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_detail, container, false);
-
+        editBtn = view.findViewById(R.id.button_edit);
         textTittle = view.findViewById(R.id.titleDetail);
         textAlamat = view.findViewById(R.id.textViewDetailAlamat);
         textTanah = view.findViewById(R.id.textViewDetailTanah);
@@ -48,7 +50,7 @@ public class DetailFragment extends Fragment {
 
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
 
-        Bundle bundle = getArguments();
+        final Bundle bundle = getArguments();
         final String key = bundle.getString("key");
 
         mDatabaseRef.child(key).addValueEventListener(new ValueEventListener() {
@@ -93,6 +95,19 @@ public class DetailFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 Log.d("Retrive Data Error :", databaseError.toString());
+            }
+        });
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Fragment_Edit fragment_edit = new Fragment_Edit();
+
+                Bundle key = new Bundle();
+                key.putString("key", bundle.getString("key"));
+                fragment_edit.setArguments(key);
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container,fragment_edit).addToBackStack(null).commit();
             }
         });
 
