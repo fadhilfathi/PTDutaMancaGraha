@@ -28,15 +28,6 @@ public class Upload {
 
     }
 
-//    public Upload(String mName, String mImageUrl) {
-//        if (mName.trim().equals("")){
-//            mName = "No Name";
-//        }
-//        this.mName = mName;
-//        this.mImageUrl = mImageUrl;
-//    }
-
-
     public Upload(String mName, String mAlamat, String mLuas_Tanah, String mLuas_Bangunan, String mSumber_Air, String mListrik, String mKamarTidur, String mKamarMandi, String mGarasi, String mCarport, String mImageUrl) {
         this.mName = mName;
         this.mAlamat = mAlamat;

@@ -52,21 +52,17 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
         holder.textViewAir.setText(uploadcurrent.getmSumber_Air());
         holder.textViewKamarMandi.setText(uploadcurrent.getmKamarMandi());
         holder.textViewKamarTidur.setText(uploadcurrent.getmKamarTidur());
-        //Glide.with(mContext).load(uploadcurrent.getmImageUrl());
         Picasso.get().load(uploadcurrent.getmImageUrl()).fit().placeholder(R.drawable.picture).centerCrop().into(holder.imageView);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //fragmentjump(uploadcurrent);
                 DetailFragment detail = new DetailFragment();
                 Bundle bundle = new Bundle();
                 bundle.putString("key",uploadcurrent.getmKey());
                 detail.setArguments(bundle);
                 HomeActivity homeActivity = (HomeActivity) mContext;
-                //MainActivity mainActivity = (MainActivity) mContext;
                 homeActivity.switchContent(R.id.fragment_container,detail);
-                //fragment_1.getFragmentManager().beginTransaction().replace(R.id.fragment_container,detail).commit();
             }
         });
     }

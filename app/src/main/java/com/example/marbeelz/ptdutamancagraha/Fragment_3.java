@@ -57,14 +57,12 @@ public class Fragment_3 extends Fragment {
         floatingActionButton = view.findViewById(R.id.tambah_user);
         listView = view.findViewById(R.id.listViewUser);
 
-        //adapter = new ArrayAdapter<String>(getActivity(),R.layout.user_list,R.id.username_info,list);
         Users = FirebaseDatabase.getInstance().getReference("Users");
         Users.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren()){
                     user = ds.getValue(User.class);
-                    //list.add(user.getUsername() + " " + user.getPassword());
                     HashMap<String,String> results = new HashMap<>();
                     results.put("1",user.getUsername());
                     results.put("2",user.getPassword());
@@ -79,7 +77,6 @@ public class Fragment_3 extends Fragment {
             }
         });
 
-
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,8 +85,6 @@ public class Fragment_3 extends Fragment {
                 fragment.beginTransaction().replace(R.id.fragment_container,fragment_4).addToBackStack(null).commit();
             }
         });
-
-
 
         return view;
     }

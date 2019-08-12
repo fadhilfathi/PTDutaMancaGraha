@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
     private void signIn(final String username, final String password) {
         Users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -63,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 

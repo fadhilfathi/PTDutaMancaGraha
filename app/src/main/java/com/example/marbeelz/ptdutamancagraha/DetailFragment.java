@@ -102,7 +102,6 @@ public class DetailFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Fragment_Edit fragment_edit = new Fragment_Edit();
-
                 Bundle key = new Bundle();
                 key.putString("key", bundle.getString("key"));
                 fragment_edit.setArguments(key);

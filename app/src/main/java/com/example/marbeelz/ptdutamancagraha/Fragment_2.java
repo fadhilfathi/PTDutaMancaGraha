@@ -248,8 +248,6 @@ public class Fragment_2 extends Fragment {
 
     private void openFileChooser(){
         Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        //intent.setType("Image/*");
-        //intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
     @Override
@@ -258,8 +256,6 @@ public class Fragment_2 extends Fragment {
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
             mImageUri = data.getData();
-
-            //Glide.with(this).load(mImageUri).into(imageView);
             Picasso.get().load(mImageUri).into(imageView);
         }
     }

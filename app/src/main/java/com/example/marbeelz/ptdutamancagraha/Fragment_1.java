@@ -94,9 +94,6 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
         return view;
     }
 
-
-
-
     @Override
     public void onItemClick(int Position) {
 
