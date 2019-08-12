@@ -2,6 +2,7 @@ package com.example.marbeelz.ptdutamancagraha;
 
 //import android.support.v7.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -73,7 +75,25 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 Toast.makeText(this, "Item 2_1 Selected", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.nav_2_2:
-                Toast.makeText(this, "Item 2_1 Selected", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage("Yakin?").setCancelable(true)
+                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent x = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(x);
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                })
+                ;
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

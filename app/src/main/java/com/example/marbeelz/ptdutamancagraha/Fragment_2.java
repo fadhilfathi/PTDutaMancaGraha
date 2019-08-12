@@ -101,9 +101,6 @@ public class Fragment_2 extends Fragment {
         adapter3.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinnerKamarMandi.setAdapter(adapter3);
 
-//        final String textListirk = spinnerlistrik.getSelectedItem().toString();
-//        final String textKamarTidur = spinnerkamartidur.getSelectedItem().toString();
-//        final String textKamarMandi = spinnerkamarmandi.getSelectedItem().toString();
 
         garasi = (SwitchCompat) view.findViewById(R.id.switch_garasi);
         carport = (SwitchCompat) view.findViewById(R.id.switch_carport);
@@ -129,9 +126,6 @@ public class Fragment_2 extends Fragment {
         mProgressBar = view.findViewById(R.id.progress_bar);
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
-
-
-
 
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -234,9 +228,6 @@ public class Fragment_2 extends Fragment {
                         }
                     }, 500);
                     Toast.makeText(getActivity(),"Upload Sukses",Toast.LENGTH_SHORT).show();
-//                    Upload upload = new Upload(editText.getText().toString().trim(), );
-//                    String UploadId = mDatabaseRef.push().getKey();
-//                    mDatabaseRef.child(UploadId).setValue(upload);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
