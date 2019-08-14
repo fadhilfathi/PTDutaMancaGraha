@@ -98,7 +98,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public void switchContent(int fragment_container, DetailFragment detail) {
+    public void switchContent(int fragment_container, DetailUserFragment detail) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(fragment_container,detail);
         ft.addToBackStack(null);

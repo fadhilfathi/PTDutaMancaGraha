@@ -33,7 +33,7 @@ public class UserFragment_1 extends Fragment implements RecycleAdapter.OnItemCli
     private Context mContext;
 
     private RecyclerView mRecyclerView;
-    private RecycleAdapter mAdapter;
+    private RecycleUserAdapter mAdapter;
 
     private ValueEventListener mDBListener;
     private FirebaseStorage mStorage;
@@ -53,7 +53,7 @@ public class UserFragment_1 extends Fragment implements RecycleAdapter.OnItemCli
 
         mUploads = new ArrayList<>();
 
-        mAdapter = new RecycleAdapter(getActivity(), mUploads);
+        mAdapter = new RecycleUserAdapter(getActivity(), mUploads);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(UserFragment_1.this);
 
@@ -62,10 +62,8 @@ public class UserFragment_1 extends Fragment implements RecycleAdapter.OnItemCli
         mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 //Clear Model biar tidak dobel
                 mUploads.clear();
-
                 for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
                     Upload upload = postSnapShot.getValue(Upload.class);
                     //mengambil key dari database untuk disimpan ke model upload
@@ -116,11 +114,5 @@ public class UserFragment_1 extends Fragment implements RecycleAdapter.OnItemCli
     public void onDestroy() {
         super.onDestroy();
         mDatabaseRef.removeEventListener(mDBListener);
-    }
-
-    public void switchContent(int id, Fragment fragment) {
-        DetailFragment detailFragment = new DetailFragment();
-        FragmentManager fragmentTransaction = getFragmentManager();
-        fragmentTransaction.beginTransaction().replace(R.id.fragment_container, detailFragment).commit();
     }
 }

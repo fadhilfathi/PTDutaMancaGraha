@@ -124,10 +124,4 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
         super.onDestroy();
         mDatabaseRef.removeEventListener(mDBListener);
     }
-
-    public void switchContent(int id, Fragment fragment) {
-        DetailFragment detailFragment = new DetailFragment();
-        FragmentManager fragmentTransaction = getFragmentManager();
-        fragmentTransaction.beginTransaction().replace(R.id.fragment_container, detailFragment).commit();
-    }
 }
