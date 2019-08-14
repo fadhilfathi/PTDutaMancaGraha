@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!--<Button-->
+        <!--android:id="@+id/choosefile"-->
+        <!--android:layout_width="150dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/image2"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:background="@drawable/rounded_button"-->
+        <!--android:fontFamily="@font/open_sans"-->
+        <!--android:text="Pilih Gambar"-->
+        <!--android:textColor="#ffffff" />-->
+
+    <ImageButton
+        android:id="@+id/image2"
+        android:layout_width="410dp"
+        android:layout_height="230.625dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/picture"
+        android:background="@drawable/outline_image"
+        android:backgroundTint="#D3D3D3"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:paddingTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:contentDescription="foto rumah"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/image2"
+        android:id="@+id/note"
+        android:text="*upload gambar dengan aspect ratio 16:9 untuk kualitas lebih baik"
+        android:textSize="12sp"
+        android:textStyle="italic"
+        android:fontFamily="@font/open_sans_light" />
+
+    <EditText
+        android:id="@+id/edit_text2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/note"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:hint="nama rumah"
+        android:paddingStart="5dp"
+        android:singleLine="true"
+        android:layout_marginTop="16dp"
+        />
+
+    <EditText
+        android:id="@+id/alamat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text2"
+        android:layout_centerHorizontal="false"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="alamat"
+        android:singleLine="true" />
+
+    <EditText
+
+        android:id="@+id/luas_tanah"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/alamat"
+        android:layout_centerHorizontal="false"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="luas_tanah(m2)"
+        android:singleLine="true"
+        android:paddingStart="5dp" />
+
+    <EditText
+        android:id="@+id/luas_bangunan"
+        android:layout_alignParentRight="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/luas_tanah"
+        android:layout_centerHorizontal="false"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="luas_bangunan(m2)"
+        android:paddingStart="5dp"
+        android:singleLine="true"/>
+
+    <EditText
+        android:id="@+id/air"
+        android:layout_alignParentRight="true"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/luas_bangunan"
+        android:layout_centerHorizontal="false"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="sumber air"
+        android:paddingStart="5dp"
+        android:singleLine="true"
+        android:layout_marginBottom="8dp"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch_garasi"
+        android:text="Garasi   "
+        android:textOff=""
+        android:textOn=""
+        android:gravity="center"
+        android:thumb="@drawable/switchbutton"
+        app:track="@drawable/switch_track"
+        app:showText="true"
+        android:layout_below="@id/spinner_KamarMandi"
+        android:fontFamily="@font/open_sans"
+        android:layout_marginStart="20dp"
+        android:textSize="16sp"/>
+    <androidx.appcompat.widget.SwitchCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch_carport"
+        android:text="Carport   "
+        android:textOff=""
+        android:textOn=""
+        android:gravity="center"
+        android:thumb="@drawable/switchbutton"
+        app:track="@drawable/switch_track"
+        app:showText="true"
+        android:layout_below="@id/spinner_KamarMandi"
+        android:fontFamily="@font/open_sans"
+        android:layout_marginEnd="16dp"
+        android:textSize="16sp"
+        android:layout_alignParentRight="true"/>
+
+    <Spinner
+        android:id="@+id/spinner_listrik"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_below="@id/air"
+        android:layout_alignParentBottom="false"
+        android:layout_marginStart="16dp">
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/spinner_KamarTidur"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_below="@id/air"
+        android:layout_alignParentBottom="false"
+        android:layout_toEndOf="@id/spinner_listrik"
+        >
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/spinner_KamarMandi"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_below="@id/air"
+        android:layout_alignParentBottom="false"
+        android:layout_toEndOf="@id/spinner_KamarTidur"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp">
+
+    </Spinner>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/outline_button"
+        android:text="Tambah Gambar Lain"
+        android:fontFamily="@font/open_sans"
+        android:textColor="@color/colorPrimary"
+        android:id="@+id/button_pilih"
+        android:layout_above="@id/upload"/>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/button_pilih"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:id="@+id/upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/open_sans_bold"
+        android:background="@drawable/rounded_button"
+        android:textColor="#ffffff"
+        android:text="Upload"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+</RelativeLayout>
