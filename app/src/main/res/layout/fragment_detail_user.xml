@@ -200,10 +200,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Booking Rumah"
+        android:text="Edit Rumah"
         android:fontFamily="@font/open_sans"
-        android:background="@drawable/rounded_button"
-        android:textColor="#ffff"
+        android:background="@drawable/outline_button"
+        android:textColor="@color/colorPrimary"
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"/>
