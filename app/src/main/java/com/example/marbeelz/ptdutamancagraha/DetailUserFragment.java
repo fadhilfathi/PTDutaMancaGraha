@@ -101,12 +101,12 @@ public class DetailUserFragment extends Fragment {
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Fragment_Edit fragment_edit = new Fragment_Edit();
+                FormFragment formFragment = new FormFragment();
                 Bundle key = new Bundle();
                 key.putString("key", bundle.getString("key"));
-                fragment_edit.setArguments(key);
+                formFragment.setArguments(key);
                 FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment_container,fragment_edit).addToBackStack(null).commit();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container,formFragment).addToBackStack(null).commit();
             }
         });
 

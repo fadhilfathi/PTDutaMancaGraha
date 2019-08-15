@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +46,7 @@ public class FormFragment extends Fragment {
 
     private Spinner spinnerPendidikan, spinnerStatusHubungan;
     private SwitchCompat sesuaiKTP;
-    private Button next;
+    private ImageButton next;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -84,7 +87,18 @@ public class FormFragment extends Fragment {
         noTelp = view.findViewById(R.id.telepon_rumah);
         email = view.findViewById(R.id.email);
         sesuaiKTP = view.findViewById(R.id.SesuaiKTP);
+        next = view.findViewById(R.id.intro_btn_next);
 
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FormFragment2 formFragment2 = new FormFragment2();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                        R.anim.enter_left_to_right,R.anim.exit_left_to_right).replace(R.id.fragment_container,formFragment2).
+                        addToBackStack(null).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
+            }
+        });
 
 
         return view;
