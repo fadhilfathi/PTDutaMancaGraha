@@ -1,5 +1,7 @@
 package com.example.marbeelz.ptdutamancagraha;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -101,12 +103,14 @@ public class DetailUserFragment extends Fragment {
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FormFragment formFragment = new FormFragment();
-                Bundle key = new Bundle();
-                key.putString("key", bundle.getString("key"));
-                formFragment.setArguments(key);
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment_container,formFragment).addToBackStack(null).commit();
+                UserActivity userActivity = (UserActivity) getActivity();
+                userActivity.ToBooking();
+//                FormFragment formFragment = new FormFragment();
+//                Bundle key = new Bundle();
+//                key.putString("key", bundle.getString("key"));
+//                formFragment.setArguments(key);
+//                FragmentManager fragmentManager = getFragmentManager();
+//                fragmentManager.beginTransaction().replace(R.id.fragment_container,formFragment).addToBackStack(null).commit();
             }
         });
 

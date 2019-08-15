@@ -13,17 +13,22 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,6 +44,8 @@ import static android.app.Activity.RESULT_OK;
 
 public class Fragment_Edit extends Fragment {
     public static final int PICK_IMAGE_REQUEST = 1;
+    View view;
+    Upload current;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     StorageReference mStorageRef;
     private StorageTask mUploadTask;
@@ -50,9 +57,9 @@ public class Fragment_Edit extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle("Edit Rumah");
-        final View view = inflater.inflate(R.layout.fragment_edit, container, false);
+        view = inflater.inflate(R.layout.fragment_edit, container, false);
 
         editTitle = view.findViewById(R.id.EditDetailTitle);
         editAlamat = view.findViewById(R.id.EditDetailAlamat);
@@ -120,7 +127,7 @@ public class Fragment_Edit extends Fragment {
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setMessage("Yakin?").setCancelable(true)
                         .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
@@ -150,11 +157,56 @@ public class Fragment_Edit extends Fragment {
                                                     mDatabaseRef.child(key).setValue(upload);
                                                 }
                                             });
-                                            Toast.makeText(getActivity(), "Upload Sukses", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity(), "Edit Sukses", Toast.LENGTH_SHORT).show();
+                                            DetailFragment detailFragment = new DetailFragment();
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("key",key);
+                                            detailFragment.setArguments(bundle);
+                                            FragmentManager fragmentManager = getFragmentManager();
+                                            fragmentManager.beginTransaction().replace(R.id.fragment_container,detailFragment)
+                                                    .setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                                                            R.anim.enter_left_to_right,R.anim.exit_left_to_right)
+                                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null).commit();
+                                        }
+                                    });
+                                }else {
+                                    mDatabaseRef.child(key).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            current = dataSnapshot.getValue(Upload.class);
+                                            Upload upload = new Upload(
+                                                    editTitle.getText().toString().trim(),
+                                                    editAlamat.getText().toString().trim(),
+                                                    editTanah.getText().toString().trim(),
+                                                    editBangunan.getText().toString().trim(),
+                                                    editAir.getText().toString().trim(),
+                                                    editListrik.getText().toString().trim(),
+                                                    editTidur.getText().toString().trim(),
+                                                    editMandi.getText().toString().trim(),
+                                                    editGarasi.getText().toString().trim(),
+                                                    editCarport.getText().toString().trim(),
+                                                    current.getmImageUrl().toString().trim()
+                                            );
+                                            mDatabaseRef.child(key).setValue(upload);
+                                            Toast.makeText(getActivity(), "Edit Sukses", Toast.LENGTH_SHORT).show();
+                                            DetailFragment detailFragment = new DetailFragment();
+                                            Bundle bundle = new Bundle();
+                                            bundle.putString("key",key);
+                                            detailFragment.setArguments(bundle);
+                                            FragmentManager fragmentManager = getFragmentManager();
+                                            fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+                                                    R.anim.enter_left_to_right,R.anim.exit_left_to_right).replace(R.id.fragment_container,detailFragment)
+                                                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null).commit();
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
                                         }
                                     });
                                 }
                             }
+
                         })
                         .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
                             @Override

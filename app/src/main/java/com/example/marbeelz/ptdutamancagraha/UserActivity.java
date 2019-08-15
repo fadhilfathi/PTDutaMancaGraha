@@ -4,6 +4,7 @@ package com.example.marbeelz.ptdutamancagraha;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.session.PlaybackState;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -103,6 +104,9 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         ft.replace(fragment_container,detail);
         ft.addToBackStack(null);
         ft.commit();
-
+    }
+    public void ToBooking(){
+        Intent x = new Intent(getApplicationContext(), BookingActivity.class);
+        startActivity(x);
     }
 }
