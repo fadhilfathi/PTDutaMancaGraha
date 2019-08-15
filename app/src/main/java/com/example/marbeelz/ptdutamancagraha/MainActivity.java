@@ -18,6 +18,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference Users;
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
             Intent x = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(x);
+            CustomIntent.customType(MainActivity.this,"fadein-to-fadeout");
         }else{
         Users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
                             Intent x = new Intent(getApplicationContext(), UserActivity.class);
                             startActivity(x);
+                            CustomIntent.customType(MainActivity.this,"fadein-to-fadeout");
                         }else {
                             Toast.makeText(MainActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
                         }

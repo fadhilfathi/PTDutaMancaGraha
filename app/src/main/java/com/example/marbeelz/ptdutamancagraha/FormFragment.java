@@ -100,7 +100,6 @@ public class FormFragment extends Fragment {
             }
         });
 
-
         return view;
     }
 }

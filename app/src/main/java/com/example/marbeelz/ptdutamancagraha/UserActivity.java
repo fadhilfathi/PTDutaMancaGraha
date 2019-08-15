@@ -20,6 +20,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
+import maes.tech.intentanim.CustomIntent;
+
 public class UserActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawer;
@@ -108,5 +110,6 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
     public void ToBooking(){
         Intent x = new Intent(getApplicationContext(), BookingActivity.class);
         startActivity(x);
+        CustomIntent.customType(this, "left-to-right");
     }
 }
