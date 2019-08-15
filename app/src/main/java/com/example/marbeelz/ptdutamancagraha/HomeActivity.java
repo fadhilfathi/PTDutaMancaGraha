@@ -46,11 +46,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        if(savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new Fragment_1()).commit();
-            navigationView.setCheckedItem(R.id.nav_1);
-        }
 
     }
 
