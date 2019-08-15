@@ -44,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void signIn(final String username, final String password) {
+        if (username.equals("admin") && password.equals("admin")){
+            Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
+            Intent x = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(x);
+        }else{
         Users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -52,8 +57,8 @@ public class MainActivity extends AppCompatActivity {
                         User login = dataSnapshot.child(username).getValue(User.class);
                         if (login.getPassword().equals(password)){
                             Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
-                          Intent x = new Intent(getApplicationContext(), HomeActivity.class);
-                                startActivity(x);
+                            Intent x = new Intent(getApplicationContext(), UserActivity.class);
+                            startActivity(x);
                         }else {
                             Toast.makeText(MainActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
                         }
@@ -66,6 +71,6 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });}
     }
 }
