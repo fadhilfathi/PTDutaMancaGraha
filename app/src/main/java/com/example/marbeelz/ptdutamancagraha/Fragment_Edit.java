@@ -55,6 +55,7 @@ public class Fragment_Edit extends Fragment {
     EditText editTitle, editAlamat, editTanah, editBangunan, editAir, editListrik, editTidur, editMandi, editGarasi, editCarport;
     Button button;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -157,6 +158,7 @@ public class Fragment_Edit extends Fragment {
                                                     mDatabaseRef.child(key).setValue(upload);
                                                 }
                                             });
+
                                             Toast.makeText(getActivity(), "Edit Sukses", Toast.LENGTH_SHORT).show();
                                             DetailFragment detailFragment = new DetailFragment();
                                             Bundle bundle = new Bundle();
@@ -220,6 +222,7 @@ public class Fragment_Edit extends Fragment {
 
             }
         });
+
         imgButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -231,6 +234,7 @@ public class Fragment_Edit extends Fragment {
 
         return view;
     }
+
 
     private void openFileChooser() {
         Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);

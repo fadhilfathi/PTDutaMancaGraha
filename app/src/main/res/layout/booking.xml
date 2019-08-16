@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/TextViewForm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:fontFamily="@font/open_sans_bold"
         android:text="Form Pribadi Pemohon"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
 
     <EditText
         android:id="@+id/nama"
@@ -68,7 +71,7 @@
     <View
         android:id="@+id/line"
         android:layout_width="wrap_content"
-        android:layout_height="1.5dp"
+        android:layout_height="0.5dp"
         android:layout_below="@id/tanggalLahir"
         android:background="#D3D3D3" />
 
@@ -154,7 +157,7 @@
         android:layout_toEndOf="@id/kelurahan"
         android:fontFamily="@font/open_sans_light"
         android:hint="Kecamatan"
-        android:inputType="number" />
+        />
 
     <EditText
         android:id="@+id/kota"
@@ -208,7 +211,7 @@
     <View
         android:id="@+id/line2"
         android:layout_width="wrap_content"
-        android:layout_height="1.5dp"
+        android:layout_height="0.5dp"
         android:layout_below="@id/SesuaiKTP"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="8dp"
@@ -303,85 +306,6 @@
         android:singleLine="true" />
 
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="?attr/actionBarSize"
-        android:alpha="0.12"
-        android:background="@android:color/white" />
+    </RelativeLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentBottom="true"
-        android:paddingStart="16dp"
-        android:paddingLeft="16dp"
-        android:paddingEnd="16dp"
-        android:paddingRight="16dp">
-
-
-        <Button
-            android:id="@+id/intro_btn_k"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start|center"
-            android:fontFamily="@font/open_sans_light"
-            android:text="Kembali"
-            android:textColor="#000000" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/indicator_0"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/indicator_selected" />
-
-            <ImageView
-                android:id="@+id/indicator_1"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/indicator_unselected" />
-
-            <ImageView
-                android:id="@+id/indicator_2"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:background="@drawable/indicator_unselected" />
-
-        </LinearLayout>
-
-
-        <Button
-            android:id="@+id/intro_btn_finish"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
-            android:text="Finish"
-            android:textColor="@android:color/white"
-            android:visibility="gone" />
-
-        <ImageButton
-            android:id="@+id/intro_btn_next"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
-            android:padding="16dp"
-            android:src="@drawable/ic_chevron_right_24dp" />
-
-    </FrameLayout>
-
-</RelativeLayout>
+</ScrollView>

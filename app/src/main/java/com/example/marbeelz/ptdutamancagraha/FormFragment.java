@@ -87,18 +87,18 @@ public class FormFragment extends Fragment {
         noTelp = view.findViewById(R.id.telepon_rumah);
         email = view.findViewById(R.id.email);
         sesuaiKTP = view.findViewById(R.id.SesuaiKTP);
-        next = view.findViewById(R.id.intro_btn_next);
-
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FormFragment2 formFragment2 = new FormFragment2();
-                FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
-                        R.anim.enter_left_to_right,R.anim.exit_left_to_right).replace(R.id.fragment_container,formFragment2).
-                        addToBackStack(null).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
-            }
-        });
+//        next = view.findViewById(R.id.intro_btn_next);
+//
+//        next.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FormFragment2 formFragment2 = new FormFragment2();
+//                FragmentManager fragmentManager = getFragmentManager();
+//                fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
+//                        R.anim.enter_left_to_right,R.anim.exit_left_to_right).replace(R.id.fragment_container,formFragment2).
+//                        addToBackStack(null).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
+//            }
+//        });
 
         return view;
     }

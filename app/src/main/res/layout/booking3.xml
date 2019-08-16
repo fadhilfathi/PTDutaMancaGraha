@@ -13,6 +13,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/open_sans_bold"
         android:text="Form Keluarga Pemohon"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="20sp" />
 
     <TextView
@@ -66,7 +67,7 @@
     <View
         android:id="@+id/line"
         android:layout_width="wrap_content"
-        android:layout_height="1.5dp"
+        android:layout_height="0.5dp"
         android:layout_below="@id/hubunganKeluarga"
         android:background="#D3D3D3" />
 
@@ -82,11 +83,10 @@
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/open_sans"
         android:hint="Alamat Rumah"
-
         android:singleLine="true" />
 
     <EditText
-        android:id="@+id/blok"
+        android:id="@+id/blokKeluarga"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_below="@id/alamatKeluarga"
@@ -95,104 +95,94 @@
         android:hint="Blok" />
 
     <EditText
-        android:id="@+id/nomor"
+        android:id="@+id/nomorKeluarga"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_below="@id/alamatKeluarga"
         android:layout_marginStart="16dp"
-        android:layout_toEndOf="@+id/blok"
+        android:layout_toEndOf="@+id/blokKeluarga"
         android:fontFamily="@font/open_sans_light"
         android:hint="Nomor"
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/RT"
+        android:id="@+id/RTKeluarga"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_below="@id/alamatKeluarga"
         android:layout_marginStart="16dp"
-        android:layout_toEndOf="@+id/nomor"
+        android:layout_toEndOf="@+id/nomorKeluarga"
         android:fontFamily="@font/open_sans_light"
-        android:hint="RT"
+        android:hint="RTKeluarga"
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/RW"
+        android:id="@+id/RWKeluarga"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_below="@id/alamatKeluarga"
         android:layout_alignParentRight="true"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_toEndOf="@+id/RT"
+        android:layout_toEndOf="@+id/RTKeluarga"
         android:fontFamily="@font/open_sans_light"
-        android:hint="RW"
+        android:hint="RWKeluarga"
         android:inputType="number" />
 
     <EditText
-        android:id="@+id/kelurahan"
+        android:id="@+id/kelurahanKeluarga"
         android:layout_width="170dp"
         android:layout_height="40dp"
-        android:layout_below="@id/blok"
+        android:layout_below="@id/blokKeluarga"
         android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/open_sans_light"
         android:hint="Kelurahan" />
 
     <EditText
-        android:id="@+id/kecamatan"
+        android:id="@+id/kecamatanKeluarga"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-        android:layout_below="@id/blok"
+        android:layout_below="@id/blokKeluarga"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_toEndOf="@id/kelurahan"
+        android:layout_toEndOf="@id/kelurahanKeluarga"
         android:fontFamily="@font/open_sans_light"
         android:hint="Kecamatan"
-        android:inputType="number" />
+        />
 
     <EditText
-        android:id="@+id/kota"
+        android:id="@+id/kotaKeluarga"
         android:layout_width="120dp"
         android:layout_height="40dp"
-        android:layout_below="@id/kelurahan"
+        android:layout_below="@id/kelurahanKeluarga"
         android:layout_marginStart="16dp"
         android:fontFamily="@font/open_sans_light"
         android:hint="Kota" />
 
     <EditText
-        android:id="@+id/provinsi"
+        android:id="@+id/provinsiKeluarga"
         android:layout_width="120dp"
         android:layout_height="40dp"
-        android:layout_below="@id/kelurahan"
+        android:layout_below="@id/kelurahanKeluarga"
         android:layout_marginStart="16dp"
-        android:layout_toEndOf="@+id/kota"
+        android:layout_toEndOf="@+id/kotaKeluarga"
         android:fontFamily="@font/open_sans_light"
         android:hint="Provinsi" />
 
     <EditText
-        android:id="@+id/kodepos"
+        android:id="@+id/kodeposKeluarga"
         android:layout_width="110dp"
         android:layout_height="40dp"
-        android:layout_below="@id/kelurahan"
+        android:layout_below="@id/kelurahanKeluarga"
         android:layout_alignParentRight="true"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_toEndOf="@+id/provinsi"
+        android:layout_toEndOf="@+id/provinsiKeluarga"
         android:fontFamily="@font/open_sans_light"
         android:hint="Kode Pos"
         android:inputType="number" />
-
-    <View
-        android:id="@+id/line2"
-        android:layout_width="wrap_content"
-        android:layout_height="1.5dp"
-        android:layout_below="@id/kota"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp"
-        android:background="#D3D3D3" />
-
 
     <View
         android:layout_width="match_parent"
@@ -201,77 +191,5 @@
         android:layout_marginBottom="?attr/actionBarSize"
         android:alpha="0.12"
         android:background="@android:color/white" />
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentBottom="true"
-        android:paddingStart="16dp"
-        android:paddingLeft="16dp"
-        android:paddingEnd="16dp"
-        android:paddingRight="16dp">
-
-        <Button
-            android:id="@+id/intro_btn_skip"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start|center"
-            android:fontFamily="@font/open_sans_light"
-            android:text="Kembali"
-            android:textColor="#000000" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/indicator_0"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/indicator_unselected" />
-
-            <ImageView
-                android:id="@+id/indicator_1"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:background="@drawable/indicator_unselected" />
-
-            <ImageView
-                android:id="@+id/indicator_2"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:layout_width="8dp"
-                android:layout_height="8dp"
-                android:background="@drawable/indicator_selected" />
-
-        </LinearLayout>
-
-
-        <Button
-            android:id="@+id/intro_btn_finish"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
-            android:text="Finish"
-            android:textColor="@android:color/white"
-            android:visibility="gone" />
-
-        <ImageButton
-            android:id="@+id/intro_btn_next"
-            style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|center"
-            android:padding="16dp"
-            android:src="@drawable/ic_chevron_right_24dp" />
-
-    </FrameLayout>
 
 </RelativeLayout>
