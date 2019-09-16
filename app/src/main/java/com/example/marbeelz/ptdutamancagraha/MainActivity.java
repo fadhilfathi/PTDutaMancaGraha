@@ -46,26 +46,31 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void signIn(final String username, final String password) {
-        if (username.equals("admin") && password.equals("admin")){
-            Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
-            Intent x = new Intent(getApplicationContext(), HomeActivity.class);
-            startActivity(x);
-            CustomIntent.customType(MainActivity.this,"fadein-to-fadeout");
-        }else{
         Users.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.child(username).exists()){
                     if (!username.isEmpty()){
+                        if (username.equals("admin")){
+                            User login = dataSnapshot.child(username).getValue(User.class);
+                            if (login.getPassword().equals(password)) {
+                                Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
+                                Intent x = new Intent(getApplicationContext(), HomeActivity.class);
+                                startActivity(x);
+                                CustomIntent.customType(MainActivity.this, "fadein-to-fadeout");
+                            }else{
+                                Toast.makeText(MainActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
+                            }
+                        }else{
                         User login = dataSnapshot.child(username).getValue(User.class);
                         if (login.getPassword().equals(password)){
-                            Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, dataSnapshot.child(username).toString().trim(), Toast.LENGTH_SHORT).show();
                             Intent x = new Intent(getApplicationContext(), UserActivity.class);
                             startActivity(x);
                             CustomIntent.customType(MainActivity.this,"fadein-to-fadeout");
                         }else {
                             Toast.makeText(MainActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
-                        }
+                        }}
                     }else {
                         Toast.makeText(MainActivity.this, "Username Tidak Terdaftar", Toast.LENGTH_SHORT).show();
                     }
@@ -75,6 +80,6 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });}
+        });
     }
 }
