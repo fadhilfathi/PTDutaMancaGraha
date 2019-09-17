@@ -213,8 +213,8 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_payment" />
-                            <entry key="sourceFile" value="C:\Users\marbe\Documents\PKL\payment.svg" />
+                            <entry key="outputName" value="ic_available" />
+                            <entry key="sourceFile" value="C:\Users\marbe\Documents\PKL\available.svg" />
                           </map>
                         </option>
                       </PersistentState>
