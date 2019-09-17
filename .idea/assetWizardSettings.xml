@@ -35,7 +35,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/editor/ic_insert_photo_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_account_circle_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -57,8 +57,8 @@
                                   <option name="values">
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
-                                      <entry key="imageAsset" value="C:\Users\marbe\Documents\PKL\logo_plain.png" />
-                                      <entry key="outputName" value="picture" />
+                                      <entry key="imageAsset" value="C:\Users\marbe\Documents\PKL\add-acc.png" />
+                                      <entry key="outputName" value="user" />
                                       <entry key="themeColor" value="000000" />
                                     </map>
                                   </option>
@@ -76,8 +76,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="scalingPercent" value="73" />
-                                                <entry key="trimmed" value="true" />
+                                                <entry key="scalingPercent" value="44" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -88,9 +87,15 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="foregroundImage" value="C:\Users\marbe\Documents\PKL\logo_plain.png" />
-                                      <entry key="outputName" value="ic_logo" />
+                                      <entry key="backgroundLayerName" value="xx" />
+                                      <entry key="foregroundImage" value="C:\Users\marbe\Documents\PKL\add-acc.png" />
+                                      <entry key="foregroundLayerName" value="xxfront" />
+                                      <entry key="generateLegacyIcon" value="false" />
+                                      <entry key="generateRoundIcon" value="false" />
+                                      <entry key="generateWebIcon" value="false" />
+                                      <entry key="legacyIconShape" value="NONE" />
+                                      <entry key="outputName" value="addacc" />
+                                      <entry key="webIconShape" value="NONE" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -149,6 +154,23 @@
                                           </PersistentState>
                                         </value>
                                       </entry>
+                                      <entry key="image">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\marbe\Documents\PKL\add-acc.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -189,9 +211,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_person_add_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\marbe\Downloads\phone-book.svg" />
+                            <entry key="outputName" value="ic_homepict" />
+                            <entry key="sourceFile" value="C:\Users\marbe\Documents\PKL\homepict.svg" />
                           </map>
                         </option>
                       </PersistentState>

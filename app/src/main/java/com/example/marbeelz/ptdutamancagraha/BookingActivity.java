@@ -25,10 +25,10 @@ public class BookingActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbarx);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Booking");
-          button = findViewById(R.id.btn_next);
-        layout1 = findViewById(R.id.lay1);
-        layout2 = findViewById(R.id.lay2);
-        layout3 = findViewById(R.id.lay3);
+//        button = findViewById(R.id.btn_next);
+//        layout1 = findViewById(R.id.lay1);
+//        layout2 = findViewById(R.id.lay2);
+//        layout3 = findViewById(R.id.lay3);
         String [] pendidikan =
                 {"Pendidikan","SD","SMP","SMA","Diploma", "S1","S2 / S3"};
         String [] statushubungan=
