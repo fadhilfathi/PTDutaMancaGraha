@@ -39,8 +39,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="36dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_air" />
 
@@ -48,7 +48,7 @@
         android:id="@+id/_kamarmandi"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/open_sans_light"
         android:text="kamar mandi"
@@ -58,9 +58,9 @@
 
     <TextView
         android:id="@+id/_listrik"
-        android:layout_width="40dp"
+        android:layout_width="60dp"
         android:layout_height="24dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/open_sans_light"
         android:text="listrik"
@@ -72,19 +72,19 @@
         android:id="@+id/_kamartidur"
         android:layout_width="wrap_content"
         android:layout_height="24dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="@font/open_sans_light"
         android:text="kamar tidur"
         android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintStart_toEndOf="@+id/imageView7" />
 
     <TextView
         android:id="@+id/_air"
-        android:layout_width="40dp"
+        android:layout_width="60dp"
         android:layout_height="24dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/open_sans_light"
         android:text="air"
@@ -97,7 +97,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ic_listrik" />

@@ -3,244 +3,264 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/editFragment">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:id="@+id/textViewEdit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit detail rumah"
-                android:fontFamily="@font/open_sans_bold"
-                android:textColor="#000"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:id="@+id/textViewEdit"/>
+                android:fontFamily="@font/open_sans_bold"
+                android:text="Edit detail rumah"
+                android:textColor="#000"
+                android:textSize="20sp" />
+
             <EditText
+                android:id="@+id/EditDetailTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/textViewEdit"
-                android:text="TextView"
-                android:id="@+id/EditDetailTitle"
                 android:layout_marginStart="16dp"
-                android:fontFamily="@font/open_sans"/>
+                android:fontFamily="@font/open_sans"
+                android:text="TextView" />
+
             <ImageButton
                 android:id="@+id/imageViewEdit"
                 android:layout_width="288pt"
                 android:layout_height="90pt"
                 android:layout_below="@+id/EditDetailTitle"
-                android:layout_marginTop="16dp"
-                app:srcCompat="@drawable/ic_launcher_background"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:scaleType="fitCenter"/>
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/ic_launcher_background" />
 
             <TextView
+                android:id="@+id/alamat"
                 android:layout_width="95dp"
                 android:layout_height="33dp"
-                android:layout_marginBottom="8dp"
-                android:text="Alamat"
-                android:fontFamily="@font/open_sans_bold"
                 android:layout_below="@id/imageViewEdit"
-                android:id="@+id/alamat"
                 android:layout_marginLeft="16dp"
-                android:paddingTop="8dp"/>
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/open_sans_light"
+                android:paddingTop="8dp"
+                android:text="Alamat" />
+
             <EditText
                 android:id="@+id/EditDetailAlamat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/imageViewEdit"
-                android:layout_toEndOf="@id/alamat"
-                android:text="TextView"
-                android:fontFamily="@font/open_sans_light"
                 android:layout_marginStart="4dp"
-                android:textSize="12sp"/>
+                android:layout_toEndOf="@id/alamat"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="TextView"
+                android:textSize="12sp" />
 
             <TextView
-                android:paddingTop="8dp"
+                android:id="@+id/tanah"
                 android:layout_width="95dp"
                 android:layout_height="33dp"
-                android:layout_marginBottom="8dp"
-                android:text="Tanah"
-                android:fontFamily="@font/open_sans_bold"
                 android:layout_below="@id/alamat"
-                android:id="@+id/tanah"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/open_sans_light"
+                android:paddingTop="8dp"
+                android:text="Tanah" />
+
             <EditText
                 android:id="@+id/EditDetailTanah"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/alamat"
-                android:text="TextView"
-                android:layout_toEndOf="@id/tanah"
-                android:fontFamily="@font/open_sans_light"
                 android:layout_marginLeft="4dp"
-                android:textSize="12sp"/>
+                android:layout_toEndOf="@id/tanah"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="TextView"
+                android:textSize="12sp" />
 
             <TextView
-                android:paddingTop="8dp"
+                android:id="@+id/bangunan"
                 android:layout_width="95dp"
                 android:layout_height="33dp"
-                android:layout_marginBottom="8dp"
-                android:text="Bangunan"
-                android:fontFamily="@font/open_sans_bold"
                 android:layout_below="@id/tanah"
-                android:id="@+id/bangunan"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/open_sans_light"
+                android:paddingTop="8dp"
+                android:text="Bangunan" />
+
             <EditText
                 android:id="@+id/EditDetailBangunan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tanah"
-                android:layout_toEndOf="@id/bangunan"
-                android:text="TextView"
-                android:fontFamily="@font/open_sans_light"
                 android:layout_marginLeft="4dp"
-                android:textSize="12sp"/>
+                android:layout_toEndOf="@id/bangunan"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="TextView"
+                android:textSize="12sp" />
 
             <TextView
-                android:paddingTop="8dp"
+                android:id="@+id/air"
                 android:layout_width="95dp"
                 android:layout_height="33dp"
-                android:layout_marginBottom="8dp"
-                android:text="Air"
-                android:fontFamily="@font/open_sans_bold"
                 android:layout_below="@id/bangunan"
-                android:id="@+id/air"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/open_sans_light"
+                android:paddingTop="8dp"
+                android:text="Air" />
+
             <EditText
                 android:id="@+id/EditDetailAir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bangunan"
-                android:text="TextView"
-                android:layout_toEndOf="@id/air"
-                android:fontFamily="@font/open_sans_light"
                 android:layout_marginLeft="4dp"
-                android:textSize="12sp"/>
+                android:layout_toEndOf="@id/air"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="TextView"
+                android:textSize="12sp" />
 
             <TextView
-                android:paddingTop="8dp"
+                android:id="@+id/listrik"
                 android:layout_width="95dp"
                 android:layout_height="33dp"
-                android:layout_marginBottom="8dp"
-                android:text="Listrik"
-                android:fontFamily="@font/open_sans_bold"
                 android:layout_below="@id/air"
-                android:id="@+id/listrik"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/open_sans_light"
+                android:paddingTop="8dp"
+                android:text="Listrik" />
+
             <EditText
                 android:id="@+id/EditDetailListrik"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/air"
-                android:text="TextView"
-                android:layout_toEndOf="@id/listrik"
-                android:fontFamily="@font/open_sans_light"
                 android:layout_marginLeft="4dp"
-                android:textSize="12sp"/>
+                android:layout_toEndOf="@id/listrik"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="TextView"
+                android:textSize="12sp" />
 
             <TextView
-                android:paddingTop="8dp"
+                android:id="@+id/kamartidur"
                 android:layout_width="95dp"
                 android:layout_height="33dp"
-                android:layout_marginBottom="8dp"
-                android:text="Kamar Tidur"
-                android:fontFamily="@font/open_sans_bold"
                 android:layout_below="@id/listrik"
-                android:id="@+id/kamartidur"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/open_sans_light"
+                android:paddingTop="8dp"
+                android:text="Kamar Tidur" />
+
             <EditText
                 android:id="@+id/EditDetailTidur"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/listrik"
-                android:fontFamily="@font/open_sans_light"
-                android:layout_toEndOf="@id/kamartidur"
                 android:layout_marginLeft="4dp"
+                android:layout_toEndOf="@id/kamartidur"
+                android:fontFamily="@font/open_sans_bold"
                 android:text="TextView"
-                android:textSize="12sp"/>
+                android:textSize="12sp" />
 
             <TextView
-                android:paddingTop="8dp"
+                android:id="@+id/kamarmandi"
                 android:layout_width="95dp"
                 android:layout_height="33dp"
-                android:layout_marginBottom="8dp"
-                android:text="Kamar Mandi"
-                android:fontFamily="@font/open_sans_bold"
                 android:layout_below="@id/kamartidur"
-                android:id="@+id/kamarmandi"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/open_sans_light"
+                android:paddingTop="8dp"
+                android:text="Kamar Mandi" />
+
             <EditText
                 android:id="@+id/EditDetailMandi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/kamartidur"
-                android:text="TextView"
-                android:layout_toEndOf="@id/kamarmandi"
-                android:fontFamily="@font/open_sans_light"
                 android:layout_marginStart="4dp"
-                android:textSize="12sp"/>
+                android:layout_toEndOf="@id/kamarmandi"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="TextView"
+                android:textSize="12sp" />
 
             <TextView
-                android:paddingTop="8dp"
+                android:id="@+id/garasi"
                 android:layout_width="95dp"
                 android:layout_height="33dp"
-                android:layout_marginBottom="8dp"
-                android:text="Garasi"
-                android:fontFamily="@font/open_sans_bold"
                 android:layout_below="@id/kamarmandi"
-                android:id="@+id/garasi"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/open_sans_light"
+                android:paddingTop="8dp"
+                android:text="Garasi" />
 
             <EditText
                 android:id="@+id/EditDetailGarasi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/kamarmandi"
-                android:layout_toEndOf="@id/garasi"
-                android:text="TextView"
                 android:layout_marginStart="4dp"
-                android:fontFamily="@font/open_sans_light"
-                android:textSize="12sp"/>
+                android:layout_toEndOf="@id/garasi"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="TextView"
+                android:textSize="12sp" />
 
             <TextView
-                android:paddingTop="8dp"
+                android:id="@+id/carport"
                 android:layout_width="95dp"
                 android:layout_height="33dp"
-                android:layout_marginBottom="8dp"
-                android:text="Carport"
-                android:fontFamily="@font/open_sans_bold"
                 android:layout_below="@id/garasi"
-                android:id="@+id/carport"
-                android:layout_marginLeft="16dp"/>
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/open_sans_light"
+                android:paddingTop="8dp"
+                android:text="Carport" />
+
             <EditText
                 android:id="@+id/EditDetailCarport"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/garasi"
-                android:text="TextView"
-                android:layout_toEndOf="@id/carport"
-                android:fontFamily="@font/open_sans_light"
                 android:layout_marginStart="4dp"
-                android:textSize="12sp"/>
+                android:layout_toEndOf="@id/carport"
+                android:fontFamily="@font/open_sans_bold"
+                android:text="TextView"
+                android:textSize="12sp" />
+
 
             <Button
                 android:id="@+id/button_edit"
-                android:layout_below="@+id/carport"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/carport"
                 android:layout_centerHorizontal="true"
-                android:text="Simpan"
-                android:fontFamily="@font/open_sans"
-                android:background="@drawable/rounded_button"
-                android:textColor="#ffffff"
-                android:layout_marginBottom="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"/>
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/rounded_button"
+                android:fontFamily="@font/open_sans"
+                android:text="Simpan"
+                android:textColor="#ffffff" />
+
+            <Space
+                android:id="@+id/space"
+                android:layout_width="1dp"
+                android:layout_height="16dp"
+                android:layout_below="@id/button_edit" />
 
         </RelativeLayout>
     </ScrollView>

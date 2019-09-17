@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
     xmlns:tools="http://schemas.android.com/tools"
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
     <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:id="@+id/linear">
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarx"
@@ -19,55 +17,109 @@
             android:layout_height="?attr/actionBarSize"
             android:background="#ffffff"
             android:elevation="4dp"
+            android:textAlignment="center"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:titleTextColor="#000000"
-            android:textAlignment="center"
-            >
-            <Button
-                android:id="@+id/btn_next"
-                android:layout_height="40dp"
-                android:layout_width="40dp"
-                android:layout_gravity="end"
-                android:background="@drawable/ic_chevron_right_24dp"
-                android:fontFamily="@font/open_sans_bold"
-                android:textAlignment="viewEnd"
-                android:layout_marginEnd="16dp"
-
-                 />
+            app:titleTextColor="#000000">
 
         </androidx.appcompat.widget.Toolbar>
 
     </LinearLayout>
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageKTP"
+        android:text="Upload Foto KTP"
+        android:fontFamily="@font/open_sans_light"
+        android:textStyle="italic"
+        android:textSize="16sp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="4dp"
+        />
 
-    <androidx.legacy.widget.Space
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/space"/>
-    <include layout="@layout/booking"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:layout_below="@id/space"
-        android:id="@+id/lay1"
-        android:visibility="visible"
-        >
-    </include>
+    <ImageButton
+        android:id="@+id/imageKTP"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_below="@id/linear"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="8dp"
+        android:adjustViewBounds="true"
+        android:background="#fafafa"
+        android:contentDescription="ktp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_id_card" />
 
-    <include layout="@layout/booking2"
+    <EditText
+        android:id="@+id/namaPembeli"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        android:id="@+id/lay2"
-        android:layout_below="@id/lay1">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_centerHorizontal="true"
+        android:drawableStart="@drawable/user"
+        android:drawablePadding="4dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="Nama calon pembeli"
+        android:inputType="text" />
 
-    </include>
-    <include layout="@layout/booking3"
+    <EditText
+        android:id="@+id/nomorHP"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        android:id="@+id/lay3"
-        android:layout_below="@id/lay2">
-    </include>
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_below="@+id/namaPembeli"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:drawableStart="@drawable/phone"
+        android:drawablePadding="4dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="Nomor HP"
+        android:inputType="phone" />
 
-</ScrollView>
+    <Button
+        android:id="@+id/button_ktp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Booking Sekarang"
+        android:textColor="#ffff" />
+
+
+    <!--<include-->
+    <!--android:id="@+id/lay1"-->
+    <!--layout="@layout/booking"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_below="@id/button_ktp"-->
+    <!--android:visibility="visible"></include>-->
+
+    <!--<include-->
+    <!--android:id="@+id/lay2"-->
+    <!--layout="@layout/booking2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_below="@id/lay1"-->
+    <!--android:visibility="visible">-->
+
+    <!--</include>-->
+
+    <!--<include-->
+    <!--android:id="@+id/lay3"-->
+    <!--layout="@layout/booking3"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_below="@id/lay2"-->
+    <!--android:visibility="visible"></include>-->
+
+</RelativeLayout>

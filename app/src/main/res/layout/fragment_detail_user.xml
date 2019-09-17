@@ -5,14 +5,26 @@
     android:id="@+id/detailFragment">
 
     <TextView
+        android:id="@+id/textview1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/titleDetail"
-        android:text="title"
-        android:fontFamily="@font/open_sans_bold"
-        android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/open_sans"
+        android:text="Detail Rumah "
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/titleDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@id/textview1"
+        android:fontFamily="@font/open_sans"
+        android:textStyle="bold"
+        android:text="title"
+        android:textSize="20sp" />
 
     <ImageView
         android:id="@+id/imageViewDetail"
@@ -23,177 +35,187 @@
         app:srcCompat="@drawable/ic_launcher_background"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"/>
+
     <TextView
+        android:id="@+id/alamat"
         android:layout_width="95dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="2dp"
-        android:text="Alamat"
-        android:fontFamily="@font/open_sans_bold"
         android:layout_below="@id/imageViewDetail"
-        android:id="@+id/alamat"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Alamat" />
+
     <TextView
         android:id="@+id/textViewDetailAlamat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageViewDetail"
+        android:layout_marginStart="4dp"
         android:layout_toEndOf="@id/alamat"
-        android:text="TextView"
-        android:fontFamily="@font/open_sans_light"
-        android:layout_marginStart="4dp"/>
+        android:fontFamily="@font/open_sans_bold"
+        android:text="TextView" />
 
     <TextView
+        android:id="@+id/tanah"
         android:layout_width="95dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="2dp"
-        android:text="Tanah"
-        android:fontFamily="@font/open_sans_bold"
         android:layout_below="@id/alamat"
-        android:id="@+id/tanah"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Tanah" />
+
     <TextView
         android:id="@+id/textViewDetailTanah"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/alamat"
-        android:text="TextView"
+        android:layout_marginLeft="4dp"
         android:layout_toEndOf="@id/tanah"
-        android:fontFamily="@font/open_sans_light"
-        android:layout_marginLeft="4dp"/>
+        android:fontFamily="@font/open_sans_bold"
+        android:text="TextView" />
 
     <TextView
+        android:id="@+id/bangunan"
         android:layout_width="95dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="2dp"
-        android:text="Bangunan"
-        android:fontFamily="@font/open_sans_bold"
         android:layout_below="@id/tanah"
-        android:id="@+id/bangunan"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Bangunan" />
+
     <TextView
         android:id="@+id/textViewDetailBangunan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tanah"
+        android:layout_marginLeft="4dp"
         android:layout_toEndOf="@id/bangunan"
-        android:text="TextView"
-        android:fontFamily="@font/open_sans_light"
-        android:layout_marginLeft="4dp"/>
+        android:fontFamily="@font/open_sans_bold"
+        android:text="TextView" />
 
     <TextView
+        android:id="@+id/air"
         android:layout_width="95dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="2dp"
-        android:text="Air"
-        android:fontFamily="@font/open_sans_bold"
         android:layout_below="@id/bangunan"
-        android:id="@+id/air"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Air" />
+
     <TextView
         android:id="@+id/textViewDetailAir"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/bangunan"
-        android:text="TextView"
+        android:layout_marginLeft="4dp"
         android:layout_toEndOf="@id/air"
-        android:fontFamily="@font/open_sans_light"
-        android:layout_marginLeft="4dp"/>
+        android:fontFamily="@font/open_sans_bold"
+        android:text="TextView" />
 
     <TextView
+        android:id="@+id/listrik"
         android:layout_width="95dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="2dp"
-        android:text="Listrik"
-        android:fontFamily="@font/open_sans_bold"
         android:layout_below="@id/air"
-        android:id="@+id/listrik"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="2dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Listrik" />
+
     <TextView
         android:id="@+id/textViewDetailListrik"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/air"
-        android:text="TextView"
+        android:layout_marginLeft="4dp"
         android:layout_toEndOf="@id/listrik"
-        android:fontFamily="@font/open_sans_light"
-        android:layout_marginLeft="4dp"/>
+        android:fontFamily="@font/open_sans_bold"
+        android:text="TextView" />
 
     <TextView
+        android:id="@+id/kamartidur"
         android:layout_width="95dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="2dp"
-        android:text="Kamar Tidur"
-        android:fontFamily="@font/open_sans_bold"
         android:layout_below="@id/listrik"
-        android:id="@+id/kamartidur"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Kamar Tidur" />
+
     <TextView
         android:id="@+id/textViewDetailTidur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/listrik"
-        android:fontFamily="@font/open_sans_light"
-        android:layout_toEndOf="@id/kamartidur"
         android:layout_marginLeft="4dp"
+        android:layout_toEndOf="@id/kamartidur"
+        android:fontFamily="@font/open_sans_bold"
         android:text="TextView" />
 
     <TextView
+        android:id="@+id/kamarmandi"
         android:layout_width="95dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="2dp"
-        android:text="Kamar Mandi"
-        android:fontFamily="@font/open_sans_bold"
         android:layout_below="@id/kamartidur"
-        android:id="@+id/kamarmandi"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Kamar Mandi" />
+
     <TextView
         android:id="@+id/textViewDetailMandi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/kamartidur"
-        android:text="TextView"
+        android:layout_marginStart="4dp"
         android:layout_toEndOf="@id/kamarmandi"
-        android:fontFamily="@font/open_sans_light"
-        android:layout_marginStart="4dp"/>
+        android:fontFamily="@font/open_sans_bold"
+        android:text="TextView" />
 
     <TextView
+        android:id="@+id/garasi"
         android:layout_width="95dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="2dp"
-        android:text="Garasi"
-        android:fontFamily="@font/open_sans_bold"
         android:layout_below="@id/kamarmandi"
-        android:id="@+id/garasi"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Garasi" />
 
     <TextView
         android:id="@+id/textViewDetailGarasi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/kamarmandi"
-        android:layout_toEndOf="@id/garasi"
-        android:text="TextView"
         android:layout_marginStart="4dp"
-        android:fontFamily="@font/open_sans_light"/>
+        android:layout_toEndOf="@id/garasi"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="TextView" />
 
     <TextView
+        android:id="@+id/carport"
         android:layout_width="95dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="2dp"
-        android:text="Carport"
-        android:fontFamily="@font/open_sans_bold"
         android:layout_below="@id/garasi"
-        android:id="@+id/carport"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/open_sans_light"
+        android:text="Carport" />
+
     <TextView
         android:id="@+id/textViewDetailCarport"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/garasi"
-        android:text="TextView"
+        android:layout_marginStart="4dp"
         android:layout_toEndOf="@id/carport"
-        android:fontFamily="@font/open_sans_light"
-        android:layout_marginStart="4dp"/>
+        android:fontFamily="@font/open_sans_bold"
+        android:text="TextView" />
+
     <Button
         android:id="@+id/button_edit"
         android:layout_width="match_parent"

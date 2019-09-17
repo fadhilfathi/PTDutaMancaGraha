@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
     <TextView
@@ -17,14 +18,33 @@
         android:textColor="#000000"
         android:textSize="30sp"
         android:textStyle="bold" />
+    <ImageView
+        android:id="@+id/adduser"
+        android:layout_below="@id/title_regist"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_add_user"
+        android:background="#fafafa"
+        android:scaleType="fitCenter"
+        android:adjustViewBounds="true"
+        android:paddingTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+
+        />
+
 
     <EditText
         android:id="@+id/username_regist"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/title_regist"
+        android:layout_below="@+id/adduser"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:contentDescription="@string/username"
         android:drawableStart="@drawable/ic_action_name"
         android:fontFamily="@font/open_sans_light"
@@ -33,11 +53,13 @@
 
     <EditText
         android:id="@+id/password_regist"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/username_regist"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="22dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
         android:drawableStart="@drawable/ic_password"
         android:fontFamily="@font/open_sans_light"
         android:hint="@string/password"
@@ -46,16 +68,16 @@
 
     <Button
         android:id="@+id/button_regist"
-        android:layout_width="120dp"
-        android:layout_height="45dp"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/password_regist"
+        android:layout_centerInParent="true"
         android:layout_marginTop="24dp"
-        android:padding="4dp"
-        android:text="Daftar"
         android:background="@drawable/rounded_button"
-        android:textColor="#ffffff"
         android:fontFamily="@font/open_sans_bold"
-        android:layout_centerInParent="true"/>
+        android:padding="4dp"
+        android:text="Buat Akun User"
+        android:textColor="#ffffff" />
 
 
 </RelativeLayout>
