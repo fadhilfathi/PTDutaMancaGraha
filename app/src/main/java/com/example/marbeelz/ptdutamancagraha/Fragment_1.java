@@ -5,16 +5,23 @@ import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.renderscript.Sampler;
+import android.view.Display;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -27,6 +34,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -103,6 +111,32 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
     public void whatEverClick(int Position) {
 
     }
+//    private void firebaseSearch (String searchText){
+//        Query firebaseSearchQuery = mDatabaseRef.orderByChild("title").startAt(searchText).endAt(searchText + "\uf8ff");
+//    }
+
+
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        inflater.inflate(R.menu.manu_main, menu);
+//        MenuItem item = menu.findItem(R.id.action_search);
+//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String s) {
+//                //firebaseSearch (query);
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//               // firebaseSearch(newText);
+//                return false;
+//            }
+//        });
+//        return super.onCreateOptionsMenu(menu, ;);
+//    }
+
 
     @Override
     public void onDelete(int Position) {
