@@ -14,9 +14,9 @@
         android:fontFamily="@font/open_sans_bold"
         android:shadowDx="1"
         android:shadowDy="1"
-        android:text="Judul"
+        android:text="123456 a/n XXX (Bank BTN)"
         android:textColor="#000000"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textStyle="bold" />
 
     <ImageView

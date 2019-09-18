@@ -27,7 +27,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserFragment_1 extends Fragment implements RecycleAdapter.OnItemClickListener {
+public class UserFragment_1 extends Fragment implements RecycleUserAdapter.OnItemClickListener {
     @Nullable
     private ProgressBar mProgressBar;
     private Context mContext;
@@ -90,25 +90,30 @@ public class UserFragment_1 extends Fragment implements RecycleAdapter.OnItemCli
 
     }
 
-    @Override
-    public void whatEverClick(int Position) {
-
-    }
-
-    @Override
-    public void onDelete(int Position) {
-        Upload selectedItem = mUploads.get(Position);
-        final String selectedKey = selectedItem.getmKey();
-
-        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getmImageUrl());
-        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                mDatabaseRef.child(selectedKey).removeValue();
-                Toast.makeText(getActivity(), "Delete Sukses", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+//    @Override
+//    public void onBooked(int Position) {
+//
+//    }
+//
+//    @Override
+//    public void onAvailable(int Position) {
+//
+//    }
+//
+//    @Override
+//    public void onDelete(int Position) {
+//        Upload selectedItem = mUploads.get(Position);
+//        final String selectedKey = selectedItem.getmKey();
+//
+//        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getmImageUrl());
+//        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void aVoid) {
+//                mDatabaseRef.child(selectedKey).removeValue();
+//                Toast.makeText(getActivity(), "Delete Sukses", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
     @Override
     public void onDestroy() {

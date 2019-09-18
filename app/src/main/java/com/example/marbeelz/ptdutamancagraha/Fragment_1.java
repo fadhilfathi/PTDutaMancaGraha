@@ -100,7 +100,12 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
     }
 
     @Override
-    public void whatEverClick(int Position) {
+    public void onBooked(int Position) {
+
+    }
+
+    @Override
+    public void onAvailable(int Position) {
 
     }
 

@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -103,8 +104,14 @@ public class DetailUserFragment extends Fragment {
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                UserActivity userActivity = (UserActivity) getActivity();
-                userActivity.ToBooking();
+                Bundle bundle = new Bundle();
+                bundle.putString("Judul", textTittle.getText().toString().trim());
+                BookingFragment bookingFragment = new BookingFragment();
+                bookingFragment.setArguments(bundle);
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container,bookingFragment).addToBackStack(null).commit();
+//                UserActivity userActivity = (UserActivity) getActivity();
+//                userActivity.ToBooking(bundle);
 //                FormFragment formFragment = new FormFragment();
 //                Bundle key = new Bundle();
 //                key.putString("key", bundle.getString("key"));

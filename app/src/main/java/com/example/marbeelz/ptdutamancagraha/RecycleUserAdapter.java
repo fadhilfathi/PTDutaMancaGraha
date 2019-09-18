@@ -21,7 +21,8 @@ import java.util.List;
 public class RecycleUserAdapter extends RecyclerView.Adapter<RecycleUserAdapter.ImageViewHolder> {
     private Context mContext;
     private List<Upload> mUploads;
-    private RecycleAdapter.OnItemClickListener mListener;
+    private OnItemClickListener mListener;
+    //private RecycleAdapter.OnItemClickListener mListener;
 
     public RecycleUserAdapter(Context context, List<Upload> uploads){
         mContext = context;
@@ -80,7 +81,16 @@ public class RecycleUserAdapter extends RecyclerView.Adapter<RecycleUserAdapter.
             imageView = itemView.findViewById(R.id.image_view_rumah);
         }
     }
-    public void setOnItemClickListener(RecycleAdapter.OnItemClickListener listener){
+    public interface OnItemClickListener{
+        void onItemClick(int Position);
+
+//        void onBooked(int Position);
+//
+//        void onDelete(int Position);
+//
+//        void onAvailable(int Position);
+    }
+    public void setOnItemClickListener(OnItemClickListener listener){
         mListener = listener;
     }
 }

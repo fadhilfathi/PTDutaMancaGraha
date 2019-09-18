@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                         }else{
                         User login = dataSnapshot.child(username).getValue(User.class);
                         if (login.getPassword().equals(password)){
-                            Toast.makeText(MainActivity.this, dataSnapshot.child(username).toString().trim(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
                             Intent x = new Intent(getApplicationContext(), UserActivity.class);
                             startActivity(x);
                             CustomIntent.customType(MainActivity.this,"fadein-to-fadeout");

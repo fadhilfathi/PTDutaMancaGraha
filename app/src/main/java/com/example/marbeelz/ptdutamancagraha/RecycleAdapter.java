@@ -109,9 +109,12 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
             contextMenu.setHeaderTitle("Select Action");
 //            MenuItem Detail = contextMenu.add(Menu.NONE,1,1,"Edit");
             MenuItem Hapus = contextMenu.add(Menu.NONE,1,1,"Hapus");
-
+            MenuItem Booked = contextMenu.add(Menu.NONE, 2,2,"SetBooked");
+            MenuItem Available = contextMenu.add(Menu.NONE,3,3,"SetAvailable");
             //Detail.setOnMenuItemClickListener(this);
             Hapus.setOnMenuItemClickListener(this);
+            Booked.setOnMenuItemClickListener(this);
+            Available.setOnMenuItemClickListener(this);
         }
 
         @Override
@@ -123,14 +126,12 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
                         case 1:
                             mListener.onDelete(position);
                             return true;
-//                            mListener.whatEverClick(position);
-//                            return true;
-//                        case 2:
-//                            mListener.onDelete(position);
-//                            return true;
-//                        case 3:
-//                            mListener.onItemClick(position);
-//                            return true;
+                        case 2:
+                            mListener.onBooked(position);
+                            return true;
+                        case 3:
+                            mListener.onAvailable(position);
+                            return true;
                     }
                 }
             }return false;
@@ -139,10 +140,11 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
     public interface OnItemClickListener{
         void onItemClick(int Position);
 
-
-        void whatEverClick(int Position);
+        void onBooked(int Position);
 
         void onDelete(int Position);
+
+        void onAvailable(int Position);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener){
