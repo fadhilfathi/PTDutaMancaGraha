@@ -7,11 +7,13 @@ import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentContainer;
 import androidx.fragment.app.FragmentTransaction;
@@ -28,9 +31,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.bumptech.glide.Glide;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.squareup.picasso.Picasso;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
 
     private DrawerLayout drawer;
     private CoordinatorLayout coordinatorLayout;
@@ -40,6 +45,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_admin);
+
         Toolbar toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
@@ -48,6 +54,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+
         coordinatorLayout = findViewById(R.id.editFragment);
 
 
@@ -56,8 +64,30 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     new Fragment_1()).addToBackStack(null).commit();
         }
 
-
     }
+    //search
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.manu_main, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                //firebaseSearch
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                //firebaseSearch
+                return false;
+            }
+        });
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
     private void showSnackbar() {
         Snackbar snackbar = Snackbar.make(coordinatorLayout, "Perubahan disimpan!", Snackbar.LENGTH_LONG);
         snackbar.show();}
@@ -112,7 +142,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-        }
+    }
     }
 
     public void switchContent(int fragment_container, DetailFragment detail) {
