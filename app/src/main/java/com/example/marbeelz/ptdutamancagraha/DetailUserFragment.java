@@ -105,6 +105,7 @@ public class DetailUserFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
+                bundle.putString("Key", key);
                 bundle.putString("Judul", textTittle.getText().toString().trim());
                 BookingFragment bookingFragment = new BookingFragment();
                 bookingFragment.setArguments(bundle);

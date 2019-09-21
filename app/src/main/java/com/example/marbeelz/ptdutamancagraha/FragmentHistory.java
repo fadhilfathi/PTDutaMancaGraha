@@ -1,13 +1,10 @@
 package com.example.marbeelz.ptdutamancagraha;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
 import android.renderscript.Sampler;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
@@ -34,7 +30,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -47,51 +42,50 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickListener {
+public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemClickListener {
     @Nullable
     private ProgressBar mProgressBar;
     private Context mContext;
 
     private RecyclerView mRecyclerView;
-    public RecycleAdapter mAdapter;
-    private androidx.appcompat.widget.SearchView searchView;
+    private HistoryAdapter mAdapter;
+
     private ValueEventListener mDBListener;
-    EditText filter;
     private FirebaseStorage mStorage;
     private DatabaseReference mDatabaseRef;
-    private List<Upload> mUploads;
+    private List<Booking> mBooking;
     private StorageReference mStorageRef;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        getActivity().setTitle("Daftar Rumah");
-        final View view = inflater.inflate(R.layout.fragment_1, container, false);
-        //setHasOptionsMenu(true);
-        mRecyclerView = view.findViewById(R.id.recyclerview);
+        getActivity().setTitle("Daftar Booking");
+        final View view = inflater.inflate(R.layout.fragment_history, container, false);
+        mRecyclerView = view.findViewById(R.id.recyclerviewhistory);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mProgressBar = view.findViewById(R.id.progress_circle);
 
-        mUploads = new ArrayList<>();
+        mBooking = new ArrayList<>();
 
-        mAdapter = new RecycleAdapter(getActivity(), mUploads);
+        mAdapter = new HistoryAdapter(getActivity(), mBooking);
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(Fragment_1.this);
+        mAdapter.setOnItemClickListener(FragmentHistory.this);
 
         mStorage = FirebaseStorage.getInstance();
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("Booking");
         mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 //Clear Model biar tidak dobel
-                mUploads.clear();
+                mBooking.clear();
 
                 for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
-                    Upload upload = postSnapShot.getValue(Upload.class);
+                    Booking booking = postSnapShot.getValue(Booking.class);
                     //mengambil key dari database untuk disimpan ke model upload
-                    upload.setmKey(postSnapShot.getKey());
-                    mUploads.add(upload);
+                    booking.setmKey(postSnapShot.getKey());
+                    mBooking.add(booking);
                 }
                 //update recycler view dengan item baru
                 mAdapter.notifyDataSetChanged();
@@ -104,81 +98,25 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
                 Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        searchView = view.findViewById(R.id.search_view);
-        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                search(newText);
-                return false;
-            }
-        });
         return view;
-
-    }
-
-    public void search(String str){
-        List<Upload> listSearch = new ArrayList<>();
-        for (Upload object : mUploads){
-            if (object.getmName().toLowerCase().contains(str)){
-                listSearch.add(object);
-            }
-        }
-        mAdapter = new RecycleAdapter(getActivity(), listSearch);
-        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override
     public void onItemClick(int Position) {
 
     }
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.manu_main, menu);
-        MenuItem searchItem = menu.findItem(R.id.action_search);
-        SearchView searchView  = new SearchView(getActivity());
-        searchView.setQueryHint("Cari Sesuatu....");
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String nextText) {
-                //Data akan berubah saat user menginputkan text/kata kunci pada SearchView
-                nextText = nextText.toLowerCase();
-                List<Upload> dataFilter = mUploads;
-                for(Upload data : mUploads){
-                    String nama = data.getmName().toLowerCase();
-                    if(nama.contains(nextText)){
-                        dataFilter.add(data);
-                    }
-                }
-                mAdapter.setFilter(dataFilter);
-                return true;
-            }
-        });
-        searchItem.setActionView(searchView);
-    }
-//    public void search(String text){
-//        mAdapter.getFilter().filter(text);
-//    }
     @Override
     public void onBooked(int Position) {
-        Upload selectedItem = mUploads.get(Position);
+        Booking selectedItem = mBooking.get(Position);
         final String selectedKey = selectedItem.getmKey();
         mDatabaseRef.child(selectedKey).child("mStatus").setValue("3");
     }
 
     @Override
     public void onAvailable(int Position) {
-        Upload selectedItem = mUploads.get(Position);
+        Booking selectedItem = mBooking.get(Position);
         final String selectedKey = selectedItem.getmKey();
         mDatabaseRef.child(selectedKey).child("mStatus").setValue("1");
     }
@@ -211,7 +149,7 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
 
     @Override
     public void onDelete(int Position) {
-        Upload selectedItem = mUploads.get(Position);
+        Booking selectedItem = mBooking.get(Position);
         final String selectedKey = selectedItem.getmKey();
 
         StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getmImageUrl());
@@ -223,6 +161,7 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
             }
         });
     }
+
     @Override
     public void onDestroy() {
         super.onDestroy();

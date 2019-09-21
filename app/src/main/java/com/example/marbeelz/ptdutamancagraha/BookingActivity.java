@@ -86,13 +86,13 @@ public class BookingActivity extends AppCompatActivity {
                     fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            Booking booking;
-                            booking = new Booking(judul,
-                                    NamaPembeli.getText().toString().trim(),
-                                    NoHp.getText().toString().trim(),
-                                    uri.toString());
-                            String UploadId = mDatabaseRef.push().getKey();
-                            mDatabaseRef.child(UploadId).setValue(booking);
+//                            Booking booking;
+//                            booking = new Booking(judul,
+//                                    NamaPembeli.getText().toString().trim(),
+//                                    NoHp.getText().toString().trim(),
+//                                    uri.toString());
+//                            String UploadId = mDatabaseRef.push().getKey();
+//                            mDatabaseRef.child(UploadId).setValue(booking);
                         }
                     });
                     Toast.makeText(BookingActivity.this,"Silahkan Melakukan Proses Pembayaran",Toast.LENGTH_SHORT).show();

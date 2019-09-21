@@ -3,6 +3,7 @@ package com.example.marbeelz.ptdutamancagraha;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -52,15 +53,16 @@ public class BookingFragment extends Fragment {
 
     private ValueEventListener mDBListener;
     private FirebaseStorage mStorage;
-    private DatabaseReference mDatabaseRef;
+    private DatabaseReference mDatabaseRef,mDatabaseRefUpload;
     private List<Upload> mUploads;
     private StorageReference mStorageRef;
-    String judul;
+    String key, UploadId, judul;
     public static final int PICK_IMAGE_REQUEST = 1;
     private Uri mImageUri;
     private Button Booking;
     private ImageButton KTP;
     private EditText NamaPembeli, NoHp;
+    String currentlogin;
     private StorageTask mUploadTask;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -71,11 +73,11 @@ public class BookingFragment extends Fragment {
         NoHp = view.findViewById(R.id.nomorHP);
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Booking");
-
+        mDatabaseRefUpload = FirebaseDatabase.getInstance().getReference("upload");
         //Intent intent = getIntent();
         Bundle b = this.getArguments();
+        key = b.getString("Key");
         judul = b.getString("Judul");
-
         KTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,9 +91,11 @@ public class BookingFragment extends Fragment {
                 uploadFile();
             }
         });
-
+        SharedPreferences mPrefs = this.getActivity().getSharedPreferences("currentlogin",0);
+        currentlogin = mPrefs.getString("currentlogin","");
         return view;
     }
+
     private void uploadFile() {
         if (mImageUri != null){
             final StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()+"."+getFileExtention(mImageUri));
@@ -103,14 +107,18 @@ public class BookingFragment extends Fragment {
                         @Override
                         public void onSuccess(Uri uri) {
                             Booking booking;
-                            booking = new Booking(judul,
+                            booking = new Booking(key,judul,
                                     NamaPembeli.getText().toString().trim(),
                                     NoHp.getText().toString().trim(),
-                                    uri.toString());
-                            String UploadId = mDatabaseRef.push().getKey();
+                                    currentlogin,
+                                    uri.toString()
+                                    );
+                            UploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(UploadId).setValue(booking);
+                            mDatabaseRefUpload.child(key).child("mStatus").setValue("2");
                         }
                     });
+
                     Toast.makeText(getActivity(),"Silahkan Melakukan Proses Pembayaran",Toast.LENGTH_SHORT).show();
                     Bundle bundle = new Bundle();
                     bundle.putString("Nama",NamaPembeli.getText().toString().trim());

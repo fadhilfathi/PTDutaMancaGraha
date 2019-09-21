@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,15 +27,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
-public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleViewHolder> {
+public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleViewHolder> implements Filterable {
     private Context mContext;
     private List<Upload> mUpload;
+    private List<Upload> mUploadFull;
     private OnItemClickListener mListener;
     public RecycleAdapter(Context context, List<Upload> uploads){
         mContext = context;
         mUpload = uploads;
+        mUploadFull = new ArrayList<>(uploads);
     }
     @NonNull
     @Override
@@ -53,8 +59,17 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
         holder.textViewKamarMandi.setText(uploadcurrent.getmKamarMandi());
         holder.textViewKamarTidur.setText(uploadcurrent.getmKamarTidur());
         Picasso.get().load(uploadcurrent.getmImageUrl()).fit().placeholder(R.drawable.picture).centerCrop().into(holder.imageView);
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        String status = uploadcurrent.getmStatus();
+        if (status.equals("1")){
+            holder.tersedia.setVisibility(View.VISIBLE);
+        }
+        if (status.equals("2")){
+            holder.booked.setVisibility(View.VISIBLE);
+        }
+        if (status.equals("3")){
+            holder.tidaktersedia.setVisibility(View.VISIBLE);
+        }
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 DetailFragment detail = new DetailFragment();
@@ -72,10 +87,51 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
         return mUpload.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+
+    void setFilter(List<Upload> filterList){
+        mUpload.clear();
+        mUpload.addAll(filterList);
+        notifyDataSetChanged();
+    }
+
+    private Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<Upload> filteredList = new ArrayList<>();
+
+            if (charSequence == null || charSequence.length() == 0){
+                filteredList.addAll(mUploadFull);
+            } else {
+                String  filterPattern = charSequence.toString().toLowerCase().trim();
+
+                for (Upload item : mUploadFull){
+                    if (item.getmName().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            //mUpload.clear();
+            mUpload.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+
+    };
+
     public class RecycleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,
             View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
 
-        public TextView textViewName, textViewListrik, textViewAir, textViewKamarMandi, textViewKamarTidur;
+        public TextView textViewName, textViewListrik, textViewAir, textViewKamarMandi, textViewKamarTidur, booked, tersedia, tidaktersedia;
         public ImageView imageView;
 
 
@@ -88,7 +144,9 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
             textViewKamarMandi = itemView.findViewById(R.id._kamarmandi);
             textViewKamarTidur = itemView.findViewById(R.id._kamartidur);
             imageView = itemView.findViewById(R.id.image_view_rumah);
-
+            booked = itemView.findViewById(R.id.statusRumahBooked);
+            tersedia = itemView.findViewById(R.id.statusRumahTersedia);
+            tidaktersedia = itemView.findViewById(R.id.statusRumahTidakTersedia);
 
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
@@ -109,8 +167,8 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
             contextMenu.setHeaderTitle("Select Action");
 //            MenuItem Detail = contextMenu.add(Menu.NONE,1,1,"Edit");
             MenuItem Hapus = contextMenu.add(Menu.NONE,1,1,"Hapus");
-            MenuItem Booked = contextMenu.add(Menu.NONE, 2,2,"SetBooked");
-            MenuItem Available = contextMenu.add(Menu.NONE,3,3,"SetAvailable");
+            MenuItem Booked = contextMenu.add(Menu.NONE, 2,2,"TidakTersedia");
+            MenuItem Available = contextMenu.add(Menu.NONE,3,3,"Tersedia");
             //Detail.setOnMenuItemClickListener(this);
             Hapus.setOnMenuItemClickListener(this);
             Booked.setOnMenuItemClickListener(this);

@@ -47,6 +47,16 @@ public class RecycleUserAdapter extends RecyclerView.Adapter<RecycleUserAdapter.
         holder.textViewKamarMandi.setText(uploadcurrent.getmKamarMandi());
         holder.textViewKamarTidur.setText(uploadcurrent.getmKamarTidur());
         Picasso.get().load(uploadcurrent.getmImageUrl()).fit().placeholder(R.drawable.picture).centerCrop().into(holder.imageView);
+        String status = uploadcurrent.getmStatus();
+        if (status.equals("1")){
+            holder.tersedia.setVisibility(View.VISIBLE);
+        }
+        if (status.equals("2")){
+            holder.booked.setVisibility(View.VISIBLE);
+        }
+        if (status.equals("3")){
+            holder.tidaktersedia.setVisibility(View.VISIBLE);
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +77,7 @@ public class RecycleUserAdapter extends RecyclerView.Adapter<RecycleUserAdapter.
     }
 
     public class ImageViewHolder extends RecyclerView.ViewHolder{
-        public TextView textViewName, textViewListrik, textViewAir, textViewKamarMandi, textViewKamarTidur;
+        public TextView textViewName, textViewListrik, textViewAir, textViewKamarMandi, textViewKamarTidur, booked, tersedia, tidaktersedia;
         public ImageView imageView;
 
         public ImageViewHolder(@NonNull View itemView) {
@@ -79,6 +89,9 @@ public class RecycleUserAdapter extends RecyclerView.Adapter<RecycleUserAdapter.
             textViewKamarMandi = itemView.findViewById(R.id._kamarmandi);
             textViewKamarTidur = itemView.findViewById(R.id._kamartidur);
             imageView = itemView.findViewById(R.id.image_view_rumah);
+            booked = itemView.findViewById(R.id.statusRumahBooked);
+            tersedia = itemView.findViewById(R.id.statusRumahTersedia);
+            tidaktersedia = itemView.findViewById(R.id.statusRumahTidakTersedia);
         }
     }
     public interface OnItemClickListener{

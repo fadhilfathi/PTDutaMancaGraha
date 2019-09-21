@@ -153,7 +153,7 @@ public class Fragment_Edit extends Fragment {
                                                             editMandi.getText().toString().trim(),
                                                             editGarasi.getText().toString().trim(),
                                                             editCarport.getText().toString().trim(),
-                                                            uri.toString()
+                                                            uri.toString(),"1"
                                                     );
                                                     mDatabaseRef.child(key).setValue(upload);
                                                 }
@@ -187,7 +187,7 @@ public class Fragment_Edit extends Fragment {
                                                     editMandi.getText().toString().trim(),
                                                     editGarasi.getText().toString().trim(),
                                                     editCarport.getText().toString().trim(),
-                                                    current.getmImageUrl().toString().trim()
+                                                    current.getmImageUrl().toString().trim(),"1"
                                             );
                                             mDatabaseRef.child(key).setValue(upload);
                                             Toast.makeText(getActivity(), "Edit Sukses", Toast.LENGTH_SHORT).show();

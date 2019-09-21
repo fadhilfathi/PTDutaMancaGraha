@@ -1,25 +1,33 @@
 package com.example.marbeelz.ptdutamancagraha;
 
+import android.content.SharedPreferences;
+
 public class Booking {
-    private String Rumah;
+    private String KeyRumah;
+    private String JudulRumah;
     private String NamaPembeli;
     private String NoHp;
+    private String Agen;
     private String mImageUrl;
     private String mKey;
 
-    public Booking(String rumah, String namaPembeli, String noHp, String mImageUrl) {
-        Rumah = rumah;
-        NamaPembeli = namaPembeli;
-        NoHp = noHp;
-        this.mImageUrl = mImageUrl;
+    public Booking() {
     }
 
-    public String getRumah() {
-        return Rumah;
+    public String getKeyRumah() {
+        return KeyRumah;
     }
 
-    public void setRumah(String rumah) {
-        Rumah = rumah;
+    public void setKeyRumah(String keyRumah) {
+        KeyRumah = keyRumah;
+    }
+
+    public String getJudulRumah() {
+        return JudulRumah;
+    }
+
+    public void setJudulRumah(String judulRumah) {
+        JudulRumah = judulRumah;
     }
 
     public String getNamaPembeli() {
@@ -38,6 +46,14 @@ public class Booking {
         NoHp = noHp;
     }
 
+    public String getAgen() {
+        return Agen;
+    }
+
+    public void setAgen(String agen) {
+        Agen = agen;
+    }
+
     public String getmImageUrl() {
         return mImageUrl;
     }
@@ -52,5 +68,14 @@ public class Booking {
 
     public void setmKey(String mKey) {
         this.mKey = mKey;
+    }
+
+    public Booking(String keyRumah, String judulRumah, String namaPembeli, String noHp, String agen, String mImageUrl) {
+        KeyRumah = keyRumah;
+        JudulRumah = judulRumah;
+        NamaPembeli = namaPembeli;
+        NoHp = noHp;
+        Agen = agen;
+        this.mImageUrl = mImageUrl;
     }
 }

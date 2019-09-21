@@ -2,6 +2,7 @@ package com.example.marbeelz.ptdutamancagraha;
 
 //import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
     EditText username, password;
     Button button_login;
     ImageView imageView;
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String currentlogin = "login";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,16 @@ public class MainActivity extends AppCompatActivity {
                         password.getText().toString());
             }
         });
+        SharedPreferences sharedPreferences = getSharedPreferences("currentlogin",0);
+        String x = sharedPreferences.getString("logincurrent","");
+        if (x.equals("admin")){
+            Intent y = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(y);
+        }
+        if (!x.equals("") && !x.equals("admin")){
+            Intent z = new Intent(getApplicationContext(), UserActivity.class);
+            startActivity(z);
+        }
     }
     private void signIn(final String username, final String password) {
         Users.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -54,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
                         if (username.equals("admin")){
                             User login = dataSnapshot.child(username).getValue(User.class);
                             if (login.getPassword().equals(password)) {
+                                SharedPreferences sharedPreferences = getSharedPreferences("currentlogin",0);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("logincurrent",username);
+                                editor.apply();
+                                editor.commit();
                                 Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
                                 Intent x = new Intent(getApplicationContext(), HomeActivity.class);
                                 startActivity(x);
@@ -64,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
                         }else{
                         User login = dataSnapshot.child(username).getValue(User.class);
                         if (login.getPassword().equals(password)){
+                            SharedPreferences sharedPreferences = getSharedPreferences("currentlogin",0);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("logincurrent",username);
+                            editor.apply();
+                            editor.commit();
                             Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
                             Intent x = new Intent(getApplicationContext(), UserActivity.class);
                             startActivity(x);

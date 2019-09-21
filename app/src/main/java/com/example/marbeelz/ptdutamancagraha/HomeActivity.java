@@ -4,16 +4,19 @@ package com.example.marbeelz.ptdutamancagraha;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,9 +37,11 @@ import com.google.android.material.snackbar.Snackbar;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    private TextView nav_admin;
     private DrawerLayout drawer;
     private CoordinatorLayout coordinatorLayout;
 
@@ -45,7 +50,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_admin);
-
+        MaterialSearchView searchView;
         Toolbar toolbar = findViewById(R.id.toolbar2);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
@@ -57,35 +62,41 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
         coordinatorLayout = findViewById(R.id.editFragment);
-
+        View headerView = navigationView.getHeaderView(0);
+        TextView username = (TextView) headerView.findViewById(R.id.nav_admin_nama);
+        nav_admin = findViewById(R.id.nav_admin_nama);
+        SharedPreferences sharedPreferences = getSharedPreferences("currentlogin", 0);
+        String currentlogin = sharedPreferences.getString("logincurrent", "");
+        username.setText(currentlogin);
 
         if (savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new Fragment_1()).addToBackStack(null).commit();
         }
-
     }
     //search
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.manu_main, menu);
-        MenuItem item = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                //firebaseSearch
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                //firebaseSearch
-                return false;
-            }
-        });
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.manu_main, menu);
+//        MenuItem item = menu.findItem(R.id.action_search);
+//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String s) {
+//                //firebaseSearch
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String s) {
+//                Fragment_1 fragment_1 = new Fragment_1();
+//                fragment_1.search(s);
+//                //firebaseSearch
+//                return false;
+//            }
+//        });
+//        return super.onCreateOptionsMenu(menu);
+//    }
 
 
     private void showSnackbar() {
@@ -108,7 +119,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         new Fragment_3()).addToBackStack(null).commit();
                 break;
             case R.id.nav_2_1:
-                Toast.makeText(this, "Item 2_1 Selected", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new FragmentHistory()).addToBackStack(null).commit();
                 break;
             case R.id.nav_2_2:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -116,6 +128,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences sharedPreferences = getSharedPreferences("currentlogin", 0);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        editor.commit();
                         Intent x = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(x);
                     }

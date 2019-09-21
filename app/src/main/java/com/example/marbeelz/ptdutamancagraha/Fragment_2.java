@@ -215,7 +215,7 @@ public class Fragment_2 extends Fragment {
                                     spinnerKamarMandi.getSelectedItem().toString().trim(),
                                     textGarasi,
                                     textCarport,
-                                    uri.toString());
+                                    uri.toString(),"1");
                             String UploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(UploadId).setValue(upload);
                         }

@@ -4,6 +4,7 @@ package com.example.marbeelz.ptdutamancagraha;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.session.PlaybackState;
 import android.os.Bundle;
 import android.view.Menu;
@@ -96,6 +97,11 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
                 .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        SharedPreferences sharedPreferences = getSharedPreferences("currentlogin", 0);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
+                        editor.commit();
                         Intent x = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(x);
                     }

@@ -14,6 +14,7 @@ public class Upload {
     private String mGarasi;
     private String mCarport;
     private String mImageUrl;
+    private String mStatus;
     private String mKey;
 
     public String getmKey() {
@@ -28,7 +29,7 @@ public class Upload {
 
     }
 
-    public Upload(String mName, String mAlamat, String mLuas_Tanah, String mLuas_Bangunan, String mSumber_Air, String mListrik, String mKamarTidur, String mKamarMandi, String mGarasi, String mCarport, String mImageUrl) {
+    public Upload(String mName, String mAlamat, String mLuas_Tanah, String mLuas_Bangunan, String mSumber_Air, String mListrik, String mKamarTidur, String mKamarMandi, String mGarasi, String mCarport, String mImageUrl, String mStatus) {
         this.mName = mName;
         this.mAlamat = mAlamat;
         this.mLuas_Tanah = mLuas_Tanah;
@@ -40,6 +41,7 @@ public class Upload {
         this.mGarasi = mGarasi;
         this.mCarport = mCarport;
         this.mImageUrl = mImageUrl;
+        this.mStatus = mStatus;
     }
 
     public String getmAlamat() {
@@ -104,6 +106,14 @@ public class Upload {
 
     public void setmGarasi(String mGarasi) {
         this.mGarasi = mGarasi;
+    }
+
+    public String getmStatus() {
+        return mStatus;
+    }
+
+    public void setmStatus(String mStatus) {
+        this.mStatus = mStatus;
     }
 
     public String getmCarport() {
