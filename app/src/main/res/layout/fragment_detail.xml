@@ -26,12 +26,35 @@
         android:textSize="20sp"
         android:textStyle="bold"
         />
+    <TextView
+        android:id="@+id/textview2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textview1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/open_sans"
+        android:text="Uang Muka Rp"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/uangMuka"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_below="@id/textview1"
+        android:layout_toEndOf="@id/textview2"
+        android:fontFamily="@font/open_sans"
+        android:text="nominal"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
 
     <ImageView
         android:id="@+id/imageViewDetail"
         android:layout_width="288pt"
-        android:layout_height="100pt"
-        android:layout_below="@+id/titleDetail"
+        android:layout_height="80pt"
+        android:layout_below="@+id/textview2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"

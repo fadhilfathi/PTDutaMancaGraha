@@ -92,7 +92,8 @@ public class BookingFragment extends Fragment {
             }
         });
         SharedPreferences mPrefs = this.getActivity().getSharedPreferences("currentlogin",0);
-        currentlogin = mPrefs.getString("currentlogin","");
+        //currentlogin = mPrefs.getString("currentlogin","");
+        currentlogin = mPrefs.getString("logincurrent","");
         return view;
     }
 

@@ -1,7 +1,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="300dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="16dp"
     android:background="@drawable/frame"
+    android:elevation="4dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -171,7 +175,7 @@
         android:fontFamily="@font/open_sans"
         android:textStyle="bold"
         android:text="Telah dibooking"
-        android:textColor="#EAF93C"
+        android:textColor="#E2D700"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"

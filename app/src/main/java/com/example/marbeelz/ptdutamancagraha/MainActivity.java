@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import maes.tech.intentanim.CustomIntent;
 
 public class MainActivity extends AppCompatActivity {
+    private static int SPLASH_TIME_OUT = 1000;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference Users;
     EditText username, password;
@@ -29,10 +30,12 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView;
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String currentlogin = "login";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
+
 
         Users = database.getReference("Users");
 

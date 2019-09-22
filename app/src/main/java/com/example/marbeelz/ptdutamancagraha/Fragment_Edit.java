@@ -130,7 +130,7 @@ public class Fragment_Edit extends Fragment {
             @Override
             public void onClick(final View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setMessage("Yakin?").setCancelable(true)
+                builder.setMessage("Simpan perubahan?").setCancelable(true)
                         .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

@@ -6,6 +6,7 @@
     <string name="navigation_drawer_open">Navigation drawer open</string>
     <string name="navigation_drawer_close">Navigation drawer close</string>
     <string name="login">Login</string>
+    <string name="search">Cari disini..</string>
 
     <string-array name="listrik">
         <item>Daya Listrik</item>

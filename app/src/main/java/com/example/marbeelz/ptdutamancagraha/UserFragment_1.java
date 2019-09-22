@@ -57,6 +57,7 @@ public class UserFragment_1 extends Fragment implements RecycleUserAdapter.OnIte
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(UserFragment_1.this);
 
+
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
         mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {

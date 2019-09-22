@@ -52,26 +52,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
 
     }
     //search
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.manu_main, menu);
-        MenuItem item = menu.findItem(R.id.action_search);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                //firebaseSearch
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String s) {
-                //firebaseSearch
-                return false;
-            }
-        });
-        return super.onCreateOptionsMenu(menu);
-    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -93,7 +74,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_2_2:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Yakin?").setCancelable(true)
+                builder.setMessage("Apakah anda yakin untuk keluar?").setCancelable(true)
                 .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

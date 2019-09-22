@@ -124,7 +124,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_2_2:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Yakin?").setCancelable(true)
+                builder.setMessage("Apakah anda yakin untuk keluar?").setCancelable(true)
                 .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
