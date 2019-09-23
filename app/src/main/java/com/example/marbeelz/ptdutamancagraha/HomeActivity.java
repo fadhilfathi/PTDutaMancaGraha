@@ -74,6 +74,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     new Fragment_1()).addToBackStack(null).commit();
         }
     }
+
     //search
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
@@ -123,8 +124,25 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         new FragmentHistory()).addToBackStack(null).commit();
                 break;
             case R.id.nav_2_2:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setMessage("Apakah anda yakin untuk keluar?").setCancelable(true)
+                logoutConfirm();
+                break;
+        }
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            logoutConfirm();
+            super.onBackPressed();
+        }
+    }
+    public void logoutConfirm(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Apakah anda yakin untuk keluar?").setCancelable(true)
                 .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -143,25 +161,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         dialogInterface.cancel();
                     }
                 })
-                ;
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-
-                break;
-        }
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+        ;
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
-
-    @Override
-    public void onBackPressed() {
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-    }
-    }
-
     public void switchContent(int fragment_container, DetailFragment detail) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(fragment_container,detail);

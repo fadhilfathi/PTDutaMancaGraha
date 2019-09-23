@@ -183,7 +183,7 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
         });
         super.onResume();
     }
-
+    
     @Override
     public void onBooked(int Position) {
         Upload selectedItem = mUploads.get(Position);
