@@ -12,7 +12,7 @@
     <androidx.appcompat.widget.SearchView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/search_view"
+        android:id="@+id/search_viewuser"
         android:background="@drawable/outline_button"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
@@ -27,6 +27,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_below="@id/search_view"
+        android:layout_below="@id/search_viewuser"
         android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
 </RelativeLayout>

@@ -33,7 +33,7 @@ public class DetailUserFragment extends Fragment {
     private ImageView imageView;
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
-    private Button editBtn;
+    private Button editBtn, disabled;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,7 +50,7 @@ public class DetailUserFragment extends Fragment {
         textCarport = view.findViewById(R.id.textViewDetailCarport);
         textGarasi = view.findViewById(R.id.textViewDetailGarasi);
         imageView = view.findViewById(R.id.imageViewDetail);
-
+        disabled = view.findViewById(R.id.button_ktp_disableduser);
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
 
         final Bundle bundle = getArguments();
@@ -100,7 +100,26 @@ public class DetailUserFragment extends Fragment {
                 Log.d("Retrive Data Error :", databaseError.toString());
             }
         });
+        mDatabaseRef.child(key).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String status = dataSnapshot.child("mStatus").getValue().toString().trim();
+                if (status.equals("2") || status.equals("3")){
+//                    Booking.setVisibility(View.INVISIBLE);
+                    disabled.setVisibility(View.VISIBLE);
+                    disabled.setEnabled(false);
+                    editBtn.setVisibility(View.INVISIBLE);
+                    editBtn.setEnabled(false);
+//                    disabled.setEnabled(false);
+//                    disabled.setVisibility(View.VISIBLE);
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         editBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

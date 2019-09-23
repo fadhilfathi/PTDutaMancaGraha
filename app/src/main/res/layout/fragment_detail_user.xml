@@ -252,5 +252,18 @@
         android:layout_marginBottom="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"/>
+    <Button
+        android:id="@+id/button_ktp_disableduser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_button_disabled"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Booking Sekarang"
+        android:textColor="#E0E0E0"
+        android:visibility="invisible"/>
 
 </RelativeLayout>

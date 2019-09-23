@@ -54,7 +54,7 @@ public class Fragment_Edit extends Fragment {
     ImageButton imgButton;
     EditText editTitle, editAlamat, editTanah, editBangunan, editAir, editListrik, editTidur, editMandi, editGarasi, editCarport;
     Button button;
-
+    String status = "";
 
     @Nullable
     @Override
@@ -84,6 +84,7 @@ public class Fragment_Edit extends Fragment {
         mDatabaseRef.child(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                status = dataSnapshot.child("mStatus").toString().trim();
                 if (dataSnapshot.child("mName").exists()){
                     editTitle.setText(dataSnapshot.child("mName").getValue().toString().trim());
                 }
@@ -153,7 +154,7 @@ public class Fragment_Edit extends Fragment {
                                                             editMandi.getText().toString().trim(),
                                                             editGarasi.getText().toString().trim(),
                                                             editCarport.getText().toString().trim(),
-                                                            uri.toString(),"1"
+                                                            uri.toString(),current.getmStatus()
                                                     );
                                                     mDatabaseRef.child(key).setValue(upload);
                                                 }
@@ -187,7 +188,7 @@ public class Fragment_Edit extends Fragment {
                                                     editMandi.getText().toString().trim(),
                                                     editGarasi.getText().toString().trim(),
                                                     editCarport.getText().toString().trim(),
-                                                    current.getmImageUrl().toString().trim(),"1"
+                                                    current.getmImageUrl().toString().trim(),current.getmStatus()
                                             );
                                             mDatabaseRef.child(key).setValue(upload);
                                             Toast.makeText(getActivity(), "Edit Sukses", Toast.LENGTH_SHORT).show();

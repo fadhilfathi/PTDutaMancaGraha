@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.renderscript.Sampler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,7 @@ public class BookingFragment extends Fragment {
     String key, UploadId, judul;
     public static final int PICK_IMAGE_REQUEST = 1;
     private Uri mImageUri;
-    private Button Booking;
+    private Button Booking, disabled;
     private ImageButton KTP;
     private EditText NamaPembeli, NoHp;
     String currentlogin;
@@ -84,7 +85,24 @@ public class BookingFragment extends Fragment {
                 openFileChooser();
             }
         });
+        disabled = view.findViewById(R.id.button_ktp_disabled);
+        mDatabaseRefUpload.child(key).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String status = dataSnapshot.child("mStatus").getValue().toString().trim();
+                if (status.equals("2") || status.equals("3")){
+                    Booking.setVisibility(View.INVISIBLE);
+                    Booking.setEnabled(false);
+                    disabled.setEnabled(false);
+                    disabled.setVisibility(View.VISIBLE);
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         Booking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
