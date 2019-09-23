@@ -24,7 +24,7 @@ public class Booking {
 
     public String getJudulRumah() {
         return JudulRumah;
-    }
+    }   
 
     public void setJudulRumah(String judulRumah) {
         JudulRumah = judulRumah;

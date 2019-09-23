@@ -31,6 +31,15 @@
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/open_sans"
                 android:text="TextView" />
+            <EditText
+                android:id="@+id/EditDetailHarga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewEdit"
+                android:layout_marginEnd="16dp"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/open_sans"
+                android:hint="harga"/>
 
             <ImageButton
                 android:id="@+id/imageViewEdit"
