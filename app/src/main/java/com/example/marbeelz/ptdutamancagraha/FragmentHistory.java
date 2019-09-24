@@ -52,7 +52,7 @@ public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemCl
 
     private ValueEventListener mDBListener;
     private FirebaseStorage mStorage;
-    private DatabaseReference mDatabaseRef;
+    private DatabaseReference mDatabaseRef, mDatabaseRefUpload;
     private List<Booking> mBooking;
     private StorageReference mStorageRef;
 
@@ -74,6 +74,7 @@ public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemCl
 
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Booking");
+        mDatabaseRefUpload = FirebaseDatabase.getInstance().getReference("upload");
         mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -111,14 +112,14 @@ public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemCl
     public void onBooked(int Position) {
         Booking selectedItem = mBooking.get(Position);
         final String selectedKey = selectedItem.getmKey();
-        mDatabaseRef.child(selectedKey).child("mStatus").setValue("3");
+        mDatabaseRefUpload.child(selectedKey).child("mStatus").setValue("3");
     }
 
     @Override
     public void onAvailable(int Position) {
         Booking selectedItem = mBooking.get(Position);
         final String selectedKey = selectedItem.getmKey();
-        mDatabaseRef.child(selectedKey).child("mStatus").setValue("1");
+        mDatabaseRefUpload.child(selectedKey).child("mStatus").setValue("1");
     }
 //    private void firebaseSearch (String searchText){
 //        Query firebaseSearchQuery = mDatabaseRef.orderByChild("title").startAt(searchText).endAt(searchText + "\uf8ff");
