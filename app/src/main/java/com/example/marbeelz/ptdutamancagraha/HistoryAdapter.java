@@ -23,6 +23,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -31,6 +36,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.RecycleV
     private Context mContext;
     private List<Booking> mBooking;
     private OnItemClickListener mListener;
+    private DatabaseReference mDatabaseRef;
     public HistoryAdapter(Context context, List<Booking> bookings){
         mContext = context;
         mBooking = bookings;
@@ -45,12 +51,43 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.RecycleV
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecycleViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final RecycleViewHolder holder, final int position) {
         final Booking uploadcurrent = mBooking.get(position);
         holder.textJudul.setText(uploadcurrent.getJudulRumah());
         holder.namaPembeli.setText(uploadcurrent.getNamaPembeli());
         holder.noTelepon.setText(uploadcurrent.getNoHp());
         holder.namaAgen.setText(uploadcurrent.getAgen());
+        Picasso.get().load(uploadcurrent.getmImageUrl()).fit().placeholder(R.drawable.picture).centerCrop().into(holder.imageView);
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
+        mDatabaseRef.child(uploadcurrent.getKeyRumah()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child("mStatus").getValue().toString().trim().equals("3")){
+                    holder.available.setVisibility(View.VISIBLE);
+                }
+                if (dataSnapshot.child("mStatus").getValue().toString().trim().equals("2")){
+                    holder.warning.setVisibility(View.VISIBLE);
+                }
+                if (dataSnapshot.child("mStatus").getValue().toString().trim().equals("1")){
+                    holder.notavailable.setVisibility(View.VISIBLE);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        if (mDatabaseRef.child(uploadcurrent.getKeyRumah()).child("mStatus").toString().trim().equals("1")){
+            holder.available.setVisibility(View.VISIBLE);
+        }
+        if (mDatabaseRef.child(uploadcurrent.getKeyRumah()).child("mStatus").toString().trim().equals("2")){
+            holder.warning.setVisibility(View.VISIBLE);
+        }
+        if (mDatabaseRef.child(uploadcurrent.getKeyRumah()).child("mStatus").toString().trim().equals("3")){
+            holder.notavailable.setVisibility(View.VISIBLE);
+        }
 //        holder.textViewKamarTidur.setText(uploadcurrent.getmKamarTidur());
 //        Picasso.get().load(uploadcurrent.getmImageUrl()).fit().placeholder(R.drawable.picture).centerCrop().into(holder.imageView);
 //        String status = uploadcurrent.getmStatus();
@@ -85,16 +122,19 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.RecycleV
             View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
 
         public TextView textJudul, namaPembeli, noTelepon, namaAgen;
-        public ImageView imageView;
+        public ImageView imageView,available,warning,notavailable;
 
 
         public RecycleViewHolder(@NonNull View itemView) {
             super(itemView);
-
+            available = itemView.findViewById(R.id.available);
+            warning = itemView.findViewById(R.id.warning);
+            notavailable = itemView.findViewById(R.id.notavailable);
             textJudul = itemView.findViewById(R.id.judul);
             namaPembeli = itemView.findViewById(R.id.namaPembeli);
             noTelepon = itemView.findViewById(R.id.noTelepon);
             namaAgen = itemView.findViewById(R.id.namaSales);
+            imageView = itemView.findViewById(R.id.imageViewStatus);
 //            textViewKamarTidur = itemView.findViewById(R.id._kamartidur);
 //            imageView = itemView.findViewById(R.id.image_view_rumah);
 //            booked = itemView.findViewById(R.id.statusRumahBooked);

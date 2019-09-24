@@ -75,7 +75,6 @@ public class BookingFragment extends Fragment {
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Booking");
         mDatabaseRefUpload = FirebaseDatabase.getInstance().getReference("upload");
-        //Intent intent = getIntent();
         Bundle b = this.getArguments();
         key = b.getString("Key");
         judul = b.getString("Judul");
@@ -109,8 +108,7 @@ public class BookingFragment extends Fragment {
                 uploadFile();
             }
         });
-        SharedPreferences mPrefs = this.getActivity().getSharedPreferences("currentlogin",0);
-        //currentlogin = mPrefs.getString("currentlogin","");
+        SharedPreferences mPrefs = this.getActivity().getSharedPreferences("currentlogin",0);;
         currentlogin = mPrefs.getString("logincurrent","");
         return view;
     }
@@ -144,8 +142,6 @@ public class BookingFragment extends Fragment {
                     bundle.putString("NoHp",NoHp.getText().toString().trim());
                     AfterBooking afterBooking = new AfterBooking();
                     afterBooking.setArguments(bundle);
-                    //FragmentManager fragmentManager = getSupportFragmentManager();
-                    //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.fragment_container,afterBooking).addToBackStack(null).commit();
                 }

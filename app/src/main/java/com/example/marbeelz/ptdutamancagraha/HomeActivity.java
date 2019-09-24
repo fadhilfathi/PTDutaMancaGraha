@@ -28,6 +28,7 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainer;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -165,9 +166,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
-    public void switchContent(int fragment_container, DetailFragment detail) {
+    public void switchContent(int fragment_container, Fragment fragment) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(fragment_container,detail);
+        ft.replace(fragment_container,fragment);
         ft.addToBackStack(null);
         ft.commit();
 
