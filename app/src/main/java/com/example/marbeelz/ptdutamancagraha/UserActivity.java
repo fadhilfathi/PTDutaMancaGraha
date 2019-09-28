@@ -9,7 +9,9 @@ import android.media.session.PlaybackState;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -43,7 +45,11 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
+        SharedPreferences sharedPreferences = getSharedPreferences("currentlogin", 0);
+        String currentlogin = sharedPreferences.getString("logincurrent", "");
+        View headerView = navigationView.getHeaderView(0);
+        TextView username = (TextView) headerView.findViewById(R.id.user_nav_header);
+        username.setText(currentlogin);
         if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new UserFragment_1()).commit();
@@ -108,7 +114,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
         }
     }
 

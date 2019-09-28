@@ -137,8 +137,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            logoutConfirm();
-            super.onBackPressed();
+            //logoutConfirm();
+            //super.onBackPressed();
         }
     }
     public void logoutConfirm(){

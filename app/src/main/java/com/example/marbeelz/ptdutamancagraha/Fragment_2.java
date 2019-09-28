@@ -58,7 +58,7 @@ import static android.app.Activity.RESULT_OK;
 public class Fragment_2 extends Fragment {
     @Nullable
     public static final int PICK_IMAGE_REQUEST = 1;
-    EditText textNama, textAlamat, textLuasTanah, textLuasBangunan, textSumberAir;
+    EditText textNama, textAlamat, textLuasTanah, textLuasBangunan, textSumberAir, textHarga;
     Button upload;
     ImageButton choose;
     ImageView imageView;
@@ -116,6 +116,7 @@ public class Fragment_2 extends Fragment {
         }
 
         textNama = view.findViewById(R.id.edit_text2);
+        textHarga = view.findViewById(R.id.uangMuka);
         textAlamat = view.findViewById(R.id.alamat);
         textLuasTanah = view.findViewById(R.id.luas_tanah);
         textLuasBangunan = view.findViewById(R.id.luas_bangunan);
@@ -140,6 +141,9 @@ public class Fragment_2 extends Fragment {
 
                 if (textNama.getText().toString().trim().equals("")){
                     textNama.setError("Silahkan Masukkan Tipe Rumah");
+                }
+                if (textHarga.getText().toString().trim().equals("")){
+                    textHarga.setError("Silahkan Masukkan Harga");
                 }
                 if (textAlamat.getText().toString().trim().equals("")){
                     textAlamat.setError("Silahkan Masukkan Alamat");
@@ -206,6 +210,7 @@ public class Fragment_2 extends Fragment {
                                 textCarport = "Ada";
                             }
                             upload = new Upload(textNama.getText().toString().trim(),
+                                    textHarga.getText().toString().trim(),
                                     textAlamat.getText().toString().trim(),
                                     textLuasTanah.getText().toString().trim(),
                                     textLuasBangunan.getText().toString().trim(),

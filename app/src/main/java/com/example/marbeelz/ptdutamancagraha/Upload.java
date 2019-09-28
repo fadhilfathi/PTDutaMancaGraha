@@ -4,6 +4,7 @@ import com.google.firebase.database.Exclude;
 
 public class Upload {
     private String mName;
+    private String mHarga;
     private String mAlamat;
     private String mLuas_Tanah;
     private String mLuas_Bangunan;
@@ -17,20 +18,9 @@ public class Upload {
     private String mStatus;
     private String mKey;
 
-    public String getmKey() {
-        return mKey;
-    }
-
-    public void setmKey(String mKey) {
-        this.mKey = mKey;
-    }
-
-    public Upload(){
-
-    }
-
-    public Upload(String mName, String mAlamat, String mLuas_Tanah, String mLuas_Bangunan, String mSumber_Air, String mListrik, String mKamarTidur, String mKamarMandi, String mGarasi, String mCarport, String mImageUrl, String mStatus) {
+    public Upload(String mName, String mHarga, String mAlamat, String mLuas_Tanah, String mLuas_Bangunan, String mSumber_Air, String mListrik, String mKamarTidur, String mKamarMandi, String mGarasi, String mCarport, String mImageUrl, String mStatus) {
         this.mName = mName;
+        this.mHarga = mHarga;
         this.mAlamat = mAlamat;
         this.mLuas_Tanah = mLuas_Tanah;
         this.mLuas_Bangunan = mLuas_Bangunan;
@@ -42,6 +32,22 @@ public class Upload {
         this.mCarport = mCarport;
         this.mImageUrl = mImageUrl;
         this.mStatus = mStatus;
+    }
+
+    public String getmName() {
+        return mName;
+    }
+
+    public void setmName(String mName) {
+        this.mName = mName;
+    }
+
+    public String getmHarga() {
+        return mHarga;
+    }
+
+    public void setmHarga(String mHarga) {
+        this.mHarga = mHarga;
     }
 
     public String getmAlamat() {
@@ -108,14 +114,6 @@ public class Upload {
         this.mGarasi = mGarasi;
     }
 
-    public String getmStatus() {
-        return mStatus;
-    }
-
-    public void setmStatus(String mStatus) {
-        this.mStatus = mStatus;
-    }
-
     public String getmCarport() {
         return mCarport;
     }
@@ -124,21 +122,31 @@ public class Upload {
         this.mCarport = mCarport;
     }
 
-    public String getmName() {
-        return mName;
-    }
-
     public String getmImageUrl() {
         return mImageUrl;
     }
 
-    @Exclude
     public void setmImageUrl(String mImageUrl) {
         this.mImageUrl = mImageUrl;
     }
 
-    @Exclude
-    public void setmName(String mName) {
-        this.mName = mName;
+    public String getmStatus() {
+        return mStatus;
+    }
+
+    public void setmStatus(String mStatus) {
+        this.mStatus = mStatus;
+    }
+
+    public String getmKey() {
+        return mKey;
+    }
+
+    public void setmKey(String mKey) {
+        this.mKey = mKey;
+    }
+
+    public Upload() {
+
     }
 }

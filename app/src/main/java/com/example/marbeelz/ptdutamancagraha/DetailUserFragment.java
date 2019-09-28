@@ -29,7 +29,7 @@ import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class DetailUserFragment extends Fragment {
-    private TextView textTittle,textAlamat,textTanah,textBangunan,textAir,textListrik,textTidur,textMandi,textGarasi,textCarport;
+    private TextView textTittle,textAlamat,textTanah,textBangunan,textAir,textListrik,textTidur,textMandi,textGarasi,textCarport, textHarga;
     private ImageView imageView;
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
@@ -40,6 +40,7 @@ public class DetailUserFragment extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_detail_user, container, false);
         editBtn = view.findViewById(R.id.button_edit);
         textTittle = view.findViewById(R.id.titleDetail);
+        textHarga = view.findViewById(R.id.uangMukaU);
         textAlamat = view.findViewById(R.id.textViewDetailAlamat);
         textTanah = view.findViewById(R.id.textViewDetailTanah);
         textBangunan = view.findViewById(R.id.textViewDetailBangunan);
@@ -61,6 +62,9 @@ public class DetailUserFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child("mName").exists()){
                     textTittle.setText(dataSnapshot.child("mName").getValue().toString().trim());
+                }
+                if (dataSnapshot.child("mHarga").exists()){
+                    textHarga.setText(dataSnapshot.child("mHarga").getValue().toString().trim());
                 }
                 if (dataSnapshot.child("mAlamat").exists()){
                     textAlamat.setText(dataSnapshot.child("mAlamat").getValue().toString().trim());

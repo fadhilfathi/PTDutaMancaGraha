@@ -55,10 +55,12 @@ public class MainActivity extends AppCompatActivity {
         if (x.equals("admin")){
             Intent y = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(y);
+            finish();
         }
         if (!x.equals("") && !x.equals("admin")){
             Intent z = new Intent(getApplicationContext(), UserActivity.class);
             startActivity(z);
+            finish();
         }
     }
     private void signIn(final String username, final String password) {
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                                 Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
                                 Intent x = new Intent(getApplicationContext(), HomeActivity.class);
                                 startActivity(x);
+                                finish();
                                 CustomIntent.customType(MainActivity.this, "fadein-to-fadeout");
                             }else{
                                 Toast.makeText(MainActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
@@ -93,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
                             Intent x = new Intent(getApplicationContext(), UserActivity.class);
                             startActivity(x);
+                            finish();
                             CustomIntent.customType(MainActivity.this,"fadein-to-fadeout");
                         }else {
                             Toast.makeText(MainActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();

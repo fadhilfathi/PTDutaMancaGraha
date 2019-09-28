@@ -52,7 +52,7 @@ public class Fragment_Edit extends Fragment {
     private Uri mImageUri;
     DatabaseReference mDatabaseRef;
     ImageButton imgButton;
-    EditText editTitle, editAlamat, editTanah, editBangunan, editAir, editListrik, editTidur, editMandi, editGarasi, editCarport;
+    EditText editTitle, editAlamat, editTanah, editBangunan, editAir, editListrik, editTidur, editMandi, editGarasi, editCarport, editHarga;
     Button button;
     String status = "";
 
@@ -63,6 +63,7 @@ public class Fragment_Edit extends Fragment {
         view = inflater.inflate(R.layout.fragment_edit, container, false);
 
         editTitle = view.findViewById(R.id.EditDetailTitle);
+        editHarga = view.findViewById(R.id.EditDetailHarga);
         editAlamat = view.findViewById(R.id.EditDetailAlamat);
         editTanah = view.findViewById(R.id.EditDetailTanah);
         editBangunan = view.findViewById(R.id.EditDetailBangunan);
@@ -87,6 +88,9 @@ public class Fragment_Edit extends Fragment {
                 status = dataSnapshot.child("mStatus").toString().trim();
                 if (dataSnapshot.child("mName").exists()){
                     editTitle.setText(dataSnapshot.child("mName").getValue().toString().trim());
+                }
+                if (dataSnapshot.child("mHarga").exists()){
+                    editHarga.setText(dataSnapshot.child("mHarga").getValue().toString().trim());
                 }
                 if (dataSnapshot.child("mAlamat").exists()){
                     editAlamat.setText(dataSnapshot.child("mAlamat").getValue().toString().trim());
@@ -145,6 +149,7 @@ public class Fragment_Edit extends Fragment {
                                                 public void onSuccess(Uri uri) {
                                                     Upload upload = new Upload(
                                                             editTitle.getText().toString().trim(),
+                                                            editHarga.getText().toString().trim(),
                                                             editAlamat.getText().toString().trim(),
                                                             editTanah.getText().toString().trim(),
                                                             editBangunan.getText().toString().trim(),
@@ -179,6 +184,7 @@ public class Fragment_Edit extends Fragment {
                                             current = dataSnapshot.getValue(Upload.class);
                                             Upload upload = new Upload(
                                                     editTitle.getText().toString().trim(),
+                                                    editHarga.getText().toString().trim(),
                                                     editAlamat.getText().toString().trim(),
                                                     editTanah.getText().toString().trim(),
                                                     editBangunan.getText().toString().trim(),

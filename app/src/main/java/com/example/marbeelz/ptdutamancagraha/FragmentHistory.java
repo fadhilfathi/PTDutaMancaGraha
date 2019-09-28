@@ -2,6 +2,7 @@ package com.example.marbeelz.ptdutamancagraha;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.renderscript.Sampler;
@@ -46,7 +47,7 @@ public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemCl
     @Nullable
     private ProgressBar mProgressBar;
     private Context mContext;
-
+    String currentlogin;
     private RecyclerView mRecyclerView;
     private HistoryAdapter mAdapter;
 
@@ -63,7 +64,8 @@ public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemCl
         mRecyclerView = view.findViewById(R.id.recyclerviewhistory);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("currentlogin", 0);
+        currentlogin = sharedPreferences.getString("logincurrent", "");
         mProgressBar = view.findViewById(R.id.progress_circle);
 
         mBooking = new ArrayList<>();
