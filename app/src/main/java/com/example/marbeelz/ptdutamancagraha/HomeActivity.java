@@ -61,7 +61,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-
         coordinatorLayout = findViewById(R.id.editFragment);
         View headerView = navigationView.getHeaderView(0);
         TextView username = (TextView) headerView.findViewById(R.id.nav_admin_nama);
@@ -72,10 +71,21 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         if (savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new Fragment_1()).addToBackStack(null).commit();
+                    new Fragment_1()).commit();
         }
-    }
+//        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.detailFragment);
+//        Fragment container = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+//        if (currentFragment.getUserVisibleHint()){
+//            assert getSupportActionBar() != null;   //null check
+//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
+//        }
 
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
     //search
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {
@@ -138,7 +148,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             drawer.closeDrawer(GravityCompat.START);
         } else {
             //logoutConfirm();
-            //super.onBackPressed();
+            super.onBackPressed();
         }
     }
     public void logoutConfirm(){
@@ -154,6 +164,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         editor.commit();
                         Intent x = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(x);
+                        finish();
                     }
                 })
                 .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {

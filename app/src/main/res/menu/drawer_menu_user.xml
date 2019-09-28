@@ -15,17 +15,17 @@
             android:icon="@drawable/about"
             android:title="Booking saya" />
 
-        <item
-            android:id="@+id/nav_3"
-            android:icon="@drawable/ic_phone_book"
-            android:title="Item 3" />
+<!--        <item-->
+<!--            android:id="@+id/nav_3"-->
+<!--            android:icon="@drawable/ic_phone_book"-->
+<!--            android:title="Item 3" />-->
     </group>
     <item android:title="Menu lainnya">
         <menu>
-            <item
-                android:id="@+id/nav_2_1"
-                android:icon="@drawable/about"
-                android:title="Booking saya" />
+<!--            <item-->
+<!--                android:id="@+id/nav_2_1"-->
+<!--                android:icon="@drawable/about"-->
+<!--                android:title="Booking saya" />-->
             <item
                 android:id="@+id/nav_2_2"
                 android:icon="@drawable/logout"

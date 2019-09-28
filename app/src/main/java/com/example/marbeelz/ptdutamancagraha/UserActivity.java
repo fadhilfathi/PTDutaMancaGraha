@@ -91,6 +91,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
                         editor.commit();
                         Intent x = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(x);
+                        finish();
                     }
                 })
                 .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
@@ -114,7 +115,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            //super.onBackPressed();
+            super.onBackPressed();
         }
     }
 
