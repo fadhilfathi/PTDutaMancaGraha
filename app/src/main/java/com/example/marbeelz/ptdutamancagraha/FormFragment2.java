@@ -66,18 +66,6 @@ public class FormFragment2 extends Fragment {
         noHPAtasan = view.findViewById(R.id.No_Handphone_atasan);
         noTelpKantor = view.findViewById(R.id.telepon_kantor);
         namaAtasan = view.findViewById(R.id.namaAtasan);
-//        next = view.findViewById(R.id.intro_btn_next);
-//
-//        next.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FormFragment3 formFragment3 = new FormFragment3();
-//                FragmentManager fragmentManager = getFragmentManager();
-//                fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
-//                        R.anim.enter_left_to_right,R.anim.exit_left_to_right).replace(R.id.fragment_container,formFragment3).
-//                        addToBackStack(null).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).commit();
-//            }
-//        });
 
         return view;
     }

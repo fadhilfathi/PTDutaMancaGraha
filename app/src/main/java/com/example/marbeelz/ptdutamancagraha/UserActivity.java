@@ -125,10 +125,4 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         ft.addToBackStack(null);
         ft.commit();
     }
-//    public void ToBooking(Bundle bundle){
-//        Intent x = new Intent(getApplicationContext(), BookingActivity.class);
-//        x.putExtras(bundle);
-//        startActivity(x);
-//        ///CustomIntent.customType(this, "left-to-right");
-//    }
 }

@@ -109,13 +109,10 @@ public class DetailUserFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String status = dataSnapshot.child("mStatus").getValue().toString().trim();
                 if (status.equals("2") || status.equals("3")){
-//                    Booking.setVisibility(View.INVISIBLE);
                     disabled.setVisibility(View.VISIBLE);
                     disabled.setEnabled(false);
                     editBtn.setVisibility(View.INVISIBLE);
                     editBtn.setEnabled(false);
-//                    disabled.setEnabled(false);
-//                    disabled.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -134,14 +131,6 @@ public class DetailUserFragment extends Fragment {
                 bookingFragment.setArguments(bundle);
                 FragmentManager fragmentManager = getFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.fragment_container,bookingFragment).addToBackStack(null).commit();
-//                UserActivity userActivity = (UserActivity) getActivity();
-//                userActivity.ToBooking(bundle);
-//                FormFragment formFragment = new FormFragment();
-//                Bundle key = new Bundle();
-//                key.putString("key", bundle.getString("key"));
-//                formFragment.setArguments(key);
-//                FragmentManager fragmentManager = getFragmentManager();
-//                fragmentManager.beginTransaction().replace(R.id.fragment_container,formFragment).addToBackStack(null).commit();
             }
         });
 

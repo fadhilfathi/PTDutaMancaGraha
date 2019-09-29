@@ -2,6 +2,7 @@ package com.example.marbeelz.ptdutamancagraha;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.opengl.Visibility;
@@ -27,6 +28,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -144,11 +146,8 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
 
     @Override
     public void onResume() {
-        //mRecyclerView = view.findViewById(R.id.recyclerview);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-        //mProgressBar = view.findViewById(R.id.progress_circle);
 
         mUploads = new ArrayList<>();
 
@@ -185,16 +184,29 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
     }
     
     @Override
-    public void onBooked(int Position) {
-        Upload selectedItem = mUploads.get(Position);
+    public void onBooked(final int Position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Apakah Rumah Sudah Dibayar?").setCancelable(true)
+                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Upload selectedItem = mUploads.get(Position);
 
-//        booked.setVisibility(View.VISIBLE);
-//        available.setVisibility(View.INVISIBLE);
-//        disabled.setVisibility(View.INVISIBLE);
-        final String selectedKey = selectedItem.getmKey();
-        mDatabaseRef.child(selectedKey).child("mStatus").setValue("3");
-        mAdapter.notifyDataSetChanged();
-        refresh();
+                        final String selectedKey = selectedItem.getmKey();
+                        mDatabaseRef.child(selectedKey).child("mStatus").setValue("3");
+                        mAdapter.notifyDataSetChanged();
+                        refresh();
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                })
+        ;
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
     private void refresh(){
         Fragment_1 fragment_1 = new Fragment_1();
@@ -202,16 +214,29 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
         fragmentManager.beginTransaction().replace(R.id.fragment_container,fragment_1).commit();
     }
     @Override
-    public void onAvailable(int Position) {
-        Upload selectedItem = mUploads.get(Position);
-        mAdapter.notifyDataSetChanged();
-//        booked.setVisibility(View.INVISIBLE);
-//        available.setVisibility(View.VISIBLE);
-//        disabled.setVisibility(View.INVISIBLE);
-        final String selectedKey = selectedItem.getmKey();
-        mDatabaseRef.child(selectedKey).child("mStatus").setValue("1");
-        mAdapter.notifyDataSetChanged();
-        refresh();
+    public void onAvailable(final int Position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Apakah Rumah Tidak Jadi Dibayar?").setCancelable(true)
+                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Upload selectedItem = mUploads.get(Position);
+                        mAdapter.notifyDataSetChanged();
+                        final String selectedKey = selectedItem.getmKey();
+                        mDatabaseRef.child(selectedKey).child("mStatus").setValue("1");
+                        mAdapter.notifyDataSetChanged();
+                        refresh();
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                })
+        ;
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
 

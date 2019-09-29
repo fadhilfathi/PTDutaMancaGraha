@@ -1,6 +1,7 @@
 package com.example.marbeelz.ptdutamancagraha;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.Image;
@@ -22,6 +23,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -111,44 +113,76 @@ public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemCl
     }
 
     @Override
-    public void onBooked(int Position) {
-        Booking selectedItem = mBooking.get(Position);
-        final String selectedKey = selectedItem.getmKey();
-        mDatabaseRefUpload.child(selectedKey).child("mStatus").setValue("3");
+    public void onBooked(final int Position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Apakah Rumah Sudah Dibayar?").setCancelable(true)
+                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Booking selectedItem = mBooking.get(Position);
+                        final String selectedKey = selectedItem.getmKey();
+                        mDatabaseRef.child(selectedKey).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                String keyRumah = dataSnapshot.child("keyRumah").getValue().toString().trim();
+                                mDatabaseRefUpload.child(keyRumah).child("mStatus").setValue("3");
+                                mAdapter.notifyDataSetChanged();
+                                refresh();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                })
+        ;
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 
     @Override
-    public void onAvailable(int Position) {
-        Booking selectedItem = mBooking.get(Position);
-        final String selectedKey = selectedItem.getmKey();
-        mDatabaseRefUpload.child(selectedKey).child("mStatus").setValue("1");
+    public void onAvailable(final int Position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setMessage("Apakah Rumah Tidak Jadi Dibayar?").setCancelable(true)
+                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Booking selectedItem = mBooking.get(Position);
+                        final String selectedKey = selectedItem.getmKey();
+                        mDatabaseRef.child(selectedKey).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                String keyRumah = dataSnapshot.child("keyRumah").getValue().toString().trim();
+                                mDatabaseRefUpload.child(keyRumah).child("mStatus").setValue("1");
+                                mAdapter.notifyDataSetChanged();
+                                refresh();
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                })
+        ;
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
-//    private void firebaseSearch (String searchText){
-//        Query firebaseSearchQuery = mDatabaseRef.orderByChild("title").startAt(searchText).endAt(searchText + "\uf8ff");
-//    }
-
-
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        inflater.inflate(R.menu.manu_main, menu);
-//        MenuItem item = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String s) {
-//                //firebaseSearch (query);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//               // firebaseSearch(newText);
-//                return false;
-//            }
-//        });
-//        return super.onCreateOptionsMenu(menu, ;);
-//    }
-
 
     @Override
     public void onDelete(int Position) {
@@ -164,7 +198,11 @@ public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemCl
             }
         });
     }
-
+    private void refresh(){
+        FragmentHistory fragment_1 = new FragmentHistory();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.fragment_container,fragment_1).commit();
+    }
     @Override
     public void onDestroy() {
         super.onDestroy();

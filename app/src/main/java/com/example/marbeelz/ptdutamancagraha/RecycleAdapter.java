@@ -121,7 +121,6 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
 
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            //mUpload.clear();
             mUpload.addAll((List) filterResults.values);
             notifyDataSetChanged();
         }

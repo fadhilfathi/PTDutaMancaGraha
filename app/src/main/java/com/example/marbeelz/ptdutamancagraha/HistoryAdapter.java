@@ -88,29 +88,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.RecycleV
         if (mDatabaseRef.child(uploadcurrent.getKeyRumah()).child("mStatus").toString().trim().equals("3")){
             holder.notavailable.setVisibility(View.VISIBLE);
         }
-//        holder.textViewKamarTidur.setText(uploadcurrent.getmKamarTidur());
-//        Picasso.get().load(uploadcurrent.getmImageUrl()).fit().placeholder(R.drawable.picture).centerCrop().into(holder.imageView);
-//        String status = uploadcurrent.getmStatus();
-//        if (status.equals("1")){
-//            holder.tersedia.setVisibility(View.VISIBLE);
-//        }
-//        if (status.equals("2")){
-//            holder.booked.setVisibility(View.VISIBLE);
-//        }
-//        if (status.equals("3")){
-//            holder.tidaktersedia.setVisibility(View.VISIBLE);
-//        }
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                DetailFragment detail = new DetailFragment();
-//                Bundle bundle = new Bundle();
-//                bundle.putString("key",uploadcurrent.getmKey());
-//                detail.setArguments(bundle);
-//                HomeActivity homeActivity = (HomeActivity) mContext;
-//                homeActivity.switchContent(R.id.fragment_container,detail);
-//            }
-//        });
     }
 
     @Override
@@ -135,11 +112,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.RecycleV
             noTelepon = itemView.findViewById(R.id.noTelepon);
             namaAgen = itemView.findViewById(R.id.namaSales);
             imageView = itemView.findViewById(R.id.imageViewStatus);
-//            textViewKamarTidur = itemView.findViewById(R.id._kamartidur);
-//            imageView = itemView.findViewById(R.id.image_view_rumah);
-//            booked = itemView.findViewById(R.id.statusRumahBooked);
-//            tersedia = itemView.findViewById(R.id.statusRumahTersedia);
-//            tidaktersedia = itemView.findViewById(R.id.statusRumahTidakTersedia);
 
             itemView.setOnClickListener(this);
             itemView.setOnCreateContextMenuListener(this);
@@ -158,11 +130,9 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.RecycleV
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
             contextMenu.setHeaderTitle("Select Action");
-//            MenuItem Detail = contextMenu.add(Menu.NONE,1,1,"Edit");
             MenuItem Hapus = contextMenu.add(Menu.NONE,1,1,"Hapus");
             MenuItem Booked = contextMenu.add(Menu.NONE, 2,2,"TidakTersedia");
             MenuItem Available = contextMenu.add(Menu.NONE,3,3,"Tersedia");
-            //Detail.setOnMenuItemClickListener(this);
             Hapus.setOnMenuItemClickListener(this);
             Booked.setOnMenuItemClickListener(this);
             Available.setOnMenuItemClickListener(this);

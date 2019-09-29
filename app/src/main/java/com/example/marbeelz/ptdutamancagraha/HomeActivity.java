@@ -73,43 +73,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new Fragment_1()).commit();
         }
-//        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.detailFragment);
-//        Fragment container = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-//        if (currentFragment.getUserVisibleHint()){
-//            assert getSupportActionBar() != null;   //null check
-//            getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
-//        }
-
     }
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
-    //search
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.manu_main, menu);
-//        MenuItem item = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String s) {
-//                //firebaseSearch
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//                Fragment_1 fragment_1 = new Fragment_1();
-//                fragment_1.search(s);
-//                //firebaseSearch
-//                return false;
-//            }
-//        });
-//        return super.onCreateOptionsMenu(menu);
-//    }
-
 
     private void showSnackbar() {
         Snackbar snackbar = Snackbar.make(coordinatorLayout, "Perubahan disimpan!", Snackbar.LENGTH_LONG);
@@ -147,7 +116,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            //logoutConfirm();
             super.onBackPressed();
         }
     }

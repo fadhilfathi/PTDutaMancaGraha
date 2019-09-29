@@ -115,31 +115,6 @@ public class UserFragment_1 extends Fragment implements RecycleUserAdapter.OnIte
 
     }
 
-//    @Override
-//    public void onBooked(int Position) {
-//
-//    }
-//
-//    @Override
-//    public void onAvailable(int Position) {
-//
-//    }
-//
-//    @Override
-//    public void onDelete(int Position) {
-//        Upload selectedItem = mUploads.get(Position);
-//        final String selectedKey = selectedItem.getmKey();
-//
-//        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getmImageUrl());
-//        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-//            @Override
-//            public void onSuccess(Void aVoid) {
-//                mDatabaseRef.child(selectedKey).removeValue();
-//                Toast.makeText(getActivity(), "Delete Sukses", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
-
 
     @Override
     public void onResume() {

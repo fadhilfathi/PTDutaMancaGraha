@@ -131,32 +131,6 @@ public class UserFragment_2 extends Fragment implements HistoryAdapter.OnItemCli
         final String selectedKey = selectedItem.getmKey();
         mDatabaseRefUpload.child(selectedKey).child("mStatus").setValue("1");
     }
-//    private void firebaseSearch (String searchText){
-//        Query firebaseSearchQuery = mDatabaseRef.orderByChild("title").startAt(searchText).endAt(searchText + "\uf8ff");
-//    }
-
-
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        inflater.inflate(R.menu.manu_main, menu);
-//        MenuItem item = menu.findItem(R.id.action_search);
-//        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String s) {
-//                //firebaseSearch (query);
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//               // firebaseSearch(newText);
-//                return false;
-//            }
-//        });
-//        return super.onCreateOptionsMenu(menu, ;);
-//    }
-
 
     @Override
     public void onDelete(int Position) {

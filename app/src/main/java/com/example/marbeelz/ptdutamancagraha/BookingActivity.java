@@ -86,13 +86,6 @@ public class BookingActivity extends AppCompatActivity {
                     fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-//                            Booking booking;
-//                            booking = new Booking(judul,
-//                                    NamaPembeli.getText().toString().trim(),
-//                                    NoHp.getText().toString().trim(),
-//                                    uri.toString());
-//                            String UploadId = mDatabaseRef.push().getKey();
-//                            mDatabaseRef.child(UploadId).setValue(booking);
                         }
                     });
                     Toast.makeText(BookingActivity.this,"Silahkan Melakukan Proses Pembayaran",Toast.LENGTH_SHORT).show();
@@ -101,8 +94,6 @@ public class BookingActivity extends AppCompatActivity {
                     bundle.putString("NoHp",NoHp.getText().toString().trim());
                     AfterBooking afterBooking = new AfterBooking();
                     afterBooking.setArguments(bundle);
-                    //FragmentManager fragmentManager = getSupportFragmentManager();
-                    //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction().
                     FragmentManager fragmentManager = getSupportFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.fragment_container,afterBooking).addToBackStack(null).commit();
                 }
