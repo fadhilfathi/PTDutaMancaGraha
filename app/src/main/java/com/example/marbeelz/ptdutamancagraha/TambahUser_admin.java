@@ -20,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Fragment_4 extends Fragment {
+public class TambahUser_admin extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference Users;
     EditText username,password;
@@ -46,7 +46,7 @@ public class Fragment_4 extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         if (dataSnapshot.child(Username).exists()){
-                            Toast userToast = Toast.makeText(getActivity(),"Username Telah Terdaftar Sebagai Sales, Silahkan Masukkan Username Lain",Toast.LENGTH_LONG);
+                            Toast userToast = Toast.makeText(getActivity(),"Username telah terdaftar, gunakan username lain",Toast.LENGTH_LONG);
                             TextView toast = userToast.getView().findViewById(android.R.id.message);
                             if (toast != null){
                                 toast.setGravity(Gravity.CENTER);
@@ -59,7 +59,7 @@ public class Fragment_4 extends Fragment {
                             Users.child(Username).setValue(user);
                             username.setText("");
                             password.setText("");
-                            Toast.makeText(getActivity(),"Daftar Sales Berhasil",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(),"Pendaftaran berhasil",Toast.LENGTH_SHORT).show();
                         }
                     }
 

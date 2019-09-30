@@ -20,6 +20,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -42,7 +44,7 @@ import com.squareup.picasso.Picasso;
 
 import static android.app.Activity.RESULT_OK;
 
-public class Fragment_Edit extends Fragment {
+public class EditFragment extends Fragment {
     public static final int PICK_IMAGE_REQUEST = 1;
     View view;
     Upload current;
@@ -61,7 +63,9 @@ public class Fragment_Edit extends Fragment {
     public View onCreateView(@NonNull final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle("Edit Rumah");
         view = inflater.inflate(R.layout.fragment_edit, container, false);
-
+        Toolbar toolbar = view.findViewById(R.id.toolbar2);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_navigation_arrow_back));
         editTitle = view.findViewById(R.id.EditDetailTitle);
         editHarga = view.findViewById(R.id.EditDetailHarga);
         editAlamat = view.findViewById(R.id.EditDetailAlamat);
@@ -165,7 +169,7 @@ public class Fragment_Edit extends Fragment {
                                                 }
                                             });
 
-                                            Toast.makeText(getActivity(), "Edit Sukses", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity(), "Perubahan disimpan", Toast.LENGTH_SHORT).show();
                                             DetailFragment detailFragment = new DetailFragment();
                                             Bundle bundle = new Bundle();
                                             bundle.putString("key",key);
@@ -197,7 +201,7 @@ public class Fragment_Edit extends Fragment {
                                                     current.getmImageUrl().toString().trim(),current.getmStatus()
                                             );
                                             mDatabaseRef.child(key).setValue(upload);
-                                            Toast.makeText(getActivity(), "Edit Sukses", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getActivity(), "Perubahan disimpan", Toast.LENGTH_SHORT).show();
                                             DetailFragment detailFragment = new DetailFragment();
                                             Bundle bundle = new Bundle();
                                             bundle.putString("key",key);

@@ -19,13 +19,14 @@
             android:id="@+id/nav_3"
             android:icon="@drawable/ic_phone_book"
             android:title="User" />
+        <item
+            android:id="@+id/nav_2_1"
+            android:icon="@drawable/about"
+            android:title="Daftar booking" />
     </group>
     <item android:title="Menu lainnya">
         <menu>
-            <item
-                android:id="@+id/nav_2_1"
-                android:icon="@drawable/about"
-                android:title="Daftar booking" />
+
             <item
                 android:id="@+id/nav_2_2"
                 android:icon="@drawable/logout"

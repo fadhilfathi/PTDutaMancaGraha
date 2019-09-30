@@ -1,9 +1,6 @@
 package com.example.marbeelz.ptdutamancagraha;
 
-import android.app.Dialog;
-import android.content.ClipData;
 import android.content.Context;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -15,28 +12,21 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentContainer;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleViewHolder> implements Filterable {
+public class RecycleAdapter_admin extends RecyclerView.Adapter<RecycleAdapter_admin.RecycleViewHolder> implements Filterable {
     private Context mContext;
     private List<Upload> mUpload;
     private List<Upload> mUploadFull;
     private OnItemClickListener mListener;
-    public RecycleAdapter(Context context, List<Upload> uploads){
+    public RecycleAdapter_admin(Context context, List<Upload> uploads){
         mContext = context;
         mUpload = uploads;
         mUploadFull = new ArrayList<>(uploads);
@@ -163,11 +153,11 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.RecycleV
 
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-            contextMenu.setHeaderTitle("Select Action");
+            contextMenu.setHeaderTitle("Ubah status rumah");
 //            MenuItem Detail = contextMenu.add(Menu.NONE,1,1,"Edit");
-            MenuItem Hapus = contextMenu.add(Menu.NONE,1,1,"Hapus");
-            MenuItem Booked = contextMenu.add(Menu.NONE, 2,2,"TidakTersedia");
-            MenuItem Available = contextMenu.add(Menu.NONE,3,3,"Tersedia");
+            MenuItem Hapus = contextMenu.add(Menu.NONE,1,1,"Hapus rumah");
+            MenuItem Booked = contextMenu.add(Menu.NONE, 2,2,"Rumah tidak tersedia");
+            MenuItem Available = contextMenu.add(Menu.NONE,3,3,"Rumah tersedia");
             //Detail.setOnMenuItemClickListener(this);
             Hapus.setOnMenuItemClickListener(this);
             Booked.setOnMenuItemClickListener(this);

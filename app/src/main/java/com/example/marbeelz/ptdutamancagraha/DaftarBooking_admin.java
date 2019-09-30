@@ -2,42 +2,28 @@ package com.example.marbeelz.ptdutamancagraha;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
-import android.renderscript.Sampler;
-import android.view.Display;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.SearchView;
 import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -45,7 +31,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemClickListener {
+public class DaftarBooking_admin extends Fragment implements HistoryAdapter.OnItemClickListener {
     @Nullable
     private ProgressBar mProgressBar;
     private Context mContext;
@@ -74,7 +60,7 @@ public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemCl
 
         mAdapter = new HistoryAdapter(getActivity(), mBooking);
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(FragmentHistory.this);
+        mAdapter.setOnItemClickListener(DaftarBooking_admin.this);
 
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Booking");
@@ -115,7 +101,7 @@ public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemCl
     @Override
     public void onBooked(final int Position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Apakah Rumah Sudah Dibayar?").setCancelable(true)
+        builder.setMessage("Apakah rumah sudah dibayar?").setCancelable(true)
                 .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -151,7 +137,7 @@ public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemCl
     @Override
     public void onAvailable(final int Position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Apakah Rumah Tidak Jadi Dibayar?").setCancelable(true)
+        builder.setMessage("Apakah pembookingan rumah dibatalkan?").setCancelable(true)
                 .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -199,7 +185,7 @@ public class FragmentHistory extends Fragment implements HistoryAdapter.OnItemCl
         });
     }
     private void refresh(){
-        FragmentHistory fragment_1 = new FragmentHistory();
+        DaftarBooking_admin fragment_1 = new DaftarBooking_admin();
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment_container,fragment_1).commit();
     }

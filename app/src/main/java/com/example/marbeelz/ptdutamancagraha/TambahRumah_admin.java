@@ -55,7 +55,7 @@ import java.lang.reflect.Array;
 
 import static android.app.Activity.RESULT_OK;
 
-public class Fragment_2 extends Fragment {
+public class TambahRumah_admin extends Fragment {
     @Nullable
     public static final int PICK_IMAGE_REQUEST = 1;
     EditText textNama, textAlamat, textLuasTanah, textLuasBangunan, textSumberAir, textHarga;

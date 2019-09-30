@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import maes.tech.intentanim.CustomIntent;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 1000;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference Users;
@@ -77,13 +77,13 @@ public class MainActivity extends AppCompatActivity {
                                 editor.putString("logincurrent",username);
                                 editor.apply();
                                 editor.commit();
-                                Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
                                 Intent x = new Intent(getApplicationContext(), HomeActivity.class);
                                 startActivity(x);
                                 finish();
-                                CustomIntent.customType(MainActivity.this, "fadein-to-fadeout");
+                                CustomIntent.customType(LoginActivity.this, "fadein-to-fadeout");
                             }else{
-                                Toast.makeText(MainActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
                             }
                         }else{
                         User login = dataSnapshot.child(username).getValue(User.class);
@@ -93,16 +93,16 @@ public class MainActivity extends AppCompatActivity {
                             editor.putString("logincurrent",username);
                             editor.apply();
                             editor.commit();
-                            Toast.makeText(MainActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Login Sukses", Toast.LENGTH_SHORT).show();
                             Intent x = new Intent(getApplicationContext(), UserActivity.class);
                             startActivity(x);
                             finish();
-                            CustomIntent.customType(MainActivity.this,"fadein-to-fadeout");
+                            CustomIntent.customType(LoginActivity.this,"fadein-to-fadeout");
                         }else {
-                            Toast.makeText(MainActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Password Salah", Toast.LENGTH_SHORT).show();
                         }}
                     }else {
-                        Toast.makeText(MainActivity.this, "Username Tidak Terdaftar", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(LoginActivity.this, "Username Tidak Terdaftar", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

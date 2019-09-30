@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.renderscript.Sampler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,10 +35,7 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import maes.tech.intentanim.CustomIntent;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -50,7 +45,7 @@ public class BookingFragment extends Fragment {
     private Context mContext;
 
     private RecyclerView mRecyclerView;
-    private RecycleAdapter mAdapter;
+    private RecycleAdapter_admin mAdapter;
 
     private ValueEventListener mDBListener;
     private FirebaseStorage mStorage;
@@ -68,6 +63,7 @@ public class BookingFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.bookinglayout, container, false);
+        getActivity().setTitle("Booking Rumah");
         KTP = view.findViewById(R.id.imageKTP);
         Booking = view.findViewById(R.id.button_ktp);
         NamaPembeli = view.findViewById(R.id.namaPembeli);
@@ -84,7 +80,6 @@ public class BookingFragment extends Fragment {
                 openFileChooser();
             }
         });
-        disabled = view.findViewById(R.id.button_ktp_disabled);
         mDatabaseRefUpload.child(key).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -92,8 +87,6 @@ public class BookingFragment extends Fragment {
                 if (status.equals("2") || status.equals("3")){
                     Booking.setVisibility(View.INVISIBLE);
                     Booking.setEnabled(false);
-                    disabled.setEnabled(false);
-                    disabled.setVisibility(View.VISIBLE);
                 }
             }
 

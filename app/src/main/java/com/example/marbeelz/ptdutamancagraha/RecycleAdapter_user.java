@@ -2,10 +2,7 @@ package com.example.marbeelz.ptdutamancagraha;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,13 +15,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class RecycleUserAdapter extends RecyclerView.Adapter<RecycleUserAdapter.ImageViewHolder> {
+public class RecycleAdapter_user extends RecyclerView.Adapter<RecycleAdapter_user.ImageViewHolder> {
     private Context mContext;
     private List<Upload> mUploads;
     private OnItemClickListener mListener;
-    //private RecycleAdapter.OnItemClickListener mListener;
+    //private RecycleAdapter_admin.OnItemClickListener mListener;
 
-    public RecycleUserAdapter(Context context, List<Upload> uploads){
+    public RecycleAdapter_user(Context context, List<Upload> uploads){
         mContext = context;
         mUploads = uploads;
     }

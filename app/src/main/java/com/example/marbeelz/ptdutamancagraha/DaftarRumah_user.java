@@ -1,49 +1,24 @@
 package com.example.marbeelz.ptdutamancagraha;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.media.Image;
-import android.opengl.Visibility;
 import android.os.Bundle;
-import android.renderscript.Sampler;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.Display;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.view.MenuItemCompat;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -51,28 +26,24 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickListener {
+public class DaftarRumah_user extends Fragment implements RecycleAdapter_user.OnItemClickListener {
     @Nullable
     private ProgressBar mProgressBar;
     private Context mContext;
-    TextView available, booked, disabled;
+
     private RecyclerView mRecyclerView;
-    public RecycleAdapter mAdapter;
-    private androidx.appcompat.widget.SearchView searchView;
+    private RecycleAdapter_user mAdapter;
+    private SearchView searchView;
     private ValueEventListener mDBListener;
-    EditText filter;
     private FirebaseStorage mStorage;
     private DatabaseReference mDatabaseRef;
     private List<Upload> mUploads;
     private StorageReference mStorageRef;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle("Daftar Rumah");
-        final View view = inflater.inflate(R.layout.fragment_1, container, false);
-        //setHasOptionsMenu(true);
-        available = view.findViewById(R.id.statusRumahTersedia);
-        booked = view.findViewById(R.id.statusRumahBooked);
-        disabled = view.findViewById(R.id.statusRumahTidakTersedia);
+        final View view = inflater.inflate(R.layout.user_fragment_1, container, false);
         mRecyclerView = view.findViewById(R.id.recyclerview);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -81,19 +52,18 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
 
         mUploads = new ArrayList<>();
 
-        mAdapter = new RecycleAdapter(getActivity(), mUploads);
+        mAdapter = new RecycleAdapter_user(getActivity(), mUploads);
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(Fragment_1.this);
+        mAdapter.setOnItemClickListener(DaftarRumah_user.this);
+
 
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
         mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 //Clear Model biar tidak dobel
                 mUploads.clear();
-
                 for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
                     Upload upload = postSnapShot.getValue(Upload.class);
                     //mengambil key dari database untuk disimpan ke model upload
@@ -111,8 +81,8 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
                 Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        searchView = view.findViewById(R.id.search_view);
-        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+        searchView = view.findViewById(R.id.search_viewuser);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -125,7 +95,6 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
             }
         });
         return view;
-
     }
 
     public void search(String str){
@@ -135,7 +104,7 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
                 listSearch.add(object);
             }
         }
-        mAdapter = new RecycleAdapter(getActivity(), listSearch);
+        mAdapter = new RecycleAdapter_user(getActivity(), listSearch);
         mRecyclerView.setAdapter(mAdapter);
     }
 
@@ -144,16 +113,20 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
 
     }
 
+
     @Override
     public void onResume() {
+        //mRecyclerView = view.findViewById(R.id.recyclerview);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        //mProgressBar = view.findViewById(R.id.progress_circle);
+
         mUploads = new ArrayList<>();
 
-        mAdapter = new RecycleAdapter(getActivity(), mUploads);
+        mAdapter = new RecycleAdapter_user(getActivity(), mUploads);
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(Fragment_1.this);
+        mAdapter.setOnItemClickListener(DaftarRumah_user.this);
 
 
         mStorage = FirebaseStorage.getInstance();
@@ -182,78 +155,7 @@ public class Fragment_1 extends Fragment implements RecycleAdapter.OnItemClickLi
         });
         super.onResume();
     }
-    
-    @Override
-    public void onBooked(final int Position) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Apakah Rumah Sudah Dibayar?").setCancelable(true)
-                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Upload selectedItem = mUploads.get(Position);
 
-                        final String selectedKey = selectedItem.getmKey();
-                        mDatabaseRef.child(selectedKey).child("mStatus").setValue("3");
-                        mAdapter.notifyDataSetChanged();
-                        refresh();
-                    }
-                })
-                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                })
-        ;
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-    }
-    private void refresh(){
-        Fragment_1 fragment_1 = new Fragment_1();
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment_container,fragment_1).commit();
-    }
-    @Override
-    public void onAvailable(final int Position) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Apakah Rumah Tidak Jadi Dibayar?").setCancelable(true)
-                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Upload selectedItem = mUploads.get(Position);
-                        mAdapter.notifyDataSetChanged();
-                        final String selectedKey = selectedItem.getmKey();
-                        mDatabaseRef.child(selectedKey).child("mStatus").setValue("1");
-                        mAdapter.notifyDataSetChanged();
-                        refresh();
-                    }
-                })
-                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                    }
-                })
-        ;
-        AlertDialog alertDialog = builder.create();
-        alertDialog.show();
-    }
-
-
-    @Override
-    public void onDelete(int Position) {
-        Upload selectedItem = mUploads.get(Position);
-        final String selectedKey = selectedItem.getmKey();
-
-        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getmImageUrl());
-        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                mDatabaseRef.child(selectedKey).removeValue();
-                Toast.makeText(getActivity(), "Delete Sukses", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
     @Override
     public void onDestroy() {
         super.onDestroy();

@@ -129,10 +129,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.RecycleV
 
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-            contextMenu.setHeaderTitle("Select Action");
-            MenuItem Hapus = contextMenu.add(Menu.NONE,1,1,"Hapus");
-            MenuItem Booked = contextMenu.add(Menu.NONE, 2,2,"TidakTersedia");
-            MenuItem Available = contextMenu.add(Menu.NONE,3,3,"Tersedia");
+            contextMenu.setHeaderTitle("Ubah status booking rumah");
+            MenuItem Hapus = contextMenu.add(Menu.NONE,1,1,"Hapus booking rumah");
+            MenuItem Booked = contextMenu.add(Menu.NONE, 2,2,"Telah dibayar");
+            MenuItem Available = contextMenu.add(Menu.NONE,3,3,"Batal");
             Hapus.setOnMenuItemClickListener(this);
             Booked.setOnMenuItemClickListener(this);
             Available.setOnMenuItemClickListener(this);

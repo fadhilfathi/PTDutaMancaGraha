@@ -1,7 +1,5 @@
 package com.example.marbeelz.ptdutamancagraha;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +17,7 @@ public class Splash extends Activity {
                 } catch (InterruptedException e){
                     e.printStackTrace();
                 } finally {
-                    startActivity(new Intent(Splash.this, MainActivity.class));
+                    startActivity(new Intent(Splash.this, LoginActivity.class));
                     finish();
                 }
             }

@@ -5,12 +5,9 @@ package com.example.marbeelz.ptdutamancagraha;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.session.PlaybackState;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,13 +17,10 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
-import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
-
-import maes.tech.intentanim.CustomIntent;
 
 public class UserActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -52,7 +46,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         username.setText(currentlogin);
         if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new UserFragment_1()).commit();
+                    new DaftarRumah_user()).commit();
             navigationView.setCheckedItem(R.id.nav_1);
         }
 
@@ -65,15 +59,11 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         switch (menuItem.getItemId()){
             case R.id.nav_1:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new UserFragment_1()).addToBackStack(null).commit();
+                        new DaftarRumah_user()).addToBackStack(null).commit();
                 break;
             case R.id.nav_2:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new UserFragment_2()).addToBackStack(null).commit();
-                break;
-            case R.id.nav_3:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new UserFragment_3()).addToBackStack(null).commit();
+                        new DaftarBooking_user()).addToBackStack(null).commit();
                 break;
             case R.id.nav_2_1:
                 Toast.makeText(this, "Item 2_1 Selected", Toast.LENGTH_SHORT).show();
@@ -89,7 +79,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
                         editor.clear();
                         editor.apply();
                         editor.commit();
-                        Intent x = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent x = new Intent(getApplicationContext(), LoginActivity.class);
                         startActivity(x);
                         finish();
                     }

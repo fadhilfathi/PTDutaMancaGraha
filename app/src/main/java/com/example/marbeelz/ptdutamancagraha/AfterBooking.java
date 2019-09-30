@@ -1,6 +1,5 @@
 package com.example.marbeelz.ptdutamancagraha;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,8 +31,8 @@ public class AfterBooking extends Fragment {
             @Override
             public void onClick(View view) {
                 FragmentManager fragmentManager = getFragmentManager();
-                UserFragment_1 userFragment_1 = new UserFragment_1();
-                fragmentManager.beginTransaction().replace(R.id.fragment_container,userFragment_1).addToBackStack(null).commit();
+                DaftarRumah_user daftarRumahuser = new DaftarRumah_user();
+                fragmentManager.beginTransaction().replace(R.id.fragment_container, daftarRumahuser).addToBackStack(null).commit();
             }
         });
 

@@ -6,47 +6,25 @@
     android:layout_height="match_parent">
     xmlns:tools="http://schemas.android.com/tools"
 
-    <LinearLayout
-        android:id="@+id/linear"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarx"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#ffffff"
-            android:elevation="4dp"
-            android:textAlignment="center"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:titleTextColor="#000000">
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </LinearLayout>
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imageKTP"
-        android:text="Upload Foto KTP"
+        android:layout_centerHorizontal="true"
         android:fontFamily="@font/open_sans_light"
-        android:textStyle="italic"
+        android:text="Upload Foto KTP"
         android:textSize="16sp"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="4dp"
-        />
+        android:textStyle="italic" />
 
     <ImageButton
         android:id="@+id/imageKTP"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_below="@+id/linear"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="8dp"
+        android:layout_marginTop="16dp"
         android:adjustViewBounds="true"
         android:background="#fafafa"
         android:contentDescription="ktp"
@@ -63,9 +41,11 @@
         android:layout_marginEnd="16dp"
         android:layout_centerHorizontal="true"
         android:drawableStart="@drawable/user"
-        android:drawablePadding="4dp"
-        android:fontFamily="@font/open_sans"
+        android:drawablePadding="8dp"
+        android:drawableTint="#8B8B8B"
+        android:fontFamily="@font/open_sans_light"
         android:hint="Nama calon pembeli"
+        android:textStyle="bold"
         android:inputType="text" />
 
     <EditText
@@ -78,8 +58,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
         android:drawableStart="@drawable/phone"
-        android:drawablePadding="4dp"
-        android:fontFamily="@font/open_sans"
+        android:drawablePadding="8dp"
+        android:drawableTint="#8B8B8B"
+        android:fontFamily="@font/open_sans_light"
+        android:textStyle="bold"
         android:hint="Nomor HP"
         android:inputType="phone" />
 
@@ -88,28 +70,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignBottom="@id/nomorHP"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_button"
         android:fontFamily="@font/open_sans_bold"
         android:text="Booking Sekarang"
         android:textColor="#ffff" />
-
-    <Button
-        android:id="@+id/button_ktp_disabled"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/rounded_button_disabled"
-        android:fontFamily="@font/open_sans_bold"
-        android:text="Booking Sekarang"
-        android:textColor="#E0E0E0"
-        android:visibility="invisible"/>
-
 
     <!--<include-->
     <!--android:id="@+id/lay1"-->
