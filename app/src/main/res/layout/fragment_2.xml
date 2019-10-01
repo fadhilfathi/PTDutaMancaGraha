@@ -5,215 +5,209 @@
     android:layout_height="match_parent">
 
 
-        <ImageButton
-            android:id="@+id/image2"
-            android:layout_width="310dp"
-            android:layout_height="180dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:adjustViewBounds="true"
-            android:backgroundTint="#fafafa"
-            android:contentDescription="foto rumah"
-            android:paddingTop="16dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_homepict" />
+    <Button
+        android:id="@+id/upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="@font/open_sans_bold"
+        android:text="Upload"
+        android:textColor="#ffffff" />
 
-        <TextView
-            android:id="@+id/note"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/image2"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/open_sans_light"
-            android:text="tekan gambar rumah diatas untuk memilih foto rumah"
-            android:textSize="12sp"
-            android:textStyle="italic" />
+    <EditText
+        android:id="@+id/edit_text2"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/note"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/open_sans_bold"
+        android:hint="judul "
+        android:paddingStart="5dp"
+        android:singleLine="true" />
 
-        <EditText
-            android:id="@+id/edit_text2"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/note"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/open_sans_bold"
-            android:hint="judul "
-            android:paddingStart="5dp"
-            android:singleLine="true" />
-        <EditText
-            android:id="@+id/uangMuka"
-            android:layout_alignParentRight="true"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/note"
-            android:layout_toEndOf="@id/edit_text2"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/open_sans_bold"
-            android:hint="uang muka "
-            android:inputType="number"
-            android:paddingStart="5dp"
-            android:singleLine="true" />
+    <EditText
+        android:id="@+id/uangMuka"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/note"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:layout_toEndOf="@id/edit_text2"
+        android:fontFamily="@font/open_sans_bold"
+        android:hint="uang muka "
+        android:inputType="number"
+        android:paddingStart="5dp"
+        android:singleLine="true" />
 
-        <EditText
-            android:id="@+id/alamat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/edit_text2"
-            android:layout_centerHorizontal="false"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/open_sans"
-            android:hint="alamat"
-            android:singleLine="true" />
+    <EditText
+        android:id="@+id/alamat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edit_text2"
+        android:layout_centerHorizontal="false"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="alamat"
+        android:singleLine="true" />
 
-        <EditText
+    <EditText
 
-            android:id="@+id/luas_tanah"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@id/alamat"
-            android:layout_centerHorizontal="false"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/open_sans"
-            android:hint="luas_tanah(m2)"
-            android:paddingStart="5dp"
-            android:singleLine="true" />
+        android:id="@+id/luas_tanah"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/alamat"
+        android:layout_centerHorizontal="false"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="luas_tanah(m2)"
+        android:paddingStart="5dp"
+        android:singleLine="true" />
 
-        <EditText
-            android:id="@+id/luas_bangunan"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@id/luas_tanah"
-            android:layout_alignParentRight="true"
-            android:layout_centerHorizontal="false"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/open_sans"
-            android:hint="luas_bangunan(m2)"
-            android:paddingStart="5dp"
-            android:singleLine="true" />
+    <EditText
+        android:id="@+id/luas_bangunan"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/luas_tanah"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="false"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/open_sans"
+        android:hint="luas_bangunan(m2)"
+        android:paddingStart="5dp"
+        android:singleLine="true" />
 
-        <EditText
-            android:id="@+id/air"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@id/luas_bangunan"
-            android:layout_alignParentRight="true"
-            android:layout_centerHorizontal="false"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+    <ImageButton
+        android:id="@+id/image2"
+        android:layout_width="310dp"
+        android:layout_height="180dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:adjustViewBounds="true"
+        android:backgroundTint="#fafafa"
+        android:contentDescription="foto rumah"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_homepict" />
 
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/open_sans"
-            android:hint="sumber air"
-            android:paddingStart="5dp"
-            android:singleLine="true" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switch_garasi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/spinner_KamarMandi"
-            android:layout_marginStart="20dp"
-            android:fontFamily="@font/open_sans"
-            android:gravity="center"
-            android:text="Garasi   "
-            android:textOff=""
-            android:textOn=""
-            android:textSize="16sp"
-            android:thumb="@drawable/switchbutton"
-            app:showText="true"
-            app:track="@drawable/switch_track" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/switch_carport"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/spinner_KamarMandi"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/open_sans"
-            android:gravity="center"
-            android:text="Carport   "
-            android:textOff=""
-            android:textOn=""
-            android:textSize="16sp"
-            android:thumb="@drawable/switchbutton"
-            app:showText="true"
-            app:track="@drawable/switch_track" />
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_below="@id/luas_bangunan"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <Spinner
             android:id="@+id/spinner_listrik"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_below="@id/air"
-            android:layout_alignParentBottom="false"
-            android:layout_marginStart="16dp"></Spinner>
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"></Spinner>
 
         <Spinner
-            android:id="@+id/spinner_KamarTidur"
+            android:id="@+id/air"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_below="@id/air"
-            android:layout_alignParentBottom="false"
-            android:layout_toEndOf="@id/spinner_listrik"></Spinner>
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"></Spinner>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_below="@id/linear1"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:weightSum="2">
 
         <Spinner
             android:id="@+id/spinner_KamarMandi"
             android:layout_width="wrap_content"
-            android:layout_height="32dp"
-            android:layout_below="@id/air"
-            android:layout_alignParentBottom="false"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:layout_toEndOf="@id/spinner_KamarTidur">
-
-        </Spinner>
-
-        <!--<Button-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_marginStart="16dp"-->
-        <!--android:layout_marginEnd="16dp"-->
-        <!--android:layout_marginBottom="8dp"-->
-        <!--android:background="@drawable/outline_button"-->
-        <!--android:text="Tambah Gambar Lain"-->
-        <!--android:fontFamily="@font/open_sans"-->
-        <!--android:textColor="@color/colorPrimary"-->
-        <!--android:id="@+id/button_pilih"-->
-        <!--android:layout_above="@id/upload"/>-->
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/upload"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="8dp" />
-
-        <Button
-            android:id="@+id/upload"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
+            android:layout_height="match_parent"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/rounded_button"
-            android:fontFamily="@font/open_sans_bold"
-            android:text="Upload"
-            android:textColor="#ffffff" />
+            android:layout_weight="1"></Spinner>
+
+        <Spinner
+            android:id="@+id/spinner_KamarTidur"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"></Spinner>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/upload"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/note"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image2"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/open_sans_light"
+        android:text="tekan gambar rumah diatas untuk memilih foto rumah"
+        android:textSize="12sp"
+        android:textStyle="italic" />
+
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch_garasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear2"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/open_sans"
+        android:gravity="center"
+        android:text="Garasi   "
+        android:textOff=""
+        android:textOn=""
+        android:textSize="16sp"
+        android:thumb="@drawable/switchbutton"
+        app:showText="true"
+        app:track="@drawable/switch_track" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switch_carport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear2"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/open_sans"
+        android:gravity="center"
+        android:text="Carport   "
+        android:textOff=""
+        android:textOn=""
+        android:textSize="16sp"
+        android:thumb="@drawable/switchbutton"
+        app:showText="true"
+        app:track="@drawable/switch_track" />
 
 </RelativeLayout>
