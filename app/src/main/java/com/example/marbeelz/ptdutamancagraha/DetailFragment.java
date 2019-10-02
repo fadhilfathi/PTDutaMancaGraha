@@ -110,7 +110,6 @@ public class DetailFragment extends Fragment {
                 fragmentManager.beginTransaction().replace(R.id.fragment_container, _editFragment).addToBackStack(null).commit();
             }
         });
-
         return view;
     }
 }

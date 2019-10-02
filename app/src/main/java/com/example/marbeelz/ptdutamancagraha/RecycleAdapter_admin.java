@@ -52,11 +52,17 @@ public class RecycleAdapter_admin extends RecyclerView.Adapter<RecycleAdapter_ad
         String status = uploadcurrent.getmStatus();
         if (status.equals("1")){
             holder.tersedia.setVisibility(View.VISIBLE);
+            holder.booked.setVisibility(View.INVISIBLE);
+            holder.tidaktersedia.setVisibility(View.INVISIBLE);
         }
         if (status.equals("2")){
+            holder.tersedia.setVisibility(View.INVISIBLE);
             holder.booked.setVisibility(View.VISIBLE);
+            holder.tidaktersedia.setVisibility(View.INVISIBLE);
         }
         if (status.equals("3")){
+            holder.tersedia.setVisibility(View.INVISIBLE);
+            holder.booked.setVisibility(View.INVISIBLE);
             holder.tidaktersedia.setVisibility(View.VISIBLE);
         }
             holder.itemView.setOnClickListener(new View.OnClickListener() {

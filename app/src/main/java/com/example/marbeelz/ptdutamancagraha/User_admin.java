@@ -16,6 +16,7 @@ import android.widget.SimpleAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -36,6 +37,8 @@ public class User_admin extends Fragment {
     FloatingActionButton floatingActionButton;
     ListView listView;
     ArrayList<String> list;
+    List<HashMap<String,String>> listItems;
+    SwipeRefreshLayout swipeRefreshLayout;
     //ArrayAdapter<String> adapter;
     User user;;
     SimpleAdapter adapter;
@@ -45,7 +48,17 @@ public class User_admin extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle("User");
         final View view = inflater.inflate(R.layout.fragment_3, container, false);
-        final List<HashMap<String,String>> listItems = new ArrayList<>();
+        listItems = new ArrayList<>();
+
+        swipeRefreshLayout = view.findViewById(R.id.swiperefreshuser);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                load();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
         adapter = new SimpleAdapter(getActivity(),listItems,R.layout.user_list,new String[]{"1","2"},
                 new int[]{R.id.username_info,R.id.password_info});
         list = new ArrayList<>();
@@ -54,6 +67,23 @@ public class User_admin extends Fragment {
         setHasOptionsMenu(true);
         registerForContextMenu(listView);
         Users = FirebaseDatabase.getInstance().getReference("Users");
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TambahUser_admin tambahUseradmin = new TambahUser_admin();
+                HomeActivity homeActivity = (HomeActivity) getContext();
+                homeActivity.switchContent(R.id.fragment_container, tambahUseradmin);
+            }
+        });
+
+        load();
+
+        return view;
+    }
+
+    private void load() {
+        listItems.clear();
         Users.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -72,17 +102,6 @@ public class User_admin extends Fragment {
 
             }
         });
-
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                TambahUser_admin tambahUseradmin = new TambahUser_admin();
-                HomeActivity homeActivity = (HomeActivity) getContext();
-                homeActivity.switchContent(R.id.fragment_container, tambahUseradmin);
-            }
-        });
-
-        return view;
     }
 
     @Override

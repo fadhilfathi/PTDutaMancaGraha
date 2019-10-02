@@ -8,10 +8,21 @@ public class Booking {
     private String NamaPembeli;
     private String NoHp;
     private String Agen;
+    private String mStatusBooking;
     private String mImageUrl;
     private String mKey;
 
     public Booking() {
+    }
+
+    public Booking(String keyRumah, String judulRumah, String namaPembeli, String noHp, String agen, String mStatusBooking, String mImageUrl) {
+        KeyRumah = keyRumah;
+        JudulRumah = judulRumah;
+        NamaPembeli = namaPembeli;
+        NoHp = noHp;
+        Agen = agen;
+        this.mStatusBooking = mStatusBooking;
+        this.mImageUrl = mImageUrl;
     }
 
     public String getKeyRumah() {
@@ -24,7 +35,7 @@ public class Booking {
 
     public String getJudulRumah() {
         return JudulRumah;
-    }   
+    }
 
     public void setJudulRumah(String judulRumah) {
         JudulRumah = judulRumah;
@@ -54,6 +65,14 @@ public class Booking {
         Agen = agen;
     }
 
+    public String getmStatusBooking() {
+        return mStatusBooking;
+    }
+
+    public void setmStatusBooking(String mStatusBooking) {
+        this.mStatusBooking = mStatusBooking;
+    }
+
     public String getmImageUrl() {
         return mImageUrl;
     }
@@ -68,14 +87,5 @@ public class Booking {
 
     public void setmKey(String mKey) {
         this.mKey = mKey;
-    }
-
-    public Booking(String keyRumah, String judulRumah, String namaPembeli, String noHp, String agen, String mImageUrl) {
-        KeyRumah = keyRumah;
-        JudulRumah = judulRumah;
-        NamaPembeli = namaPembeli;
-        NoHp = noHp;
-        Agen = agen;
-        this.mImageUrl = mImageUrl;
     }
 }

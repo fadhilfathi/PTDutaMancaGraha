@@ -65,7 +65,7 @@ public class EditFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_edit, container, false);
         Toolbar toolbar = view.findViewById(R.id.toolbar2);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_navigation_arrow_back));
+        //toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_action_navigation_arrow_back));
         editTitle = view.findViewById(R.id.EditDetailTitle);
         editHarga = view.findViewById(R.id.EditDetailHarga);
         editAlamat = view.findViewById(R.id.EditDetailAlamat);
@@ -170,12 +170,14 @@ public class EditFragment extends Fragment {
                                             });
 
                                             Toast.makeText(getActivity(), "Perubahan disimpan", Toast.LENGTH_SHORT).show();
+                                            DaftarRumah_admin daftarRumah_admin = new DaftarRumah_admin();
                                             DetailFragment detailFragment = new DetailFragment();
                                             Bundle bundle = new Bundle();
                                             bundle.putString("key",key);
-                                            detailFragment.setArguments(bundle);
+                                            //detailFragment.setArguments(bundle);
+                                            //daftarRumah_admin.setArguments(bundle);
                                             FragmentManager fragmentManager = getFragmentManager();
-                                            fragmentManager.beginTransaction().replace(R.id.fragment_container,detailFragment)
+                                            fragmentManager.beginTransaction().replace(R.id.fragment_container,daftarRumah_admin)
                                                     .setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
                                                             R.anim.enter_left_to_right,R.anim.exit_left_to_right)
                                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null).commit();
@@ -202,13 +204,14 @@ public class EditFragment extends Fragment {
                                             );
                                             mDatabaseRef.child(key).setValue(upload);
                                             Toast.makeText(getActivity(), "Perubahan disimpan", Toast.LENGTH_SHORT).show();
+                                            DaftarRumah_admin daftarRumah_admin = new DaftarRumah_admin();
                                             DetailFragment detailFragment = new DetailFragment();
                                             Bundle bundle = new Bundle();
                                             bundle.putString("key",key);
-                                            detailFragment.setArguments(bundle);
+                                            //detailFragment.setArguments(bundle);
                                             FragmentManager fragmentManager = getFragmentManager();
                                             fragmentManager.beginTransaction().setCustomAnimations(R.anim.enter_right_to_left,R.anim.exit_right_to_left,
-                                                    R.anim.enter_left_to_right,R.anim.exit_left_to_right).replace(R.id.fragment_container,detailFragment)
+                                                    R.anim.enter_left_to_right,R.anim.exit_left_to_right).replace(R.id.fragment_container,daftarRumah_admin)
                                                     .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN).addToBackStack(null).commit();
                                         }
 

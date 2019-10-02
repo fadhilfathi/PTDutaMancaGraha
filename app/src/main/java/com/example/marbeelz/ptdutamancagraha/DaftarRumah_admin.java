@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -42,6 +43,7 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
     private androidx.appcompat.widget.SearchView searchView;
     private ValueEventListener mDBListener;
     EditText filter;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private FirebaseStorage mStorage;
     private DatabaseReference mDatabaseRef;
     private List<Upload> mUploads;
@@ -58,6 +60,15 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        swipeRefreshLayout = view.findViewById(R.id.swiperefresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                load();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
         mProgressBar = view.findViewById(R.id.progress_circle);
 
         mUploads = new ArrayList<>();
@@ -68,6 +79,28 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
 
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
+
+        searchView = view.findViewById(R.id.search_view);
+        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                search(newText);
+                return false;
+            }
+        });
+
+        load();
+
+        return view;
+
+    }
+
+    private void load() {
         mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -84,6 +117,7 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
                 //update recycler view dengan item baru
                 mAdapter.notifyDataSetChanged();
                 mProgressBar.setVisibility(View.INVISIBLE);
+                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
@@ -92,21 +126,6 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
                 Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        searchView = view.findViewById(R.id.search_view);
-        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                search(newText);
-                return false;
-            }
-        });
-        return view;
-
     }
 
     public void search(String str){

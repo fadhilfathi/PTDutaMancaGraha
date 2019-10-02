@@ -1,11 +1,15 @@
 package com.example.marbeelz.ptdutamancagraha;
 
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +22,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +40,8 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -43,7 +50,7 @@ public class BookingFragment extends Fragment {
     @Nullable
     private ProgressBar mProgressBar;
     private Context mContext;
-
+    private int x;
     private RecyclerView mRecyclerView;
     private RecycleAdapter_admin mAdapter;
 
@@ -54,6 +61,7 @@ public class BookingFragment extends Fragment {
     private StorageReference mStorageRef;
     String key, UploadId, judul;
     public static final int PICK_IMAGE_REQUEST = 1;
+    public static final int CAMERA_REQUEST_CODE = 1;
     private Uri mImageUri;
     private Button Booking, disabled;
     private ImageButton KTP;
@@ -77,7 +85,11 @@ public class BookingFragment extends Fragment {
         KTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openFileChooser();
+                Intent m_intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                File file = new File(Environment.getExternalStorageDirectory(), "MyPhoto.jpg");
+                Uri uri = FileProvider.getUriForFile(getContext(), getContext().getApplicationContext().getPackageName() + ".provider", file);
+                m_intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, uri);
+                startActivityForResult(m_intent, CAMERA_REQUEST_CODE);
             }
         });
         mDatabaseRefUpload.child(key).addValueEventListener(new ValueEventListener() {
@@ -106,6 +118,33 @@ public class BookingFragment extends Fragment {
         return view;
     }
 
+    private String getFileExtention(Uri uri){
+        ContentResolver cR = getContext().getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+
+            //TODO... onCamera Picker Result
+            case CAMERA_REQUEST_CODE:
+                if (resultCode == RESULT_OK) {
+
+                    //File object of camera image
+                    File file = new File(Environment.getExternalStorageDirectory(), "MyPhoto.jpg");
+
+                    //Uri of camera image
+                    mImageUri = FileProvider.getUriForFile(getContext(), getContext().getApplicationContext().getPackageName() + ".provider", file);
+                    Picasso.get().load(mImageUri).into(KTP);
+                }
+                break;
+        }
+    }
+
     private void uploadFile() {
         if (mImageUri != null){
             final StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()+"."+getFileExtention(mImageUri));
@@ -120,9 +159,9 @@ public class BookingFragment extends Fragment {
                             booking = new Booking(key,judul,
                                     NamaPembeli.getText().toString().trim(),
                                     NoHp.getText().toString().trim(),
-                                    currentlogin,
+                                    currentlogin,"2",
                                     uri.toString()
-                                    );
+                            );
                             UploadId = mDatabaseRef.push().getKey();
                             mDatabaseRef.child(UploadId).setValue(booking);
                             mDatabaseRefUpload.child(key).child("mStatus").setValue("2");
@@ -146,27 +185,6 @@ public class BookingFragment extends Fragment {
             });
         }else{
             Toast.makeText(getActivity(),"No File Selected",Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private String getFileExtention(Uri uri){
-        ContentResolver cR = getContext().getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
-    }
-
-    private void openFileChooser(){
-        Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null){
-            mImageUri = data.getData();
-            Picasso.get().load(mImageUri).into(KTP);
         }
     }
 

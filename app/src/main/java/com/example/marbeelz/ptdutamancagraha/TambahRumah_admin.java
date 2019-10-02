@@ -32,6 +32,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -62,7 +63,7 @@ public class TambahRumah_admin extends Fragment {
     Button upload;
     ImageButton choose;
     ImageView imageView;
-    Spinner spinnerListrik, spinnerKamarTidur, spinnerKamarMandi;
+    Spinner spinnerListrik, spinnerKamarTidur, spinnerKamarMandi, spinnerAir;
     String garasss = "asd";
     SwitchCompat garasi, carport;
     private ProgressBar mProgressBar;
@@ -85,6 +86,8 @@ public class TambahRumah_admin extends Fragment {
 
         String [] kamarMandi =
                 {"Kamar Mandi","1","2","3"};
+        String [] air =
+                {"Air","PDAM","Sumur bor"};
 
         spinnerListrik = view.findViewById(R.id.spinner_listrik);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, listrik);
@@ -115,12 +118,17 @@ public class TambahRumah_admin extends Fragment {
             textCarport = "Tidak Ada";
         }
 
+        spinnerAir = (Spinner) view.findViewById(R.id.air);
+        ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, air);
+        adapter4.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        spinnerAir.setAdapter(adapter4);
+
         textNama = view.findViewById(R.id.edit_text2);
         textHarga = view.findViewById(R.id.uangMuka);
         textAlamat = view.findViewById(R.id.alamat);
         textLuasTanah = view.findViewById(R.id.luas_tanah);
         textLuasBangunan = view.findViewById(R.id.luas_bangunan);
-        textSumberAir = view.findViewById(R.id.air);
+        //textSumberAir = view.findViewById(R.id.air);
         choose = view.findViewById(R.id.image2);
         upload = view.findViewById(R.id.upload);
         imageView = view.findViewById(R.id.image2);
@@ -138,45 +146,58 @@ public class TambahRumah_admin extends Fragment {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                int x = 0;
                 if (textNama.getText().toString().trim().equals("")){
                     textNama.setError("Silahkan Masukkan Tipe Rumah");
+                    x = 1;
                 }
                 if (textHarga.getText().toString().trim().equals("")){
                     textHarga.setError("Silahkan Masukkan Harga");
+                    x = 1;
                 }
                 if (textAlamat.getText().toString().trim().equals("")){
                     textAlamat.setError("Silahkan Masukkan Alamat");
+                    x = 1;
                 }
                 if (textLuasTanah.getText().toString().trim().equals("")){
                     textLuasTanah.setError("Silahkan Masukkan Alamat");
+                    x = 1;
                 }
                 if (textLuasBangunan.getText().toString().trim().equals("")){
                     textLuasBangunan.setError("Silahkan Masukkan Alamat");
+                    x = 1;
                 }
-                if (textSumberAir.getText().toString().trim().equals("")){
-                    textSumberAir.setError("Silahkan Masukkan Alamat");
+                if (spinnerAir.getSelectedItem().toString().trim() == "Air"){
+                    TextView errorAir = (TextView)spinnerListrik.getSelectedView();
+                    errorAir.setError("");
+                    errorAir.setTextColor(Color.RED);
+                    x = 1;
                 }
                 if (spinnerListrik.getSelectedItem().toString().trim() == "Listrik"){
                     TextView errorListrik = (TextView)spinnerListrik.getSelectedView();
                     errorListrik.setError("");
                     errorListrik.setTextColor(Color.RED);
+                    x = 1;
                 }
                 if (spinnerKamarTidur.getSelectedItem().toString().trim() == "Kamar Tidur"){
                     TextView errorKamarTidur = (TextView)spinnerKamarTidur.getSelectedView();
                     errorKamarTidur.setError("");
                     errorKamarTidur.setTextColor(Color.RED);
+                    x = 1;
                 }
                 if (spinnerKamarMandi.getSelectedItem().toString().trim() == "Kamar Mandi"){
                     TextView errorKamarMandi = (TextView)spinnerKamarMandi.getSelectedView();
                     errorKamarMandi.setError("");
                     errorKamarMandi.setTextColor(Color.RED);
+                    x = 1;
                 }
 
                 if (mUploadTask != null && mUploadTask.isInProgress()){
                     Toast.makeText(getActivity(),"Sedang Dalam Proses Upload",Toast.LENGTH_SHORT).show();
                 }else {
-                    uploadFile();
+                    if (x==0){
+                        uploadFile();
+                    }
                 }
             }
         });
@@ -233,6 +254,9 @@ public class TambahRumah_admin extends Fragment {
                         }
                     }, 500);
                     Toast.makeText(getActivity(),"Upload Sukses",Toast.LENGTH_SHORT).show();
+                    DaftarRumah_admin daftarRumah_admin = new DaftarRumah_admin();
+                    FragmentManager fragmentManager = getFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.fragment_container,daftarRumah_admin).commit();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override

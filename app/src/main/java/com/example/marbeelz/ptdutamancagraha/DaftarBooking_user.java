@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -41,6 +42,7 @@ public class DaftarBooking_user extends Fragment implements HistoryAdapter.OnIte
     private DatabaseReference mDatabaseRef, mDatabaseRefUpload;
     private List<Booking> mBooking;
     private StorageReference mStorageRef;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -52,6 +54,15 @@ public class DaftarBooking_user extends Fragment implements HistoryAdapter.OnIte
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences("currentlogin", 0);
         currentlogin = sharedPreferences.getString("logincurrent", "");
         mProgressBar = view.findViewById(R.id.progress_circleUser);
+
+        swipeRefreshLayout = view.findViewById(R.id.swiperefreshbookinguser);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                load();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
 
         mBooking = new ArrayList<>();
 

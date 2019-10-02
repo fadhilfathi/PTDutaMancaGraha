@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -38,13 +39,12 @@ public class DaftarBooking_admin extends Fragment implements HistoryAdapter.OnIt
     String currentlogin;
     private RecyclerView mRecyclerView;
     private HistoryAdapter mAdapter;
-
     private ValueEventListener mDBListener;
     private FirebaseStorage mStorage;
     private DatabaseReference mDatabaseRef, mDatabaseRefUpload;
     private List<Booking> mBooking;
     private StorageReference mStorageRef;
-
+    private SwipeRefreshLayout swipeRefreshLayout;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle("Daftar Booking");
@@ -56,6 +56,15 @@ public class DaftarBooking_admin extends Fragment implements HistoryAdapter.OnIt
         currentlogin = sharedPreferences.getString("logincurrent", "");
         mProgressBar = view.findViewById(R.id.progress_circle);
 
+        swipeRefreshLayout = view.findViewById(R.id.swiperefreshbookingadmin);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                load();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
         mBooking = new ArrayList<>();
 
         mAdapter = new HistoryAdapter(getActivity(), mBooking);
@@ -65,6 +74,13 @@ public class DaftarBooking_admin extends Fragment implements HistoryAdapter.OnIt
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Booking");
         mDatabaseRefUpload = FirebaseDatabase.getInstance().getReference("upload");
+
+        load();
+
+        return view;
+    }
+
+    private void load() {
         mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -89,8 +105,6 @@ public class DaftarBooking_admin extends Fragment implements HistoryAdapter.OnIt
                 Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-        return view;
     }
 
     @Override
@@ -105,13 +119,14 @@ public class DaftarBooking_admin extends Fragment implements HistoryAdapter.OnIt
                 .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Booking selectedItem = mBooking.get(Position);
+                        final Booking selectedItem = mBooking.get(Position);
                         final String selectedKey = selectedItem.getmKey();
                         mDatabaseRef.child(selectedKey).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 String keyRumah = dataSnapshot.child("keyRumah").getValue().toString().trim();
                                 mDatabaseRefUpload.child(keyRumah).child("mStatus").setValue("3");
+                                mDatabaseRef.child(selectedKey).child("mStatusBooking").setValue("3");
                                 mAdapter.notifyDataSetChanged();
                                 refresh();
                             }
@@ -148,6 +163,7 @@ public class DaftarBooking_admin extends Fragment implements HistoryAdapter.OnIt
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 String keyRumah = dataSnapshot.child("keyRumah").getValue().toString().trim();
                                 mDatabaseRefUpload.child(keyRumah).child("mStatus").setValue("1");
+                                mDatabaseRef.child(selectedKey).child("mStatusBooking").setValue("1");
                                 mAdapter.notifyDataSetChanged();
                                 refresh();
                             }

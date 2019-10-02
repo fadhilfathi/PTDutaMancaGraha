@@ -14,6 +14,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,6 +40,7 @@ public class DaftarRumah_user extends Fragment implements RecycleAdapter_user.On
     private DatabaseReference mDatabaseRef;
     private List<Upload> mUploads;
     private StorageReference mStorageRef;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,6 +52,15 @@ public class DaftarRumah_user extends Fragment implements RecycleAdapter_user.On
 
         mProgressBar = view.findViewById(R.id.progress_circle);
 
+        swipeRefreshLayout = view.findViewById(R.id.swiperefreshrumahuser);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                load();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
         mUploads = new ArrayList<>();
 
         mAdapter = new RecycleAdapter_user(getActivity(), mUploads);
@@ -59,6 +70,26 @@ public class DaftarRumah_user extends Fragment implements RecycleAdapter_user.On
 
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
+        searchView = view.findViewById(R.id.search_viewuser);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                search(newText);
+                return false;
+            }
+        });
+
+        load();
+
+        return view;
+    }
+
+    private void load() {
         mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -81,20 +112,6 @@ public class DaftarRumah_user extends Fragment implements RecycleAdapter_user.On
                 Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-        searchView = view.findViewById(R.id.search_viewuser);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                search(newText);
-                return false;
-            }
-        });
-        return view;
     }
 
     public void search(String str){

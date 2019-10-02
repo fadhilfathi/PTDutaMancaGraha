@@ -36,7 +36,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.RecycleV
     private Context mContext;
     private List<Booking> mBooking;
     private OnItemClickListener mListener;
-    private DatabaseReference mDatabaseRef;
     public HistoryAdapter(Context context, List<Booking> bookings){
         mContext = context;
         mBooking = bookings;
@@ -58,35 +57,20 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.RecycleV
         holder.noTelepon.setText(uploadcurrent.getNoHp());
         holder.namaAgen.setText(uploadcurrent.getAgen());
         Picasso.get().load(uploadcurrent.getmImageUrl()).fit().placeholder(R.drawable.picture).centerCrop().into(holder.imageView);
-        mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
-        mDatabaseRef.child(uploadcurrent.getKeyRumah()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("mStatus").getValue().toString().trim().equals("3")){
-                    holder.available.setVisibility(View.VISIBLE);
-                }
-                if (dataSnapshot.child("mStatus").getValue().toString().trim().equals("2")){
-                    holder.warning.setVisibility(View.VISIBLE);
-                }
-                if (dataSnapshot.child("mStatus").getValue().toString().trim().equals("1")){
-                    holder.notavailable.setVisibility(View.VISIBLE);
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        if (mDatabaseRef.child(uploadcurrent.getKeyRumah()).child("mStatus").toString().trim().equals("1")){
-            holder.available.setVisibility(View.VISIBLE);
-        }
-        if (mDatabaseRef.child(uploadcurrent.getKeyRumah()).child("mStatus").toString().trim().equals("2")){
-            holder.warning.setVisibility(View.VISIBLE);
-        }
-        if (mDatabaseRef.child(uploadcurrent.getKeyRumah()).child("mStatus").toString().trim().equals("3")){
+        if (uploadcurrent.getmStatusBooking().equals("1")){
             holder.notavailable.setVisibility(View.VISIBLE);
+            holder.warning.setVisibility(View.INVISIBLE);
+            holder.available.setVisibility(View.INVISIBLE);
+        }
+        if (uploadcurrent.getmStatusBooking().equals("2")){
+            holder.notavailable.setVisibility(View.INVISIBLE);
+            holder.warning.setVisibility(View.VISIBLE);
+            holder.available.setVisibility(View.INVISIBLE);
+        }
+        if (uploadcurrent.getmStatusBooking().equals("3")){
+            holder.notavailable.setVisibility(View.INVISIBLE);
+            holder.warning.setVisibility(View.INVISIBLE);
+            holder.available.setVisibility(View.VISIBLE);
         }
     }
 
