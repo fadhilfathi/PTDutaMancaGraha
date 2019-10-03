@@ -74,6 +74,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="4dp"
         android:fontFamily="@font/open_sans"
+        android:inputType="number"
         android:hint="luas_tanah(m2)"
         android:paddingStart="5dp"
         android:singleLine="true" />
@@ -90,6 +91,7 @@
         android:layout_marginBottom="4dp"
         android:fontFamily="@font/open_sans"
         android:hint="luas_bangunan(m2)"
+        android:inputType="number"
         android:paddingStart="5dp"
         android:singleLine="true" />
 
