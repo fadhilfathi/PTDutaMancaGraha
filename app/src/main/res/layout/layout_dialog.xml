@@ -8,6 +8,7 @@
         android:id="@+id/filterJudul"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/open_sans_light"
         android:hint="Judul" />
 
     <LinearLayout
@@ -15,6 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/filterJudul"
+        android:layout_marginTop="8dp"
         android:id="@+id/linearfilter"
         android:weightSum="2">
 
@@ -23,6 +25,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/open_sans_light"
             android:hint="Harga Min" />
 
         <EditText
@@ -30,6 +34,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/open_sans_light"
             android:hint="Harga Max" />
     </LinearLayout>
 
@@ -45,41 +51,64 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tersedia"
+            android:fontFamily="@font/open_sans_light"
+            android:textSize="10sp"
             android:id="@+id/radiotersedia"/>
         <RadioButton
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Telah Dibooking"
+            android:fontFamily="@font/open_sans_light"
+            android:textSize="10sp"
             android:id="@+id/radiotelahdibooking"/>
         <RadioButton
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Tidak Tersedia"
+            android:fontFamily="@font/open_sans_light"
+            android:textSize="10sp"
             android:id="@+id/radiotidaktersedia"/>
         <RadioButton
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Semua"
+            android:fontFamily="@font/open_sans_light"
+            android:textSize="10sp"
             android:id="@+id/radiosemua"/>
 
     </RadioGroup>
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Batal"
-        android:layout_below="@+id/radiogrup"
-        android:id="@+id/filterCancel"/>
+        android:orientation="horizontal"
+        android:layout_below="@id/radiogrup"
+        android:layout_marginTop="8dp"
+        android:weightSum="2">
 
     <Button
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Batal"
+        android:background="@drawable/outline_button"
+        android:id="@+id/filterCancel"
+        android:layout_weight="1"
+        android:layout_marginEnd="24dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cari"
-        android:layout_below="@+id/filterCancel"
-        android:id="@+id/filterCari"/>
+        android:layout_toEndOf="@id/filterCancel"
+        android:background="@drawable/rounded_button"
+        android:textColor="#ffff"
+        android:id="@+id/filterCari"
+        android:layout_weight="1"
+        android:layout_marginStart="24dp"/>
+    </LinearLayout>
 
 
 </RelativeLayout>
