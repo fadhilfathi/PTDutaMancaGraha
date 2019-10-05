@@ -29,7 +29,6 @@ public class FilterDialog extends DialogFragment {
         editTextJudul = view.findViewById(R.id.filterJudul);
         filterCancel = view.findViewById(R.id.filterCancel);
         filterCari = view.findViewById(R.id.filterCari);
-
         filterCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

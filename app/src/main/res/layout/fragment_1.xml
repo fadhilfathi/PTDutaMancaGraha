@@ -26,46 +26,46 @@
         android:textColor="#d3d3d3"
         android:textSize="16sp" />
 
-    <LinearLayout
-        android:id="@+id/filter1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/search_view"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
-        android:visibility="invisible">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/filter1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/search_view"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:orientation="vertical"-->
+<!--        android:visibility="invisible">-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/open_sans"
-            android:hint="10000"
-            android:textStyle="bold" />
+<!--        <EditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:fontFamily="@font/open_sans"-->
+<!--            android:hint="10000"-->
+<!--            android:textStyle="bold" />-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/open_sans"
-            android:hint="10000"
-            android:textStyle="bold" />
+<!--        <EditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:fontFamily="@font/open_sans"-->
+<!--            android:hint="10000"-->
+<!--            android:textStyle="bold" />-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans_light"
-            android:text="Harga Maksimal" />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="@font/open_sans_light"-->
+<!--            android:text="Harga Maksimal" />-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/open_sans_light"
-            android:text="Harga Minimal" />
-    </LinearLayout>
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:fontFamily="@font/open_sans_light"-->
+<!--            android:text="Harga Minimal" />-->
+<!--    </LinearLayout>-->
 
     <ProgressBar
         android:id="@+id/progress_circle"
@@ -73,27 +73,27 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true" />
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/outline_button"
-        android:focusable="false"
-        android:visibility="gone"
-        app:defaultQueryHint="@string/search"
-        app:iconifiedByDefault="false"
-        app:queryHint="@string/search" />
+<!--    <androidx.appcompat.widget.SearchView-->
+<!--        android:id="@+id/search_view"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:background="@drawable/outline_button"-->
+<!--        android:focusable="false"-->
+<!--        android:visibility="gone"-->
+<!--        app:defaultQueryHint="@string/search"-->
+<!--        app:iconifiedByDefault="false"-->
+<!--        app:queryHint="@string/search" />-->
 
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiperefresh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/search_view">
+        android:layout_below="@id/button_search">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"

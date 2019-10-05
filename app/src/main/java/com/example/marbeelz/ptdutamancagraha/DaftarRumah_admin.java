@@ -45,7 +45,7 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
     TextView available, booked, disabled;
     private RecyclerView mRecyclerView;
     public RecycleAdapter_admin mAdapter;
-    private androidx.appcompat.widget.SearchView searchView;
+    private Button searchView;
     private ValueEventListener mDBListener;
     private SwipeRefreshLayout swipeRefreshLayout;
     private FirebaseStorage mStorage;
@@ -75,15 +75,6 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
             }
         });
 
-//        filter = view.findViewById(R.id.filterrumahadmin);
-//        filter.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FilterDialog filterDialog = new FilterDialog();
-//                filterDialog.show(getFragmentManager(), null);
-//            }
-//        });
-
         mProgressBar = view.findViewById(R.id.progress_circle);
 
         mUploads = new ArrayList<>();
@@ -94,15 +85,14 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
 
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
-        searchView = view.findViewById(R.id.search_view);
-//        searchView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FilterDialog filterDialog = new FilterDialog();
-//                filterDialog.show(getFragmentManager(), null);
-//            }
-//        });
-
+        searchView = view.findViewById(R.id.button_search);
+        searchView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FilterDialog filterDialog = new FilterDialog();
+                filterDialog.show(getFragmentManager(), null);
+            }
+        });
 
         load();
 

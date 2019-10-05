@@ -33,11 +33,45 @@
             android:hint="Harga Max" />
     </LinearLayout>
 
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearfilter"
+        android:id="@+id/radiogrup"
+        android:orientation="horizontal"
+        android:weightSum="4">
+        <RadioButton
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tersedia"
+            android:id="@+id/radiotersedia"/>
+        <RadioButton
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telah Dibooking"
+            android:id="@+id/radiotelahdibooking"/>
+        <RadioButton
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tidak Tersedia"
+            android:id="@+id/radiotidaktersedia"/>
+        <RadioButton
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semua"
+            android:id="@+id/radiosemua"/>
+
+    </RadioGroup>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Batal"
-        android:layout_below="@+id/linearfilter"
+        android:layout_below="@+id/radiogrup"
         android:id="@+id/filterCancel"/>
 
     <Button

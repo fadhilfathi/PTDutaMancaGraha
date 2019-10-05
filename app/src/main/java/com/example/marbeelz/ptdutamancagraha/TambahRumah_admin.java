@@ -235,7 +235,7 @@ public class TambahRumah_admin extends Fragment {
                                     textAlamat.getText().toString().trim(),
                                     textLuasTanah.getText().toString().trim(),
                                     textLuasBangunan.getText().toString().trim(),
-                                    textSumberAir.getText().toString().trim(),
+                                    spinnerAir.getSelectedItem().toString().trim(),
                                     spinnerListrik.getSelectedItem().toString().trim(),
                                     spinnerKamarTidur.getSelectedItem().toString().trim(),
                                     spinnerKamarMandi.getSelectedItem().toString().trim(),

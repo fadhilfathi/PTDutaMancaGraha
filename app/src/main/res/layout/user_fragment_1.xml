@@ -3,35 +3,60 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:id="@+id/user_fragment_1">
-    
+    <Button
+        android:id="@+id/button_searchuser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/outline_button"
+        android:drawableStart="@drawable/ic_search_24dp"
+        android:drawableTint="#d3d3d3"
+        android:fontFamily="@font/open_sans"
+        android:paddingStart="90dp"
+        android:paddingEnd="90dp"
+        android:text="Cari rumah.."
+        android:textColor="#d3d3d3"
+        android:textSize="16sp" />
     <ProgressBar
         android:id="@+id/progress_circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
-    <androidx.appcompat.widget.SearchView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/search_viewuser"
-        android:background="@drawable/outline_button"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:queryHint="@string/search"
-        app:defaultQueryHint="@string/search"
-        app:iconifiedByDefault="false"
-        android:focusable="false"
-        />
+<!--    <androidx.appcompat.widget.SearchView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/search_viewuser"-->
+<!--        android:background="@drawable/outline_button"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        app:queryHint="@string/search"-->
+<!--        app:defaultQueryHint="@string/search"-->
+<!--        app:iconifiedByDefault="false"-->
+<!--        android:focusable="false"-->
+<!--        />-->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/swiperefreshrumahuser"
-        android:layout_below="@+id/search_viewuser">
+        android:layout_below="@+id/button_searchuser">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/tambah_userrr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_person_add_black_24dp"
+        app:rippleColor="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:elevation="6dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        />
 </RelativeLayout>
