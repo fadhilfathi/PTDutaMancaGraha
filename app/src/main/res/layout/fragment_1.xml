@@ -11,6 +11,21 @@
     <!--        android:ems="10"-->
     <!--        android:inputType="textPersonName"-->
     <!--        android:hint="Search" />-->
+    <Button
+        android:id="@+id/button_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/outline_button"
+        android:drawableStart="@drawable/ic_search_24dp"
+        android:drawableTint="#d3d3d3"
+        android:fontFamily="@font/open_sans"
+        android:paddingStart="90dp"
+        android:paddingEnd="90dp"
+        android:text="Cari rumah.."
+        android:textColor="#d3d3d3"
+        android:textSize="16sp" />
+
     <LinearLayout
         android:id="@+id/filter1"
         android:layout_width="match_parent"
@@ -66,12 +81,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-
         android:background="@drawable/outline_button"
         android:focusable="false"
+        android:visibility="gone"
         app:defaultQueryHint="@string/search"
         app:iconifiedByDefault="false"
         app:queryHint="@string/search" />
+
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiperefresh"
