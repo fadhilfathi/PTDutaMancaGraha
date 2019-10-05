@@ -21,6 +21,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
@@ -30,6 +31,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private TextView nav_admin;
     private DrawerLayout drawer;
     private CoordinatorLayout coordinatorLayout;
+    private FloatingActionButton filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         if (savedInstanceState == null){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new DaftarRumah_admin()).commit();
+                    new DaftarRumah_admin(),"DaftarRumah_admin").commit();
         }
     }
     @Override
@@ -74,7 +76,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         switch (menuItem.getItemId()){
             case R.id.nav_1:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new DaftarRumah_admin()).addToBackStack(null).commit();
+                        new DaftarRumah_admin(),"DaftarRumah_admin").addToBackStack(null).commit();
                 break;
             case R.id.nav_2:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

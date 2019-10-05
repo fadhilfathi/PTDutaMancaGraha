@@ -11,46 +11,46 @@
     <!--        android:ems="10"-->
     <!--        android:inputType="textPersonName"-->
     <!--        android:hint="Search" />-->
-    <LinearLayout
-        android:id="@+id/filter1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/search_view"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
-        android:visibility="invisible">
+<!--    <LinearLayout-->
+<!--        android:id="@+id/filter1"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/search_view"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:orientation="vertical"-->
+<!--        android:visibility="invisible">-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/open_sans"
-            android:hint="10000"
-            android:textStyle="bold" />
+<!--        <EditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:fontFamily="@font/open_sans"-->
+<!--            android:hint="10000"-->
+<!--            android:textStyle="bold" />-->
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/open_sans"
-            android:hint="10000"
-            android:textStyle="bold" />
+<!--        <EditText-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="4dp"-->
+<!--            android:fontFamily="@font/open_sans"-->
+<!--            android:hint="10000"-->
+<!--            android:textStyle="bold" />-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/open_sans_light"
-            android:text="Harga Maksimal" />
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:fontFamily="@font/open_sans_light"-->
+<!--            android:text="Harga Maksimal" />-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:fontFamily="@font/open_sans_light"
-            android:text="Harga Minimal" />
-    </LinearLayout>
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginBottom="4dp"-->
+<!--            android:fontFamily="@font/open_sans_light"-->
+<!--            android:text="Harga Minimal" />-->
+<!--    </LinearLayout>-->
 
     <ProgressBar
         android:id="@+id/progress_circle"
@@ -71,7 +71,8 @@
         android:focusable="false"
         app:defaultQueryHint="@string/search"
         app:iconifiedByDefault="false"
-        app:queryHint="@string/search" />
+        app:queryHint="@string/search"
+        />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiperefresh"
@@ -83,5 +84,18 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/filterrumahadmin"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/ic_list"-->
+<!--        app:rippleColor="@color/colorPrimary"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:elevation="6dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:layout_marginBottom="16dp"-->
+<!--        />-->
 </RelativeLayout>
