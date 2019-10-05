@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,26 +115,26 @@ public class DaftarBooking_admin extends Fragment implements HistoryAdapter.OnIt
 
     @Override
     public void onBooked(final int Position) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setMessage("Apakah rumah sudah dibayar?").setCancelable(true)
+        AlertDialog.Builder builders = new AlertDialog.Builder(getContext());
+        builders.setMessage("Apakah rumah sudah dibayar?").setCancelable(true)
                 .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        final Booking selectedItem = mBooking.get(Position);
-                        final String selectedKey = selectedItem.getmKey();
-                        mDatabaseRef.child(selectedKey).addValueEventListener(new ValueEventListener() {
+                        Booking selectedItems = mBooking.get(Position);
+                        final String selectedKeys = selectedItems.getmKey();
+                        mDatabaseRef.child(selectedKeys).child("mStatusBooking").setValue("3");
+                        mDatabaseRef.child(selectedKeys).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                String keyRumah = dataSnapshot.child("keyRumah").getValue().toString().trim();
-                                mDatabaseRefUpload.child(keyRumah).child("mStatus").setValue("3");
-                                mDatabaseRef.child(selectedKey).child("mStatusBooking").setValue("3");
-                                mAdapter.notifyDataSetChanged();
-                                refresh();
-                            }
+                                String keyRumahs = dataSnapshot.child("keyRumah").getValue().toString().trim();
+                                mDatabaseRefUpload.child(keyRumahs).child("mStatus").setValue("3");
 
+                                //mAdapter.notifyDataSetChanged();
+                                //refresh();
+                            }
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                                Log.d("Err", databaseError.toString());
                             }
                         });
                     }
@@ -143,12 +144,10 @@ public class DaftarBooking_admin extends Fragment implements HistoryAdapter.OnIt
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
                     }
-                })
-        ;
-        AlertDialog alertDialog = builder.create();
+                });
+        AlertDialog alertDialog = builders.create();
         alertDialog.show();
     }
-
     @Override
     public void onAvailable(final int Position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -158,19 +157,19 @@ public class DaftarBooking_admin extends Fragment implements HistoryAdapter.OnIt
                     public void onClick(DialogInterface dialog, int which) {
                         Booking selectedItem = mBooking.get(Position);
                         final String selectedKey = selectedItem.getmKey();
+                        mDatabaseRef.child(selectedKey).child("mStatusBooking").setValue("1");
                         mDatabaseRef.child(selectedKey).addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 String keyRumah = dataSnapshot.child("keyRumah").getValue().toString().trim();
                                 mDatabaseRefUpload.child(keyRumah).child("mStatus").setValue("1");
-                                mDatabaseRef.child(selectedKey).child("mStatusBooking").setValue("1");
-                                mAdapter.notifyDataSetChanged();
-                                refresh();
-                            }
 
+                                //Adapter.notifyDataSetChanged();
+                                //refresh();
+                            }
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                                Log.d("Err", databaseError.toString());
                             }
                         });
                     }

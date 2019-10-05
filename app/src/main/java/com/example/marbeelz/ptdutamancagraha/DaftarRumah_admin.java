@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +39,7 @@ import java.util.List;
 
 public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.OnItemClickListener {
     @Nullable
+    private static final String TAG = "DaftarRumah_admin";
     private ProgressBar mProgressBar;
     private Context mContext;
     TextView available, booked, disabled;
@@ -42,12 +47,13 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
     public RecycleAdapter_admin mAdapter;
     private androidx.appcompat.widget.SearchView searchView;
     private ValueEventListener mDBListener;
-    EditText filter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private FirebaseStorage mStorage;
     private DatabaseReference mDatabaseRef;
     private List<Upload> mUploads;
     private StorageReference mStorageRef;
+    private FloatingActionButton filter;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle("Daftar Rumah");
@@ -69,6 +75,15 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
             }
         });
 
+//        filter = view.findViewById(R.id.filterrumahadmin);
+//        filter.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FilterDialog filterDialog = new FilterDialog();
+//                filterDialog.show(getFragmentManager(), null);
+//            }
+//        });
+
         mProgressBar = view.findViewById(R.id.progress_circle);
 
         mUploads = new ArrayList<>();
@@ -79,20 +94,15 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
 
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
-
         searchView = view.findViewById(R.id.search_view);
-        searchView.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
-            }
+//        searchView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                FilterDialog filterDialog = new FilterDialog();
+//                filterDialog.show(getFragmentManager(), null);
+//            }
+//        });
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                search(newText);
-                return false;
-            }
-        });
 
         load();
 
@@ -100,14 +110,24 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
 
     }
 
-    private void load() {
+    public void load() {
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        mUploads = new ArrayList<>();
+
+        mAdapter = new RecycleAdapter_admin(getActivity(), mUploads);
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(DaftarRumah_admin.this);
+
+
+        mStorage = FirebaseStorage.getInstance();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
         mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 //Clear Model biar tidak dobel
                 mUploads.clear();
-
                 for (DataSnapshot postSnapShot : dataSnapshot.getChildren()) {
                     Upload upload = postSnapShot.getValue(Upload.class);
                     //mengambil key dari database untuk disimpan ke model upload
@@ -117,7 +137,6 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
                 //update recycler view dengan item baru
                 mAdapter.notifyDataSetChanged();
                 mProgressBar.setVisibility(View.INVISIBLE);
-                swipeRefreshLayout.setRefreshing(false);
             }
 
             @Override
@@ -131,12 +150,17 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
     public void search(String str){
         List<Upload> listSearch = new ArrayList<>();
         for (Upload object : mUploads){
-            if (object.getmName().toLowerCase().contains(str)){
+            if (object.getmName().toLowerCase().contains(str) || object.getmHarga().toLowerCase().contains(str) ||
+            object.getmLuas_Bangunan().toLowerCase().contains(str) || object.getmLuas_Tanah().toLowerCase().contains(str)){
                 listSearch.add(object);
             }
         }
         mAdapter = new RecycleAdapter_admin(getActivity(), listSearch);
         mRecyclerView.setAdapter(mAdapter);
+    }
+
+    public void cobacoba(String s){
+        Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -259,4 +283,9 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
         super.onDestroy();
         mDatabaseRef.removeEventListener(mDBListener);
     }
+//
+//    @Override
+//    public void applyText(String Judul) {
+//        search(Judul);
+//    }
 }
