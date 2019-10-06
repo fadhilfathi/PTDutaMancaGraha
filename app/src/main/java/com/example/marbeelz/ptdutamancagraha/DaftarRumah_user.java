@@ -80,25 +80,59 @@ public class DaftarRumah_user extends Fragment implements RecycleAdapter_user.On
         searchView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FilterDialog filterDialog = new FilterDialog();
+                FilterDialogUser filterDialog = new FilterDialogUser();
                 filterDialog.show(getFragmentManager(), null);
             }
         });
 
         load();
 
-        cobaaa = view.findViewById(R.id.tambah_userrr);
-        cobaaa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sortStatus();
-            }
-        });
-        mAdapter.notifyDataSetChanged();
         return view;
     }
 
+    public void search(String judul, String min, String max, String status){
+        List<Upload> listSearch = new ArrayList<>();
+        for (Upload object : mUploads){
+            int Harga = new Integer((object.getmHarga()));
+            int Min = 0, Max = 0;
+            if (!min.equals("")){
+                Min = new Integer(min);
+            }
+            if (!max.equals("")){
+                Max = new Integer(max);
+            }
+            String name = object.getmName().toLowerCase();
+            String stats = object.getmStatus();
+            if (!judul.equals("")) {
+                if (name.contains(judul)) {
+                    listSearch.add(object);
+                }
+            }
+            if (stats.equals(status)){
+                listSearch.add(object);
+            }
+            if (Harga>=Min && Harga<=Max){
+                listSearch.add(object);
+            }
+
+        }
+        mAdapter = new RecycleAdapter_user(getActivity(), listSearch);
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
     private void load() {
+        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        mUploads = new ArrayList<>();
+
+        mAdapter = new RecycleAdapter_user(getActivity(), mUploads);
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(DaftarRumah_user.this);
+
+
+        mStorage = FirebaseStorage.getInstance();
+        mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
         mDBListener = mDatabaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -121,17 +155,6 @@ public class DaftarRumah_user extends Fragment implements RecycleAdapter_user.On
                 Toast.makeText(getActivity(), databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
-
-    public void search(String str){
-        List<Upload> listSearch = new ArrayList<>();
-        for (Upload object : mUploads){
-            if (object.getmName().toLowerCase().contains(str)){
-                listSearch.add(object);
-            }
-        }
-        mAdapter = new RecycleAdapter_user(getActivity(), listSearch);
-        mRecyclerView.setAdapter(mAdapter);
     }
 
     @Override

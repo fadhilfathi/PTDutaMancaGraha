@@ -3,6 +3,7 @@ package com.example.marbeelz.ptdutamancagraha;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -137,20 +138,34 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
         });
     }
 
-    public void search(String str){
+    public void search(String judul, String min, String max, String status){
         List<Upload> listSearch = new ArrayList<>();
         for (Upload object : mUploads){
-            if (object.getmName().toLowerCase().contains(str) || object.getmHarga().toLowerCase().contains(str) ||
-            object.getmLuas_Bangunan().toLowerCase().contains(str) || object.getmLuas_Tanah().toLowerCase().contains(str)){
+            int Harga = new Integer((object.getmHarga()));
+            int Min = 0, Max = 0;
+            if (!min.equals("")){
+                Min = new Integer(min);
+            }
+            if (!max.equals("")){
+                Max = new Integer(max);
+            }
+            String name = object.getmName().toLowerCase();
+            String stats = object.getmStatus();
+            if (!judul.equals("")) {
+                if (name.contains(judul)) {
+                    listSearch.add(object);
+                }
+            }
+            if (stats.equals(status)){
                 listSearch.add(object);
             }
+            if (Harga>=Min && Harga<=Max){
+                listSearch.add(object);
+            }
+
         }
         mAdapter = new RecycleAdapter_admin(getActivity(), listSearch);
         mRecyclerView.setAdapter(mAdapter);
-    }
-
-    public void cobacoba(String s){
-        Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -273,9 +288,4 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
         super.onDestroy();
         mDatabaseRef.removeEventListener(mDBListener);
     }
-//
-//    @Override
-//    public void applyText(String Judul) {
-//        search(Judul);
-//    }
 }

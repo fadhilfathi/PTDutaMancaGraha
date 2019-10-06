@@ -21,7 +21,7 @@ import androidx.fragment.app.DialogFragment;
 
 import java.util.zip.Inflater;
 
-public class FilterDialog extends DialogFragment {
+public class FilterDialogUser extends DialogFragment {
     private EditText editTextJudul, hargamin, hargamax;
     private Button filterCari, filterCancel;
     RadioGroup radioGroup;
@@ -51,7 +51,7 @@ public class FilterDialog extends DialogFragment {
         filterCari.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DaftarRumah_admin daftarRumah_admin = (DaftarRumah_admin) getActivity().getSupportFragmentManager().findFragmentByTag("DaftarRumah_admin");
+                DaftarRumah_user daftarRumah_user = (DaftarRumah_user) getActivity().getSupportFragmentManager().findFragmentByTag("DaftarRumah_user");
 
                 String inputJudul = editTextJudul.getText().toString().trim();
                 String Hargamin = hargamin.getText().toString().trim();
@@ -60,19 +60,19 @@ public class FilterDialog extends DialogFragment {
                     //daftarRumah_admin.searchHarga(Hargamin,Hargamax);
                 }
                 if (tersedia.isChecked()){
-                    daftarRumah_admin.search(inputJudul, Hargamin, Hargamax, "1");
+                    daftarRumah_user.search(inputJudul, Hargamin, Hargamax, "1");
                 }
                 if (telahdibooking.isChecked()){
-                    daftarRumah_admin.search(inputJudul, Hargamin, Hargamax, "2");
+                    daftarRumah_user.search(inputJudul, Hargamin, Hargamax, "2");
                 }
                 if (tidaktersedia.isChecked()){
-                    daftarRumah_admin.search(inputJudul, Hargamin, Hargamax, "3");
+                    daftarRumah_user.search(inputJudul, Hargamin, Hargamax, "3");
                 }
                 if (semua.isChecked()){
-                    daftarRumah_admin.search(inputJudul, Hargamin, Hargamax, "");
+                    daftarRumah_user.search(inputJudul, Hargamin, Hargamax, "");
                 }
                 if (!tersedia.isChecked() && !telahdibooking.isChecked() && !tidaktersedia.isChecked() && !semua.isChecked()){
-                    daftarRumah_admin.search(inputJudul, Hargamin, Hargamax, "");
+                    daftarRumah_user.search(inputJudul, Hargamin, Hargamax, "");
                 }
 
                 getDialog().dismiss();

@@ -47,16 +47,4 @@
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/tambah_userrr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_person_add_black_24dp"
-        app:rippleColor="@color/colorPrimary"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:elevation="6dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        />
 </RelativeLayout>

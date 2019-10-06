@@ -54,7 +54,6 @@
             android:text="Tersedia"
             android:fontFamily="@font/open_sans_light"
             android:textSize="12sp"
-
             android:id="@+id/radiotersedia"/>
         <RadioButton
             android:layout_weight="1"

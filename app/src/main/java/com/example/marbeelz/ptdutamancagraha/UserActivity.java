@@ -46,7 +46,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         username.setText(currentlogin);
         if(savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new DaftarRumah_user()).commit();
+                    new DaftarRumah_user(),"DaftarRumah_user").commit();
             navigationView.setCheckedItem(R.id.nav_1);
         }
 
@@ -59,7 +59,7 @@ public class UserActivity extends AppCompatActivity implements NavigationView.On
         switch (menuItem.getItemId()){
             case R.id.nav_1:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new DaftarRumah_user()).addToBackStack(null).commit();
+                        new DaftarRumah_user(),"DaftarRumah_user").addToBackStack(null).commit();
                 break;
             case R.id.nav_2:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
