@@ -80,6 +80,13 @@
         android:text="Booking Sekarang"
         android:textColor="#ffff" />
 
+    <ProgressBar
+        android:id="@+id/progress_circlebooking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"/>
+
     <!--<include-->
     <!--android:id="@+id/lay1"-->
     <!--layout="@layout/booking"-->

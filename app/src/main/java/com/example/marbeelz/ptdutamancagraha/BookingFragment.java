@@ -66,12 +66,14 @@ public class BookingFragment extends Fragment {
     private Button Booking, disabled;
     private ImageButton KTP;
     private EditText NamaPembeli, NoHp;
+    private ProgressBar progressBar;
     String currentlogin;
     private StorageTask mUploadTask;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.bookinglayout, container, false);
         getActivity().setTitle("Booking Rumah");
+        progressBar = view.findViewById(R.id.progress_circlebooking);
         KTP = view.findViewById(R.id.imageKTP);
         Booking = view.findViewById(R.id.button_ktp);
         NamaPembeli = view.findViewById(R.id.namaPembeli);
@@ -147,6 +149,7 @@ public class BookingFragment extends Fragment {
 
     private void uploadFile() {
         if (mImageUri != null){
+            progressBar.setVisibility(View.VISIBLE);
             final StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()+"."+getFileExtention(mImageUri));
 
             mUploadTask = fileReference.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -167,8 +170,8 @@ public class BookingFragment extends Fragment {
                             mDatabaseRefUpload.child(key).child("mStatus").setValue("2");
                         }
                     });
-
                     Toast.makeText(getActivity(),"Silahkan Melakukan Proses Pembayaran",Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.INVISIBLE);
                     Bundle bundle = new Bundle();
                     bundle.putString("Nama",NamaPembeli.getText().toString().trim());
                     bundle.putString("NoHp",NoHp.getText().toString().trim());

@@ -29,13 +29,13 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DaftarBooking_user extends Fragment implements HistoryAdapter.OnItemClickListener {
+public class DaftarBooking_user extends Fragment {
     @Nullable
     private ProgressBar mProgressBar;
     private Context mContext;
     String currentlogin;
     private RecyclerView mRecyclerView;
-    private HistoryAdapter mAdapter;
+    private HistoryAdapterUser mAdapter;
 
     private ValueEventListener mDBListener;
     private FirebaseStorage mStorage;
@@ -66,9 +66,9 @@ public class DaftarBooking_user extends Fragment implements HistoryAdapter.OnIte
 
         mBooking = new ArrayList<>();
 
-        mAdapter = new HistoryAdapter(getActivity(), mBooking);
+        mAdapter = new HistoryAdapterUser(getActivity(), mBooking);
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(DaftarBooking_user.this);
+        //mAdapter.setOnItemClickListener(DaftarBooking_user.this);
 
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Booking");
@@ -108,40 +108,40 @@ public class DaftarBooking_user extends Fragment implements HistoryAdapter.OnIte
             }
         });
     }
-
-    @Override
-    public void onItemClick(int Position) {
-
-    }
-
-    @Override
-    public void onBooked(int Position) {
-        Booking selectedItem = mBooking.get(Position);
-        final String selectedKey = selectedItem.getmKey();
-        mDatabaseRefUpload.child(selectedKey).child("mStatus").setValue("3");
-    }
-
-    @Override
-    public void onAvailable(int Position) {
-        Booking selectedItem = mBooking.get(Position);
-        final String selectedKey = selectedItem.getmKey();
-        mDatabaseRefUpload.child(selectedKey).child("mStatus").setValue("1");
-    }
-
-    @Override
-    public void onDelete(int Position) {
-        Booking selectedItem = mBooking.get(Position);
-        final String selectedKey = selectedItem.getmKey();
-
-        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getmImageUrl());
-        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                mDatabaseRef.child(selectedKey).removeValue();
-                Toast.makeText(getActivity(), "Delete Sukses", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+//
+//    @Override
+//    public void onItemClick(int Position) {
+//
+//    }
+//
+//    @Override
+//    public void onBooked(int Position) {
+//        Booking selectedItem = mBooking.get(Position);
+//        final String selectedKey = selectedItem.getmKey();
+//        mDatabaseRefUpload.child(selectedKey).child("mStatus").setValue("3");
+//    }
+//
+//    @Override
+//    public void onAvailable(int Position) {
+//        Booking selectedItem = mBooking.get(Position);
+//        final String selectedKey = selectedItem.getmKey();
+//        mDatabaseRefUpload.child(selectedKey).child("mStatus").setValue("1");
+//    }
+//
+//    @Override
+//    public void onDelete(int Position) {
+//        Booking selectedItem = mBooking.get(Position);
+//        final String selectedKey = selectedItem.getmKey();
+//
+//        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getmImageUrl());
+//        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void aVoid) {
+//                mDatabaseRef.child(selectedKey).removeValue();
+//                Toast.makeText(getActivity(), "Delete Sukses", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
 
     @Override
     public void onDestroy() {

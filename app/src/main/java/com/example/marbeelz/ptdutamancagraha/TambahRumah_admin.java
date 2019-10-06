@@ -132,7 +132,7 @@ public class TambahRumah_admin extends Fragment {
         choose = view.findViewById(R.id.image2);
         upload = view.findViewById(R.id.upload);
         imageView = view.findViewById(R.id.image2);
-        mProgressBar = view.findViewById(R.id.progress_bar);
+        mProgressBar = view.findViewById(R.id.progress_circletambahrumah);
         mStorageRef = FirebaseStorage.getInstance().getReference();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("upload");
 
@@ -168,7 +168,7 @@ public class TambahRumah_admin extends Fragment {
                     x = 1;
                 }
                 if (spinnerAir.getSelectedItem().toString().trim() == "Air"){
-                    TextView errorAir = (TextView)spinnerListrik.getSelectedView();
+                    TextView errorAir = (TextView)spinnerAir.getSelectedView();
                     errorAir.setError("");
                     errorAir.setTextColor(Color.RED);
                     x = 1;
@@ -213,6 +213,7 @@ public class TambahRumah_admin extends Fragment {
 
     private void uploadFile() {
         if (mImageUri != null){
+            mProgressBar.setVisibility(View.VISIBLE);
             final StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()+"."+getFileExtention(mImageUri));
 
             mUploadTask = fileReference.putFile(mImageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -246,14 +247,15 @@ public class TambahRumah_admin extends Fragment {
                             mDatabaseRef.child(UploadId).setValue(upload);
                         }
                     });
-                    Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mProgressBar.setProgress(0);
-                        }
-                    }, 500);
+//                    Handler handler = new Handler();
+//                    handler.postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            mProgressBar.setProgress(0);
+//                        }
+//                    }, 1000);
                     Toast.makeText(getActivity(),"Upload Sukses",Toast.LENGTH_SHORT).show();
+                    mProgressBar.setVisibility(View.INVISIBLE);
                     DaftarRumah_admin daftarRumah_admin = new DaftarRumah_admin();
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.fragment_container,daftarRumah_admin).commit();
@@ -266,8 +268,7 @@ public class TambahRumah_admin extends Fragment {
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                    double progress =   (100.0 * taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
-                    mProgressBar.setProgress((int)progress);
+
                 }
             });
         }else{
