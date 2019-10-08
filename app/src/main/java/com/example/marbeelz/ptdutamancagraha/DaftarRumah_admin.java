@@ -159,6 +159,9 @@ public class DaftarRumah_admin extends Fragment implements RecycleAdapter_admin.
             if (stats.equals(status)){
                 listSearch.add(object);
             }
+            if (status.equals("")){
+                listSearch.add(object);
+            }
             if (Harga>=Min && Harga<=Max){
                 listSearch.add(object);
             }

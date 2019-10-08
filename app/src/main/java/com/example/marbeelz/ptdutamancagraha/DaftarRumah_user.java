@@ -111,6 +111,9 @@ public class DaftarRumah_user extends Fragment implements RecycleAdapter_user.On
             if (stats.equals(status)){
                 listSearch.add(object);
             }
+            if (status.equals("")){
+                listSearch.add(object);
+            }
             if (Harga>=Min && Harga<=Max){
                 listSearch.add(object);
             }

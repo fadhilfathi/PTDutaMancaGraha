@@ -191,11 +191,11 @@ public class DaftarBooking_admin extends Fragment implements HistoryAdapter.OnIt
         final String selectedKey = selectedItem.getmKey();
 
         StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getmImageUrl());
+        mDatabaseRef.child(selectedKey).removeValue();
         imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                mDatabaseRef.child(selectedKey).removeValue();
-                Toast.makeText(getActivity(), "Delete Sukses", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Delete Sukses", Toast.LENGTH_SHORT).show();
             }
         });
     }
