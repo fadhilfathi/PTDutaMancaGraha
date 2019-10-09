@@ -114,10 +114,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.RecycleV
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
             contextMenu.setHeaderTitle("Ubah status booking rumah");
-            MenuItem Hapus = contextMenu.add(Menu.NONE,1,1,"Hapus booking rumah");
-            MenuItem Booked = contextMenu.add(Menu.NONE, 2,2,"Telah dibayar");
-            MenuItem Available = contextMenu.add(Menu.NONE,3,3,"Batal");
-            Hapus.setOnMenuItemClickListener(this);
+//            MenuItem Hapus = contextMenu.add(Menu.NONE,1,1,"Hapus booking rumah");
+            MenuItem Booked = contextMenu.add(Menu.NONE, 1,1,"Telah dibayar");
+            MenuItem Available = contextMenu.add(Menu.NONE,2,2,"Batal");
+//            Hapus.setOnMenuItemClickListener(this);
             Booked.setOnMenuItemClickListener(this);
             Available.setOnMenuItemClickListener(this);
         }
@@ -129,9 +129,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.RecycleV
                 if (position != RecyclerView.NO_POSITION){
                     switch (menuItem.getItemId()){
                         case 1:
-                            mListener.onDelete(position);
-                            return true;
-                        case 2:
                             mListener.onBooked(position);
                             return true;
                         case 3:
@@ -147,7 +144,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.RecycleV
 
         void onBooked(int Position);
 
-        void onDelete(int Position);
+//        void onDelete(int Position);
 
         void onAvailable(int Position);
     }

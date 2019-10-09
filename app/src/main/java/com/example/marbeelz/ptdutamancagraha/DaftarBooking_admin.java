@@ -185,20 +185,20 @@ public class DaftarBooking_admin extends Fragment implements HistoryAdapter.OnIt
         alertDialog.show();
     }
 
-    @Override
-    public void onDelete(int Position) {
-        Booking selectedItem = mBooking.get(Position);
-        final String selectedKey = selectedItem.getmKey();
-
-        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getmImageUrl());
-        mDatabaseRef.child(selectedKey).removeValue();
-        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void aVoid) {
-                Toast.makeText(getContext(), "Delete Sukses", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
+//    @Override
+//    public void onDelete(int Position) {
+//        Booking selectedItem = mBooking.get(Position);
+//        final String selectedKey = selectedItem.getmKey();
+//
+//        StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getmImageUrl());
+//        mDatabaseRef.child(selectedKey).removeValue();
+//        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void aVoid) {
+//                Toast.makeText(getContext(), "Delete Sukses", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//    }
     private void refresh(){
         DaftarBooking_admin fragment_1 = new DaftarBooking_admin();
         FragmentManager fragmentManager = getFragmentManager();
